@@ -18,6 +18,12 @@
 #define CellScaleWidth ScreenWith*2/3
 
 
+
+#define ScrollX 70.0/750.0*ScreenWith
+#define ScrollWidth 610.0/750.0*ScreenWith
+
+
+
 @interface YCScrolPageView()<UIScrollViewDelegate>{
     UIScrollView *scrollView;
 }
@@ -31,7 +37,10 @@
 - (id)initWithFrame:(CGRect)frame target:(id<UIScrollViewDelegate>)target{
     self = [super initWithFrame:frame];
     if (self) {
-        scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(ScreenWith/6, 0, ScreenWith*2/3, frame.size.height)];
+        
+        NSLog(@"ScrollX");
+        
+        scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(ScrollX, frame.origin.y, ScrollWidth, frame.size.height)];
         scrollView.pagingEnabled = YES;
         scrollView.clipsToBounds = NO;
         [self addSubview:scrollView];
@@ -47,13 +56,13 @@
     
     for(NSString * name in array){
         
-        YCScrolPageCell *cell = [[YCScrolPageCell alloc] initWithFrame:CGRectMake(ScreenWith * 2 / 3 * index, 15, ScreenWith * 2 / 3, CellHeight)];
+        YCScrolPageCell *cell = [[YCScrolPageCell alloc] initWithFrame:CGRectMake(ScrollWidth * index, 15, ScrollWidth, CellHeight)];
         cell.backgroundColor = [UIColor randomColor];
         cell.alpha = 0.8;
                 if (index != 0) {
                     CGRect frame = cell.bounds;
-                    frame.size.width =  ScreenWith * 2 / 3 * 0.2 * (ScreenWith * 2 / 3 -  fabs(scrollView.contentOffset.x - ScreenWith * 2 / 3 * 1) )/ ScreenWith * 2 / 3 + 0.8 *ScreenWith * 2 / 3;
-                    frame.size.height =  ScreenHeight * 2 / 3 * 0.2  * (ScreenWith * 2 / 3 -  fabs(scrollView.contentOffset.x - ScreenWith * 2 / 3 * 1) )/ ScreenWith * 2 / 3 + 0.8 *ScreenHeight * 2 / 3;
+                    frame.size.width =  ScrollWidth * 0.2 * (ScrollWidth -  fabs(scrollView.contentOffset.x - ScrollWidth * 1) )/ ScrollWidth + 0.8 *ScreenWith;
+                    frame.size.height =  CellHeight * 0.2  * (ScrollWidth -  fabs(scrollView.contentOffset.x - ScrollWidth * 1) )/ ScrollWidth + 0.8 *CellHeight;
                     cell.bounds = frame;
                     cell.button.frame = CellButtonFrame;
                 }
@@ -69,22 +78,35 @@
 }
 
 - (void)scroll{
-    int index = scrollView.contentOffset.x / (ScreenWith * 2 / 3);
+    
+//    NSLog(@"offset: , width: %f,%f",scrollView.contentOffset.x,ScreenWith*2/3);
+    
+    
+    int index = scrollView.contentOffset.x / ScrollWidth;
+    
+    float offSetX = scrollView.contentOffset.x;
+    
     if (index == 0) {
         for (int i = 0; i < 2; i++) {
             YCScrolPageCell *cell = _cellsArray[i];
             CGRect frame = cell.bounds;
-            frame.size.width =  ScreenWith * 2 / 3 * 0.2 * (ScreenWith * 2 / 3 -  fabs(scrollView.contentOffset.x - ScreenWith * 2 / 3 * i) )/ (ScreenWith * 2 / 3) + 0.8 * ScreenWith * 2 / 3;
-            frame.size.height =  ScreenHeight * 2 / 3 * 0.2 * (ScreenWith * 2 / 3 -  fabs(scrollView.contentOffset.x - ScreenWith * 2 / 3 * i) )/ (ScreenWith * 2 / 3) + 0.9 * ScreenHeight * 2 / 3;
+//            frame.size.width =  ScreenWith * 2 / 3 * 0.2 * (ScreenWith * 2 / 3 -  fabs(scrollView.contentOffset.x - ScreenWith * 2 / 3 * i) )/ (ScreenWith * 2 / 3) + 0.8 * ScreenWith * 2 / 3;
+//            frame.size.height =  ScreenHeight * 2 / 3 * 0.2 * (ScreenWith * 2 / 3 -  fabs(scrollView.contentOffset.x - ScreenWith * 2 / 3 * i) )/ (ScreenWith * 2 / 3) + 0.9 * ScreenHeight * 2 / 3;
+            frame.size.width =  ScrollWidth * 0.2 * ((ScrollWidth -  fabs(scrollView.contentOffset.x - ScrollWidth * i) )/ ScrollWidth) + 0.8 *ScreenWith;
+            frame.size.height =  CellHeight * 0.2  * ((ScrollWidth -  fabs(scrollView.contentOffset.x - ScrollWidth * i) )/ ScrollWidth) + 0.8 *CellHeight;
             cell.bounds = frame;
             cell.button.frame = CellButtonFrame;
+            
+            
+            NSLog(@"size:%f",(ScrollWidth - offSetX)/ScrollWidth);
+            
         }
     }else if(index == _cellsArray.count - 1){
         for (int i = index - 1; i < index + 1; i++) {
             YCScrolPageCell *cell = _cellsArray[i];
             CGRect frame = cell.bounds;
-            frame.size.width =  ScreenWith * 2 / 3 * 0.2 * (ScreenWith * 2 / 3 -  fabs(scrollView.contentOffset.x - ScreenWith * 2 / 3 * i) )/ (ScreenWith * 2 / 3) + 0.8 * ScreenWith * 2 / 3;
-            frame.size.height =  ScreenHeight * 2 / 3 * 0.2 * (ScreenWith * 2 / 3 -  fabs(scrollView.contentOffset.x - ScreenWith * 2 / 3 * i) )/ (ScreenWith * 2 / 3) + 0.9 * ScreenHeight * 2 / 3;
+            frame.size.width =  ScrollWidth * 0.2 * (ScrollWidth -  fabs(scrollView.contentOffset.x - ScrollWidth * i) )/ ScrollWidth + 0.8 *ScreenWith;
+            frame.size.height =  CellHeight * 0.2  * (ScrollWidth -  fabs(scrollView.contentOffset.x - ScrollWidth * i) )/ ScrollWidth + 0.8 *CellHeight;
             cell.bounds = frame;
             cell.button.frame = CellButtonFrame;
         }
@@ -92,8 +114,8 @@
         for (int i = index - 1; i < index + 2; i++) {
             YCScrolPageCell *cell = _cellsArray[i];
             CGRect frame = cell.bounds;
-            frame.size.width =  ScreenWith * 2 / 3 * 0.2 * (ScreenWith * 2 / 3 -  fabs(scrollView.contentOffset.x - ScreenWith * 2 / 3 * i) )/ (ScreenWith * 2 / 3) + 0.8 * ScreenWith * 2 / 3;
-            frame.size.height =  ScreenHeight * 2 / 3 * 0.2 * (ScreenWith * 2 / 3 -  fabs(scrollView.contentOffset.x - ScreenWith * 2 / 3 * i) )/ (ScreenWith * 2 / 3) + 0.9 * ScreenHeight * 2 / 3;
+            frame.size.width =  ScrollWidth * 0.2 * (ScrollWidth -  fabs(scrollView.contentOffset.x - ScrollWidth * i) )/ ScrollWidth + 0.8 *ScreenWith;
+            frame.size.height =  CellHeight * 0.2  * (ScrollWidth -  fabs(scrollView.contentOffset.x - ScrollWidth * i) )/ ScrollWidth + 0.8 *CellHeight;
             cell.bounds = frame;
             cell.button.frame = CellButtonFrame;
         }

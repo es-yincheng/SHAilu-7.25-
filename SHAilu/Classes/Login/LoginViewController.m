@@ -7,11 +7,13 @@
 //
 
 #import "LoginViewController.h"
+#import "RegisterViewController.h"
 
 @interface LoginViewController (){
     BOOL canLogin;
 }
 
+@property (weak, nonatomic) IBOutlet UILabel *xline;
 @property (strong, nonatomic) UIButton *loginButton;
 
 @end
@@ -28,8 +30,32 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - custom
+- (void)setNavigation{
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registerAction)];
+    self.navigationItem.rightBarButtonItem = rightItem;
+}
+
+- (void)setLoginButton{
+    _loginButton.layer.cornerRadius = 8.f;
+    _loginButton.layer.masksToBounds = YES;
+    _loginButton.frame = CGRectMake(40, self.xline.yc_y + 50 + 45, ScreenWith - 80, 50);
+    [_loginButton setTitle:@"Login" forState:UIControlStateNormal];
+    _loginButton.titleLabel.font = [UIFont systemFontOfSize:13.f];
+    [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _loginButton.backgroundColor = [UIColor orangeColor];
+}
 
 #pragma mark - action
+- (void)registerAction{
+    RegisterViewController *vc = [[RegisterViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (IBAction)cancelAction:(id)sender {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (IBAction)loginAction:(UIButton *)sender {
     UIButton *btn = sender;
     [UIView animateWithDuration:0.5f animations:^{
@@ -48,7 +74,6 @@
         circle.lineWidth = 3.f;
         circle.position = btn.center;
         [self.view.layer addSublayer:circle];
-        
         
         POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPShapeLayerStrokeEnd];
         anim.fromValue = [NSNumber numberWithFloat:0];
@@ -106,22 +131,10 @@
     }];
 }
 
-#pragma mark - custom
-- (void)setLoginButton{
-    _loginButton.layer.cornerRadius = 8.f;
-    _loginButton.layer.masksToBounds = YES;
-    _loginButton.frame = CGRectMake(40, ScreenHeight - 120, ScreenWith - 80, 50);
-    [_loginButton setTitle:@"Login" forState:UIControlStateNormal];
-    _loginButton.titleLabel.font = [UIFont systemFontOfSize:13.f];
-    [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _loginButton.backgroundColor = [UIColor orangeColor];
-    //    [_loginButton setBackgroundImage:[self createImageFromColor:kColor imgSize:CGSizeMake(_loginButton.bounds.size.width, _loginButton.bounds.size.height)] forState:UIControlStateNormal];
-}
-
 #pragma mark - lazy
 - (UIButton *)loginButton{
     if (!_loginButton) {
-        _loginButton = [[UIButton alloc] initWithFrame:CGRectMake(40, ScreenHeight - 120, ScreenWith-80, 50)];
+        _loginButton = [[UIButton alloc] initWithFrame:CGRectMake(40, self.xline.yc_y + 45, ScreenWith-80, 50)];
         [_loginButton addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
         [self setLoginButton];
     }

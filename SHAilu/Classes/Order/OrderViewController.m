@@ -25,6 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = false;
 
     [self.dataSource addObjectsFromArray:@[@"",@"",@""]];
     self.title = @"订单";

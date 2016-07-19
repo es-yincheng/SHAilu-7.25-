@@ -17,9 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.automaticallyAdjustsScrollViewInsets = false;
-    
     [self setNavigationItem];
 }
 
