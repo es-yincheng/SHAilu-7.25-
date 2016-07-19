@@ -1,0 +1,14 @@
+//
+//  PrefixHeader.pch
+//  SHAilu
+//
+//  Created by 尹成 on 16/7/12.
+//  Copyright © 2016年 尹成. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "Tool.h"
+
+#endif /* PrefixHeader_pch */

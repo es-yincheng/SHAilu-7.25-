@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "TestViewController.h"
+#import "TestLoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +18,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+//    self.window.rootViewController = [[Factory sharedUI] getTabBarController];
+    
+    
+//    //获取storyboard
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//    
+//    //实例化箭头指向的ViewController
+//    YCTabBarController *rootVC = [storyboard instantiateInitialViewController];
+//    
+//    self.window.rootViewController = rootVC;
+    
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey:@"UserInfo"];
     return YES;
 }
 
