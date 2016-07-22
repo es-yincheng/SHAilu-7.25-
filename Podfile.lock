@@ -18,6 +18,9 @@ PODS:
   - IQKeyboardManager (4.0.4)
   - MJRefresh (3.1.9)
   - pop (1.0.9)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
 
 DEPENDENCIES:
   - AFNetworking
@@ -25,6 +28,7 @@ DEPENDENCIES:
   - IQKeyboardManager
   - MJRefresh
   - pop (~> 1.0)
+  - SDWebImage (~> 3.7)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -32,7 +36,8 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 4a6f83b540283c2645aaeba2bd8dc0f09b5c77f8
   MJRefresh: c5f1f1653e5a1b932c90f78074f2bc86f3f9bd5e
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-PODFILE CHECKSUM: 28b3ebd66bb585ebb06145b260f60af90a0001db
+PODFILE CHECKSUM: b20da4e3bc9b49bbb82910ccb145dc7869a0cee6
 
 COCOAPODS: 1.0.1

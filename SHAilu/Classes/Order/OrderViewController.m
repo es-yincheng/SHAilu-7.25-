@@ -9,6 +9,8 @@
 #import "OrderViewController.h"
 #import "OrderCell.h"
 #import "OrderDetail.h"
+#import "MJChiBaoZiHeader.h"
+#import "MJDiyFooter.h"
 
 //NSString *CellIdentifier = @"OrderCell";
 
@@ -34,7 +36,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    
+    YCTabBarController *tabBarController = (YCTabBarController*)self.tabBarController;
+    tabBarController.customView.hidden = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -66,6 +69,15 @@
 
 
 #pragma mark - action
+- (void)loadNewData{
+    [NSThread sleepForTimeInterval:1.5f];
+    [self.tableView.mj_header endRefreshing];
+}
+
+- (void)loadMoreData{
+    [NSThread sleepForTimeInterval:1.5f];
+    [self.tableView.mj_footer endRefreshing];
+}
 
 
 #pragma mark - delegate/dataSource
@@ -121,6 +133,9 @@
     _tableView.rowHeight = 210;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [_tableView registerNib:[UINib nibWithNibName:@"OrderCell" bundle:nil] forCellReuseIdentifier:@"OrderCell"];
+    _tableView.mj_header = [MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    _tableView.mj_footer = [MJDiyFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    
 }
 
 #pragma mark - lazy

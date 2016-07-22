@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "YGGravityImageView.h"
 
 @interface LoginViewController (){
     BOOL canLogin;
@@ -15,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *xline;
 @property (strong, nonatomic) UIButton *loginButton;
+@property (strong, nonatomic) YGGravityImageView *imageView;
 
 @end
 
@@ -23,7 +25,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _imageView = [[YGGravityImageView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    _imageView.image = [UIImage imageNamed:@"backImage"];
+    [self.view addSubview:_imageView];
+    
     [self.view addSubview:self.loginButton];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [_imageView startAnimate];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_imageView stopAnimate];
 }
 
 - (void)didReceiveMemoryWarning {

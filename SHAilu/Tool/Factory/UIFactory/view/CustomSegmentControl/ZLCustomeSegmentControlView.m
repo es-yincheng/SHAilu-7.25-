@@ -34,6 +34,7 @@
     self = [super init];
     if (self) {
          _duration = DEFAULT_DURATION;
+        self.backgroundColor = YCItemColor;
     }
     return self;
 }
@@ -136,15 +137,38 @@
  *
  *  @return 返回创建好的label
  */
-- (UILabel *) createLabelWithTitlesIndex: (NSInteger) index
-                              textColor: (UIColor *) textColor {
+
+//- (UILabel *) createLabelWithTitlesIndex: (NSInteger) index
+//                              textColor: (UIColor *) textColor {
+//    CGRect currentLabelFrame = [self countCurrentRectWithIndex:index];
+//    UILabel *tempLabel = [[UILabel alloc] initWithFrame:currentLabelFrame];
+//    tempLabel.textColor = textColor;
+//    tempLabel.text = _titles[index];
+//    tempLabel.font = _titlesFont;
+//    tempLabel.minimumScaleFactor = 0.1f;
+//    tempLabel.textAlignment = NSTextAlignmentCenter;
+//    return tempLabel;
+//}
+
+- (UIImageView *) createLabelWithTitlesIndex: (NSInteger) index
+                               textColor: (UIColor *) textColor
+                                    type: (NSInteger)type{
     CGRect currentLabelFrame = [self countCurrentRectWithIndex:index];
-    UILabel *tempLabel = [[UILabel alloc] initWithFrame:currentLabelFrame];
-    tempLabel.textColor = textColor;
-    tempLabel.text = _titles[index];
-    tempLabel.font = _titlesFont;
-    tempLabel.minimumScaleFactor = 0.1f;
-    tempLabel.textAlignment = NSTextAlignmentCenter;
+    UIImageView *tempLabel = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 33, 33)];
+    tempLabel.center = CGPointMake(currentLabelFrame.origin.x+currentLabelFrame.size.width/2, currentLabelFrame.size.height/2);
+    
+//    tempLabel.textColor = textColor;
+//    tempLabel.text = _titles[index];
+//    tempLabel.font = _titlesFont;
+//    tempLabel.minimumScaleFactor = 0.1f;
+//    tempLabel.textAlignment = NSTextAlignmentCenter;
+    
+    if (type == 0) {
+        tempLabel.image = [UIImage imageNamed:_icons[index]];
+    } else {
+        tempLabel.image = [UIImage imageNamed:_iconsSelect[index]];
+    }
+    
     return tempLabel;
 }
 
@@ -153,9 +177,9 @@
  */
 - (void) createBottomLabels {
     for (int i = 0; i < _titles.count; i ++) {
-        UILabel *tempLabel = [self createLabelWithTitlesIndex:i textColor:_titlesCustomeColor];
-        tempLabel.backgroundColor = YCItemColor;
-        tempLabel.textColor = YCNavTitleColor;
+        UIImageView *tempLabel = [self createLabelWithTitlesIndex:i textColor:_titlesCustomeColor type:0];
+//        tempLabel.backgroundColor = YCItemColor;
+//        tempLabel.textColor = YCNavTitleColor;
         [self addSubview:tempLabel];
         [_labelMutableArray addObject:tempLabel];
     }
@@ -176,7 +200,8 @@
     
     _heightTopView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, _viewWidth, _viewHeight)];
     for (int i = 0; i < _titles.count; i ++) {
-        UILabel *label = [self createLabelWithTitlesIndex:i textColor:_titlesHeightLightColor];
+        UIImageView *label = [self createLabelWithTitlesIndex:i textColor:_titlesHeightLightColor type:1];
+//        label.font = [UIFont systemFontOfSize:12];
         [_heightTopView addSubview:label];
     }
     [_heightLightView addSubview:_heightTopView];

@@ -7,16 +7,30 @@
 //
 
 #import "RegisterViewController.h"
+#import "YGGravityImageView.h"
 
 @interface RegisterViewController ()
-
+@property (strong, nonatomic) YGGravityImageView *imageView;
 @end
 
 @implementation RegisterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    _imageView = [[YGGravityImageView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    _imageView.image = [UIImage imageNamed:@"backImage"];
+    [self.view addSubview:_imageView];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [_imageView startAnimate];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_imageView stopAnimate];
 }
 
 - (void)didReceiveMemoryWarning {

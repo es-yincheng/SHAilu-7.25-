@@ -7,12 +7,14 @@
 //
 
 #import "YCTabBarController.h"
-#import "ZLCustomeSegmentControlView.h"
+
 //#import "YCTabBar.h"
 
 #define SelectItemColor [UIColor colorWithRed:0.624 green:0.494 blue:0.200 alpha:1.000]
 
 @interface YCTabBarController ()
+
+
 
 @end
 
@@ -30,58 +32,26 @@
 //    [[UITabBar appearance] setBackgroundImage:[[UIImage alloc] init]];
 //    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
     
-    UILabel *xline = [[UILabel alloc] initWithFrame:CGRectMake(0, -1, ScreenWith, 1)];
-    xline.backgroundColor = YCNavTitleColor;
-    [self.tabBar addSubview:xline];
+    _customView = [[ZLCustomeSegmentControlView alloc] init];
     
-    ZLCustomeSegmentControlView *v = [[ZLCustomeSegmentControlView alloc] init];
+    _customView.titles = @[@"定制", @"订单", @"我的"];
+    _customView.icons = @[@"tab_custom_normal",@"tab_order_normal",@"tab_my_normal"];
+    _customView.iconsSelect = @[@"tab_custom_select",@"tab_order_select",@"tab_my_select"];
+    _customView.duration = 0.7f;
     
-    v.titles = @[@"定制", @"订单", @"我的"];
-    v.duration = 0.7f;
-    
-    [v setButtonOnClickBlock:^(NSInteger tag, NSString *title) {
+    typeof(self) __weak weakSelf = self;
+    [_customView setButtonOnClickBlock:^(NSInteger tag, NSString *title) {
         NSLog(@"index = %ld, title = %@", (long)tag, title);
-        
-        
-        self.selectedIndex = tag;
+        weakSelf.selectedIndex = tag;
     }];
     
+    [self.view addSubview:_customView];
+    _customView.frame = CGRectMake(0, ScreenHeight-self.tabBar.yc_height, ScreenWith, self.tabBar.yc_height);
     
-    [self.view addSubview:v];
-    v.frame = CGRectMake(0, ScreenHeight-self.tabBar.yc_height, ScreenWith, self.tabBar.yc_height);
+    UILabel *xline = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWith, 1)];
+    xline.backgroundColor = YCNavTitleColor;
+    [_customView addSubview:xline];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 - (UIImage *)buttonImageFromColor:(UIColor *)color{
     

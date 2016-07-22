@@ -18,12 +18,38 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderFooter" translatesAutoresizingMaskIntoConstraints="NO" id="G6y-Qm-FV7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tU-He-07q">
+                        <rect key="frame" x="0.0" y="-1" width="1" height="42.5"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="LLO-rO-aaE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxb-I0-qFR">
+                        <rect key="frame" x="319" y="-0.5" width="1" height="42"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="oV0-pM-ejw"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstItem="0tU-He-07q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-9" id="55V-pg-03y"/>
                     <constraint firstItem="G6y-Qm-FV7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="XEL-om-Hql"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="0tU-He-07q" secondAttribute="bottom" constant="-6" id="a6E-I2-jFV"/>
                     <constraint firstAttribute="trailingMargin" secondItem="G6y-Qm-FV7" secondAttribute="trailing" constant="-8" id="gPi-zv-TaF"/>
                     <constraint firstItem="G6y-Qm-FV7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="kFC-MU-wsh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Rxb-I0-qFR" secondAttribute="trailing" constant="-8" id="lgg-aq-zWi"/>
+                    <constraint firstItem="Rxb-I0-qFR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8.5" id="mrc-i5-6um"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Rxb-I0-qFR" secondAttribute="bottom" constant="-6" id="qDz-lZ-ofO"/>
+                    <constraint firstItem="0tU-He-07q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="tF8-37-McF"/>
                     <constraint firstAttribute="bottomMargin" secondItem="G6y-Qm-FV7" secondAttribute="bottom" constant="-8" id="tGX-PO-qs0"/>
                 </constraints>
             </tableViewCellContentView>

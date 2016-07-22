@@ -27,6 +27,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithWhite:0.941 alpha:1.000];
 
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -66,7 +67,7 @@
     
 
     [self.tableView beginUpdates];
-    [self.dataSource insertObject:@"test" atIndex:0];
+    [self.dataSource insertObject:@"您的订单已有2000件完成并打包，已有2000件制作完成，准备打包，还剩余1000件正在制作" atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     NSArray *insertIndexPath = [NSArray arrayWithObjects:indexPath, nil];
     [self.tableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationBottom];

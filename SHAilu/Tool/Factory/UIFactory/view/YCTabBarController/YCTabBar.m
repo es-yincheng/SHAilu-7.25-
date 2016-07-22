@@ -26,9 +26,7 @@
 @implementation YCTabBar
 
 - (instancetype)initWithFrame:(CGRect)frame itemCount:(NSInteger)count{
-    
     self = [super initWithFrame:frame];
-    
     if (self) {
         itemCount = 3;
         // 设置彩色view
@@ -36,10 +34,8 @@
         // 设置遮罩层
         [self setupMaskLayer];
     }
-    
     return self;
 }
-
 
 // 设置遮罩层
 - (void)setupMaskLayer {
@@ -100,13 +96,13 @@
         // 第一部分：遮罩先展开一部分
         // 第二部分：位移并缩小回原来的大小
         // 第一部分淡入，第二部分淡出
-        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [UIView animateWithDuration:0.05 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
             self.colorfulMaskView.frame = scaleFrame;
         } completion:^(BOOL finished) {
             
             if (finished) {
-                [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                     
                     self.colorfulMaskView.frame = toFrame;
                 } completion:NULL];

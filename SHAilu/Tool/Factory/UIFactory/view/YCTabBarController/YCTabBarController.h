@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZLCustomeSegmentControlView.h"
 
 @interface YCTabBarController : UITabBarController
 
+@property (nonatomic, strong) ZLCustomeSegmentControlView *customView;
 
 @end

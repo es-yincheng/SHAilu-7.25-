@@ -7,7 +7,8 @@
 //
 
 #import "OrderCell.h"
-#import "OrderDetail.h"
+//#import "OrderDetail.h"
+#import "OrderDetailController.h"
 
 @interface OrderCell()
 
@@ -34,8 +35,10 @@
 }
 
 - (IBAction)orderDetailAction:(id)sender {
-    OrderDetail *vc = [[OrderDetail alloc] init];
+    OrderDetailController *vc = [[OrderDetailController alloc] init];
     [self.viewController.navigationController pushViewController:vc animated:YES];
+    YCTabBarController *tabBarController = (YCTabBarController*)self.viewController.tabBarController;
+    tabBarController.customView.hidden = YES;
 }
 
 @end

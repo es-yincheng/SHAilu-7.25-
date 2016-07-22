@@ -18,6 +18,7 @@
     [super viewDidLoad];
     
     [self setNavigationItem];
+    [self setTabBarItem];
 }
 
 - (void)setNavigationItem{
@@ -36,6 +37,14 @@
     UIView *statusBackView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, ScreenWith, 20)];
     statusBackView.backgroundColor = YCItemColor;
     [self.navigationController.navigationBar addSubview:statusBackView];
+    
+    UILabel *xline = [[UILabel alloc] initWithFrame:CGRectMake(0, 43.5, ScreenWith, 0.5)];
+    xline.backgroundColor = YCNavTitleColor;
+    [self.navigationController.navigationBar addSubview:xline];
+}
+
+- (void)setTabBarItem{
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {

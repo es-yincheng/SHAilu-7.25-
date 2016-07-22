@@ -7,16 +7,12 @@
 //
 
 #import "TestViewController.h"
-#import "YCScrolPageView.h"
 
-@interface TestViewController ()<UIScrollViewDelegate>
+@interface TestViewController ()
 
-@property (nonatomic, strong) YCScrolPageView *scrollView;
-@property (nonatomic, strong) UIPageControl *pageControl;
-/**
- * 用来接收是第几张图
- **/
-@property (nonatomic) NSUInteger x;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIView *backView;
+@property (nonatomic, strong) UIImageView *imageViewTop;
 
 @end
 
@@ -27,55 +23,50 @@
     
     self.view.backgroundColor = [UIColor greenColor];
     
-    // 创建imageView
-//    self.imageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
-    
-//    self.navigationController.navigationBar.hidden = YES;
-    
-    //    _imageView.contentMode = UIViewContentModeScaleAspectFill;
-    
-    //    _imageView.clipsToBounds = YES;
-//    [self.view addSubview:_imageView];
     
     
-    // 创建自定义的scrollV
-    self.scrollView = [[YCScrolPageView alloc] initWithFrame:self.view.bounds target:self];
-    [self.view addSubview:_scrollView];
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(200, 80, 53, 95)];
+    _imageView.image = [UIImage imageNamed:@"start"];
+    [self.view addSubview:_imageView];
     
-    // 创建辅助imageView
-//    self.auxiliaryImageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
+    _backView = [[UIView alloc] initWithFrame:CGRectMake(200, 80, 53, 95)];
+    _backView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_backView];
+    _backView.clipsToBounds = YES;
     
-    NSArray *urlArray = @[@"http://box.dwstatic.com/skin/Irelia/Irelia_0.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_1.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_2.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_3.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_4.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_5.jpg"];
-    
-    [_scrollView loadData:urlArray];
-//    _tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
-//    [_scrollView addGestureRecognizer:_tap];
-    
-    
-//    [_auxiliaryImageView sd_setImageWithURL:[NSURL URLWithString:_urlArray[0]] placeholderImage:[UIImage imageNamed:@"back"]];
-//    [self performSelector:@selector(blur) withObject:nil afterDelay:0.2];
+    _imageViewTop = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 53, 95)];
+    _imageViewTop.image = [UIImage imageNamed:@"home"];
+    [_backView addSubview:_imageViewTop];
     
     
-    self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, ScreenHeight - 40, ScreenWith, 30)];
-    [self.view addSubview:_pageControl];
-    _pageControl.backgroundColor = [UIColor lightGrayColor];
-    _pageControl.numberOfPages = urlArray.count;
-    _pageControl.currentPage = 0;
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self performSelector:@selector(start) withObject:nil afterDelay:3.0f];
+}
+
+- (void)start{
+//    POPBasicAnimation *spring = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+//    spring.toValue = @(80+120);
+//    spring.duration = 5.f;
+//    [_backView.layer pop_addAnimation:spring forKey:@"aposition"];
+//    
+//    POPBasicAnimation *base = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+//    base.toValue = @(-120);
+//    base.duration = 5.f;
+//    [_imageViewTop.layer pop_addAnimation:base forKey:@"aposition"];
+
+
+    [UIView animateWithDuration:4.0 // 动画时长
+                     animations:^{
+                         _backView.yc_y = 80 + 120;
+                         _imageViewTop.yc_y =  - 120;
+                     }];
+
 
 }
 
-// scrollView代理方法
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-     _x = scrollView.contentOffset.x / (ScreenWith * 2 / 3);
-    _pageControl.currentPage = _x;
-}
 
-
-// scrollView 的代理方法
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    [_scrollView scroll];
-}
 
 
 - (void)didReceiveMemoryWarning {

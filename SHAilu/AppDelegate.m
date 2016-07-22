@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "TestViewController.h"
-#import "TestLoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -29,6 +28,7 @@
 //    
 //    self.window.rootViewController = rootVC;
     
+//    self.window.rootViewController = [[TestViewController alloc] init];
     
     self.window.backgroundColor = [UIColor whiteColor];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

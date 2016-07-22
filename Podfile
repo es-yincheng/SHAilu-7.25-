@@ -4,7 +4,7 @@ target 'SHAilu' do
 
 #pod 'Masonry'
 
-#pod 'SDWebImage', '~>3.7'
+pod 'SDWebImage', '~>3.7'
 
 pod 'IQKeyboardManager'
 
