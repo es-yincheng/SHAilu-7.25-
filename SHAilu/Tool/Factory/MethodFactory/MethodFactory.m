@@ -10,4 +10,11 @@
 
 @implementation MethodFactory
 
+- (void)saveUserInfo:(NSDictionary *)userInfo{
+    NSUserDefaults *userDefualts = [NSUserDefaults standardUserDefaults];
+//    [userDefualts setValue:userInfo forKey:@"UserInfo"];
+    [userDefualts setValue:@"info" forKey:@"UserInfo"];
+    [userDefualts synchronize];
+}
+
 @end

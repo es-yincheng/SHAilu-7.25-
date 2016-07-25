@@ -21,4 +21,5 @@
 #import "NSDictionary+Custom.h"
 #import "NSMutableDictionary+Custom.h"
 #import "UIFont+Custom.h"
+#import "UIButton+Custom.h"
 #endif /* Category_h */

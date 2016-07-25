@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *xline;
 @property (strong, nonatomic) UIButton *loginButton;
 @property (strong, nonatomic) YGGravityImageView *imageView;
+@property (weak, nonatomic) IBOutlet UITextField *phoneField;
+@property (weak, nonatomic) IBOutlet UITextField *pwdField;
 
 @end
 
@@ -25,9 +27,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [_phoneField setValue:YCNavTitleColor forKeyPath:@"_placeholderLabel.textColor"];
+    [_pwdField setValue:YCNavTitleColor forKeyPath:@"_placeholderLabel.textColor"];
+    
     _imageView = [[YGGravityImageView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     _imageView.image = [UIImage imageNamed:@"backImage"];
-    [self.view addSubview:_imageView];
+    [self.view insertSubview:_imageView atIndex:0];
     
     [self.view addSubview:self.loginButton];
 }
@@ -55,12 +60,21 @@
 - (void)setLoginButton{
     _loginButton.layer.cornerRadius = 8.f;
     _loginButton.layer.masksToBounds = YES;
-    _loginButton.frame = CGRectMake(40, self.xline.yc_y + 50 + 45, ScreenWith - 80, 50);
-    [_loginButton setTitle:@"Login" forState:UIControlStateNormal];
+    _loginButton.bounds = CGRectMake(40, self.xline.yc_y + 50 + 45, ScreenWith - 80, 50);
+    [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
     _loginButton.titleLabel.font = [UIFont systemFontOfSize:13.f];
     [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _loginButton.backgroundColor = [UIColor orangeColor];
 }
+
+- (BOOL)checkLogin{
+    if ([self.phoneField.text isPhoneNumber]) {
+        if ([self.pwdField.text isPWD]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 
 #pragma mark - action
 - (void)registerAction{
@@ -73,6 +87,11 @@
 }
 
 - (IBAction)loginAction:(UIButton *)sender {
+    
+    if (![self checkLogin]) {
+        return;
+    }
+    
     UIButton *btn = sender;
     [UIView animateWithDuration:0.5f animations:^{
         [btn setTitle:@"" forState:UIControlStateNormal];
@@ -85,7 +104,7 @@
         
         CAShapeLayer *circle = [CAShapeLayer new];
         circle.path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(0,0) radius:btn.bounds.size.width/2+2 startAngle:0 endAngle:M_PI*2*0.9 clockwise:YES].CGPath;
-        circle.strokeColor = [UIColor greenColor].CGColor;
+        circle.strokeColor = [UIColor whiteColor].CGColor;
         circle.fillColor = [UIColor clearColor].CGColor;
         circle.lineWidth = 3.f;
         circle.position = btn.center;
@@ -97,22 +116,13 @@
         anim.duration = 1;
         anim.completionBlock = ^(POPAnimation *anim, BOOL finished) {
             if (finished) {
-                
-                CABasicAnimation *circleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-                circleAnimation.duration = 2.5f;
-                circleAnimation.repeatCount = MAXFLOAT;
-                circleAnimation.toValue = @(M_PI*2);
-                [circle addAnimation:circleAnimation forKey:@"rotation"];
-                
                 if (canLogin) {
                     [circle removeFromSuperlayer];
-                    POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+                    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
                     anim.toValue = [NSValue valueWithCGSize:CGSizeMake(50, 50)];
                     [btn pop_addAnimation:anim forKey:@"scaleAnimationKey"];
                     anim.completionBlock = ^(POPAnimation *animation,BOOL finish) {
-                        NSUserDefaults *userDefualts = [NSUserDefaults standardUserDefaults];
-                        [userDefualts setValue:@"user" forKey:@"UserInfo"];
-                        [userDefualts synchronize];
+                        [[Factory sharedMethod] saveUserInfo:nil];
                         [self.navigationController dismissViewControllerAnimated:NO completion:nil];
                     };
                 } else {
@@ -120,17 +130,16 @@
                                                               Password:nil
                                                                success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                                                    [circle removeFromSuperlayer];
+                                                                   
                                                                    POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
                                                                    anim.toValue = [NSValue valueWithCGSize:CGSizeMake(50, 50)];
-                                                                   [btn pop_addAnimation:anim forKey:@"scaleAnimationKey"];
                                                                    anim.completionBlock = ^(POPAnimation *animation,BOOL finish) {
-                                                                       NSUserDefaults *userDefualts = [NSUserDefaults standardUserDefaults];
-                                                                       [userDefualts setValue:@"user" forKey:@"UserInfo"];
-                                                                       [userDefualts synchronize];
+                                                                       [[Factory sharedMethod] saveUserInfo:nil];
                                                                        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
                                                                    };
+                                                                   
                                                                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                                   [NSThread sleepForTimeInterval:3.0];
+                                                                   [NSThread sleepForTimeInterval:1.0];
                                                                    [MBProgressHUD showError:@"网络连接失败"];
                                                                    canLogin = YES;
                                                                    [circle removeFromSuperlayer];
@@ -144,13 +153,21 @@
             }
         };
         [circle pop_addAnimation:anim forKey:@"YCButtonScaleXY"];
+        
+        CABasicAnimation *circleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        circleAnimation.duration = 2.5f;
+        circleAnimation.repeatCount = MAXFLOAT;
+        circleAnimation.toValue = @(M_PI*2);
+        [circle addAnimation:circleAnimation forKey:@"rotation"];
+        
     }];
 }
 
 #pragma mark - lazy
 - (UIButton *)loginButton{
     if (!_loginButton) {
-        _loginButton = [[UIButton alloc] initWithFrame:CGRectMake(40, self.xline.yc_y + 45, ScreenWith-80, 50)];
+        _loginButton = [[UIButton alloc] initWithFrame:CGRectMake(40, self.xline.yc_y + 50+ 45, ScreenWith-80, 50)];
+        _loginButton.backgroundColor = YCNavTitleColor;
         [_loginButton addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
         [self setLoginButton];
     }

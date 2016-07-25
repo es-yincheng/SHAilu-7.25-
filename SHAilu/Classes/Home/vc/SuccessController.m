@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"成功";
     NSString *path = [[NSBundle mainBundle] pathForResource:@"success" ofType:@"gif"];
     //将图片转为NSData
     NSData *gifData = [NSData dataWithContentsOfFile:path];

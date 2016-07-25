@@ -20,8 +20,8 @@
     }
     [self setImages:refreshingImages forState:MJRefreshStateRefreshing];
     self.refreshingTitleHidden = YES;
-//    self.lastUpdatedTimeLabel.hidden = YES;
-    self.stateLabel.hidden = YES;
+//    self.stateLabel.hidden = YES;
+    [self setTitle:@"无更多数据" forState:MJRefreshStateNoMoreData];
 }
 
 @end

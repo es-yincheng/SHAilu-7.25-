@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="YCBigImageCell">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="98"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="98"/>
+                <subviews>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGw-14-9uw">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="98"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Aw-gi-IKh">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="98"/>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="y6g-gL-LlO">
+                                <rect key="frame" x="40" y="39" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="8Aw-gi-IKh" firstAttribute="leading" secondItem="DGw-14-9uw" secondAttribute="leading" id="7Vr-Ed-HRe"/>
+                            <constraint firstItem="8Aw-gi-IKh" firstAttribute="centerX" secondItem="DGw-14-9uw" secondAttribute="centerX" id="FD1-cA-CgC"/>
+                            <constraint firstItem="y6g-gL-LlO" firstAttribute="centerY" secondItem="DGw-14-9uw" secondAttribute="centerY" id="JnU-QK-IWr"/>
+                            <constraint firstAttribute="trailing" secondItem="8Aw-gi-IKh" secondAttribute="trailing" id="ft6-lv-NGe"/>
+                            <constraint firstItem="8Aw-gi-IKh" firstAttribute="centerY" secondItem="DGw-14-9uw" secondAttribute="centerY" id="g0L-BK-tr4"/>
+                            <constraint firstItem="8Aw-gi-IKh" firstAttribute="top" secondItem="DGw-14-9uw" secondAttribute="top" id="gju-FZ-7f5"/>
+                            <constraint firstAttribute="bottom" secondItem="8Aw-gi-IKh" secondAttribute="bottom" id="iCj-I3-ZbW"/>
+                            <constraint firstItem="y6g-gL-LlO" firstAttribute="centerX" secondItem="DGw-14-9uw" secondAttribute="centerX" id="pNN-Be-hbu"/>
+                        </constraints>
+                    </scrollView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="DGw-14-9uw" secondAttribute="trailing" id="68Y-Bt-2vw"/>
+                <constraint firstItem="DGw-14-9uw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="XMd-bQ-eOS"/>
+                <constraint firstItem="DGw-14-9uw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="mHL-87-3Nk"/>
+                <constraint firstAttribute="bottom" secondItem="DGw-14-9uw" secondAttribute="bottom" id="o0m-yM-CcT"/>
+            </constraints>
+            <size key="customSize" width="100" height="98"/>
+            <connections>
+                <outlet property="imageView" destination="8Aw-gi-IKh" id="JYN-au-4Ib"/>
+                <outlet property="indicator" destination="y6g-gL-LlO" id="PJS-09-hV5"/>
+                <outlet property="scrollView" destination="DGw-14-9uw" id="l0L-FT-YpN"/>
+            </connections>
+            <point key="canvasLocation" x="324" y="557"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -11,5 +11,8 @@
 @interface NSString (Custom)
 
 - (NSString *)getTimeFromNow;
+- (BOOL)isPhoneNumber;
+- (BOOL)isPWD;
+- (BOOL)isYZM;
 
 @end

@@ -10,6 +10,7 @@
 
 static UIFactory *uiFactory;
 static MethodFactory *methodFactory;
+static AnimationFactory *animationFactory;
 
 @implementation Factory
 
@@ -29,15 +30,19 @@ static MethodFactory *methodFactory;
     return methodFactory;
 }
 
++ (AnimationFactory *)sharedAnimation{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        animationFactory = [[AnimationFactory alloc] init];
+    });
+    return animationFactory;
+}
 
-- (id)init
-{
+
+- (id)init{
     self = [super init];
-    if(self)
-    {
-//        _userService = [[UserService alloc] init];
-//        _orderService = [[OrderService alloc] init];
-//        _companyService = [[CompanyService alloc] init];
+    if(self){
+
     }
     return (self);
 }

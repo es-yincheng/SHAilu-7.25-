@@ -117,6 +117,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="orderText" width="667" height="70"/>
+        <image name="orderText" width="333" height="35"/>
     </resources>
 </document>

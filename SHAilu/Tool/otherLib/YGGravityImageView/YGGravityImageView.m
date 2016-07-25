@@ -19,6 +19,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        self.yc_y = 20;
         [self configUI];
     }
     return self;

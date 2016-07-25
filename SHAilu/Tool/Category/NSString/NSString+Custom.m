@@ -10,6 +10,35 @@
 
 @implementation NSString (Custom)
 
+- (BOOL)isPhoneNumber{
+    NSString *moblie = @"^(13|14|15|18|17)\\d{9}$";
+    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", moblie];
+    if ([regextestmobile evaluateWithObject:self]) {
+        return YES;
+    }
+    [MBProgressHUD showMessageAuto:@"请输入正确的手机号"];
+    return NO;
+}
+
+-(BOOL)isPWD{
+    NSString *pattern = @"^[a-zA-Z0-9]{6,16}";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern];
+    if ([pred evaluateWithObject:self]){
+        return YES;
+    }
+    [MBProgressHUD showMessageAuto:@"请输入6-16的位密码"];
+    return NO;
+}
+
+-(BOOL)isYZM{
+    if (self.length>3) {
+        return YES;
+    }
+    [MBProgressHUD showMessageAuto:@"请输入验证码"];
+    return NO;
+    
+}
+
 - (NSString *)getTimeFromIBZService{
     NSString *time = [self substringWithRange:NSMakeRange(6, 10)];
     return [time getTimeForm1970];

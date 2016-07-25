@@ -10,4 +10,7 @@
 
 @interface MethodFactory : NSObject
 
+- (void)saveUserInfo:(NSDictionary *)userInfo;
+- (void)removeUserInfo;
+
 @end

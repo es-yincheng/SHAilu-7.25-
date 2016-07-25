@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fA0-en-241">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fA0-en-241">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -145,7 +145,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lJC-xc-7DB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lJC-xc-7DB">
                                                     <rect key="frame" x="23" y="13" width="75.5" height="53.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="lJC-xc-7DB" secondAttribute="height" multiplier="86:61" id="yLU-DZ-BNz"/>
@@ -186,7 +186,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pwm-ue-224">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_lock" translatesAutoresizingMaskIntoConstraints="NO" id="pwm-ue-224">
                                                     <rect key="frame" x="23" y="13" width="23.5" height="23.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="pwm-ue-224" secondAttribute="height" multiplier="1:1" id="lKK-66-Cb0"/>
@@ -222,7 +222,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sOK-8d-KQg">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_phone" translatesAutoresizingMaskIntoConstraints="NO" id="sOK-8d-KQg">
                                                     <rect key="frame" x="23" y="13" width="23.5" height="23.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="sOK-8d-KQg" secondAttribute="height" multiplier="1:1" id="SYx-ye-Zd1"/>
@@ -254,7 +254,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OWu-8E-zKU">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_question" translatesAutoresizingMaskIntoConstraints="NO" id="OWu-8E-zKU">
                                                     <rect key="frame" x="23" y="13" width="23.5" height="23.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="OWu-8E-zKU" secondAttribute="height" multiplier="1:1" id="iUW-kE-Bmt"/>
@@ -880,7 +880,7 @@
         <!--修改密码-->
         <scene sceneID="2vS-UE-dAg">
             <objects>
-                <viewController id="t6h-5D-WDR" sceneMemberID="viewController">
+                <viewController id="t6h-5D-WDR" customClass="ChnagePwdController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kBQ-7K-R9d"/>
                         <viewControllerLayoutGuide type="bottom" id="uTA-2k-nZ4"/>
@@ -890,15 +890,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVF-FM-NUl">
-                                <rect key="frame" x="70" y="267" width="460" height="34"/>
+                                <rect key="frame" x="70" y="267" width="460" height="38"/>
                                 <color key="backgroundColor" red="0.62352941179999999" green="0.49019607840000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="xif-Z1-AwY"/>
+                                    <constraint firstAttribute="height" constant="38" id="xif-Z1-AwY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="确认修改">
                                     <color key="titleColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="changePWDAction:" destination="t6h-5D-WDR" eventType="touchUpInside" id="7C1-CG-fmA"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBb-Vn-cQg">
                                 <rect key="frame" x="0.0" y="72" width="600" height="150"/>
@@ -963,6 +972,18 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qf-jo-EjJ">
+                                        <rect key="frame" x="516" y="116" width="64" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="Dc0-Rt-tbs"/>
+                                            <constraint firstAttribute="width" constant="64" id="TSI-vd-PVd"/>
+                                        </constraints>
+                                        <state key="normal" image="login_hiddenPWD"/>
+                                        <state key="selected" image="login_showPWD"/>
+                                        <connections>
+                                            <action selector="showPWDAction:" destination="t6h-5D-WDR" eventType="touchUpInside" id="73e-sa-XDU"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -982,6 +1003,7 @@
                                     <constraint firstAttribute="height" constant="150" id="MnT-cV-kBg"/>
                                     <constraint firstItem="kWe-0B-R9V" firstAttribute="trailing" secondItem="uji-dL-dy6" secondAttribute="trailing" id="NGi-5k-h5r"/>
                                     <constraint firstItem="vxV-Ba-aYK" firstAttribute="leading" secondItem="cPa-Bj-uoh" secondAttribute="leading" id="NrI-f2-oDL"/>
+                                    <constraint firstAttribute="trailing" secondItem="9qf-jo-EjJ" secondAttribute="trailing" constant="20" id="PEJ-SN-sis"/>
                                     <constraint firstItem="uji-dL-dy6" firstAttribute="top" secondItem="bBb-Vn-cQg" secondAttribute="top" constant="50" id="UrV-fQ-8CT"/>
                                     <constraint firstItem="NhF-3T-Ors" firstAttribute="top" secondItem="kWe-0B-R9V" secondAttribute="bottom" constant="50" id="VmS-nS-l1p"/>
                                     <constraint firstItem="uji-dL-dy6" firstAttribute="top" secondItem="is4-RJ-AdJ" secondAttribute="bottom" constant="15" id="Y8Y-Qi-yo4"/>
@@ -994,6 +1016,7 @@
                                     <constraint firstItem="NhF-3T-Ors" firstAttribute="height" secondItem="uji-dL-dy6" secondAttribute="height" id="lFR-bR-knR"/>
                                     <constraint firstItem="2ca-7x-1hg" firstAttribute="leading" secondItem="is4-RJ-AdJ" secondAttribute="leading" id="lXh-dD-o6k"/>
                                     <constraint firstItem="uji-dL-dy6" firstAttribute="top" secondItem="cPa-Bj-uoh" secondAttribute="bottom" constant="6" id="ldx-ft-b5Q"/>
+                                    <constraint firstItem="NhF-3T-Ors" firstAttribute="top" secondItem="9qf-jo-EjJ" secondAttribute="bottom" constant="8" id="lnO-fZ-biB"/>
                                     <constraint firstItem="vxV-Ba-aYK" firstAttribute="centerY" secondItem="2ca-7x-1hg" secondAttribute="centerY" id="mYb-5k-ogP"/>
                                     <constraint firstItem="cPa-Bj-uoh" firstAttribute="leading" secondItem="is4-RJ-AdJ" secondAttribute="trailing" constant="16" id="pVg-hM-v5R"/>
                                     <constraint firstItem="NhF-3T-Ors" firstAttribute="trailing" secondItem="uji-dL-dy6" secondAttribute="trailing" id="taI-7g-sdE"/>
@@ -1029,6 +1052,12 @@
                     <navigationItem key="navigationItem" title="修改密码" id="f1f-up-fxZ">
                         <barButtonItem key="backBarButtonItem" title=" " id="gOf-DM-X0T"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="changePwd" destination="yQE-4G-B3x" id="KCm-hh-lPa"/>
+                        <outlet property="confirmPwd" destination="vxV-Ba-aYK" id="kJQ-Rn-sn7"/>
+                        <outlet property="newPwd" destination="yQE-4G-B3x" id="Xk1-Xb-jkc"/>
+                        <outlet property="nowPWD" destination="cPa-Bj-uoh" id="eiP-H7-bNt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s53-Kt-3do" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1040,5 +1069,11 @@
         <image name="coffee_to_go-50" width="50" height="50"/>
         <image name="documentary-50" width="50" height="50"/>
         <image name="headphones-50" width="50" height="50"/>
+        <image name="login_hiddenPWD" width="17" height="17"/>
+        <image name="login_showPWD" width="17" height="17"/>
+        <image name="my_lock" width="24" height="24"/>
+        <image name="my_phone" width="24" height="24"/>
+        <image name="my_question" width="24" height="24"/>
+        <image name="my_userIcon" width="70" height="60"/>
     </resources>
 </document>

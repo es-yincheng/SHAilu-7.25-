@@ -10,6 +10,8 @@
 #import "UIImageView+WebCache.h"
 #import "CustomizeController.h"
 #import "YCTabBarController.h"
+#import "CardCell.h"
+#import "YCNibManager.h"
 
 #define ScrollViewFrame CGRectMake(65*ScreenWidth/750.0, 0, 620*ScreenWidth/750.0, self.frame.size.height)
 #define ScreenWidth CGRectGetWidth([UIScreen mainScreen].bounds)
@@ -27,12 +29,11 @@
 //@property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic, strong) NSArray *picArray;
 @property (nonatomic, strong) NSMutableArray *imageViewArray;
-@property (nonatomic, strong) NSMutableArray *buttonArray;
+//@property (nonatomic, strong) NSMutableArray *buttonArray;
 
 @end
 
 @implementation MyScrollview
-
 {
     UIScrollView *scrollview;
 }
@@ -73,33 +74,23 @@
     [scrollview.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     for(NSString * name in array){
-        UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(CellWidth*index, self.frame.origin.y + 15, CellWidth, CellHeight)];
-        iv.userInteractionEnabled = YES;
-        iv.layer.cornerRadius = 20;
-        iv.layer.masksToBounds = YES;
-        
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(40, iv.yc_height - 65, iv.yc_width-80, 35)];
-        button.layer.masksToBounds = YES;
-        button.layer.cornerRadius = 6;
-        button.layer.borderWidth = 1;
-        button.layer.borderColor = [UIColor whiteColor].CGColor;
-        
-        [button setTitle:@"我要定制" forState:UIControlStateNormal];
-        button.tag;
-        [button addTarget:self action:@selector(customAction:) forControlEvents:UIControlEventTouchUpInside];
-        [iv addSubview:button];
-        [self.buttonArray addObject:button];
+//        CardCell *iv = (CardCell *)[YCNibManager loadCardCell];
+//        iv.frame = CGRectMake(CellWidth*index, self.frame.origin.y + 64 + 15, CellWidth, CellHeight);
+        CardCell *iv = [[CardCell alloc] initWithFrame:CGRectMake(CellWidth*index, self.frame.origin.y + 64 + 15, CellWidth, CellHeight)];
+        iv.frame = CGRectMake(CellWidth*index, self.frame.origin.y + 64 + 15, CellWidth, CellHeight);
+        iv.typeIcon.layer.cornerRadius = CellWidth*3/5/2;
+        iv.backgroundColor = [UIColor randomColor];
+
+        iv.typeIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"bz_%d",index+1]];
         
         if (index != 0) {
             CGRect image = iv.bounds;
             image.size.width =  CellWidth * (1-CellInterval) * (CellWidth -  fabs(scrollview.contentOffset.x - CellWidth * 1) )/ (CellWidth) + CellInterval * CellWidth;
             image.size.height =  CellHeight * (1-CellInterval) * (CellWidth -  fabs(scrollview.contentOffset.x - CellWidth * 1) )/ (CellWidth) + CellInterval * CellHeight;
             iv.bounds = image;
-            button.frame = CGRectMake(40, iv.yc_height - 65*CellInterval, iv.yc_width-80, 32);
+            iv.typeIcon.layer.cornerRadius = image.size.width*3/5/2;
         }
         
-        [iv sd_setImageWithURL:[NSURL URLWithString:name] placeholderImage:[UIImage imageNamed:@"0"]];
-        iv.contentMode = UIViewContentModeScaleToFill;
         [scrollview addSubview:iv];
         [self.imageViewArray addObject:iv];
         iv.tag = index;
@@ -115,66 +106,44 @@
     int index = scrollview.contentOffset.x / CellWidth;
     if (index == 0) {
         for (int i = 0; i < 2; i++) {
-            UIImageView *im = _imageViewArray[i];
+            CardCell *im = _imageViewArray[i];
             CGRect image = im.bounds;
             image.size.width =  CellWidth * (1-CellInterval) * (CellWidth -  fabs(scrollview.contentOffset.x - CellWidth * i) )/ (CellWidth) + CellInterval * CellWidth;
             image.size.height =  CellHeight * (1-CellInterval) * (CellWidth -  fabs(scrollview.contentOffset.x - CellWidth * i) )/ (CellWidth) + CellInterval * CellHeight;
             im.bounds = image;
             
-            UIButton *bt = _buttonArray[i];
-            bt.yc_y = ButtonY * (1-CellInterval) * (CellWidth -  fabs(scrollview.contentOffset.x - CellWidth * i) )/ (CellWidth) + CellInterval * ButtonY;
-            
+            im.typeIcon.layer.cornerRadius = image.size.width*3/5/2;
         }
     }else if(index == _picArray.count - 1){
         for (int i = index - 1; i < index + 1; i++) {
-            UIImageView *im = _imageViewArray[i];
+            CardCell *im = _imageViewArray[i];
             CGRect image = im.bounds;
             image.size.width =  CellWidth * (1-CellInterval) * (CellWidth -  fabs(scrollview.contentOffset.x - CellWidth * i) )/ (CellWidth) + CellInterval * CellWidth;
             image.size.height =  CellHeight * (1-CellInterval) * (CellWidth -  fabs(scrollview.contentOffset.x - CellWidth * i) )/ (CellWidth) + CellInterval * CellHeight;
             im.bounds = image;
             
-            UIButton *bt = _buttonArray[i];
-            bt.yc_y = ButtonY * (1-CellInterval) * (CellWidth -  fabs(scrollview.contentOffset.x - CellWidth * i) )/ (CellWidth) + CellInterval * ButtonY;
+            im.typeIcon.layer.cornerRadius = image.size.width*3/5/2;
         }
     }else{
         for (int i = index - 1; i < index + 2; i++) {
-            UIImageView *im = _imageViewArray[i];
+            CardCell *im = _imageViewArray[i];
             CGRect image = im.bounds;
             image.size.width =  CellWidth * (1-CellInterval) * (CellWidth -  fabs(scrollview.contentOffset.x - CellWidth * i) )/ (CellWidth) + CellInterval * CellWidth;
             image.size.height =  CellHeight * (1-CellInterval) * (CellWidth -  fabs(scrollview.contentOffset.x - CellWidth * i) )/ (CellWidth) + CellInterval * CellHeight;
             im.bounds = image;
-            
-            UIButton *bt = _buttonArray[i];
-            bt.yc_y = ButtonY * (1-CellInterval) * (CellWidth -  fabs(scrollview.contentOffset.x - CellWidth * i) )/ (CellWidth) + CellInterval * ButtonY;
+            im.typeIcon.layer.cornerRadius = image.size.width*3/5/2;
         }
     }
 }
 
-
-//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
-//    UIView *view = [super hitTest:point withEvent:event];
-//    if ([view isEqual:self])  {
-//        for(UIView *subview in scrollview.subviews) {
-//            CGPoint offset = CGPointMake(point.x - scrollview.frame.origin.x + scrollview.contentOffset.x - subview.frame.origin.x, point.y - scrollview.frame.origin.y + scrollview.contentOffset.y - subview.frame.origin.y);
-//            if ((view = [subview hitTest:offset withEvent:event])){
-//                return view;
-//            }
-//        }
-//        return scrollview;
-//    }
-//    return view;
-//}
-
-
-
 #pragma mark - lazy
 
-- (NSMutableArray *)buttonArray{
-    if (!_buttonArray) {
-        _buttonArray = [[NSMutableArray alloc] init];
-    }
-    return _buttonArray;
-}
+//- (NSMutableArray *)buttonArray{
+//    if (!_buttonArray) {
+//        _buttonArray = [[NSMutableArray alloc] init];
+//    }
+//    return _buttonArray;
+//}
 
 @end
 

@@ -25,42 +25,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _imageView = [[YGGravityImageView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-    _imageView.image = [UIImage imageNamed:@"backImage"];
-    [self.view addSubview:_imageView];
-    
-    self.myScrollView = [[MyScrollview alloc]initWithFrame:self.view.bounds target:self];
-    [self.view addSubview:_myScrollView];
-
-    [self.dataSource addObjectsFromArray:@[@"http://box.dwstatic.com/skin/Irelia/Irelia_0.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_1.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_2.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_3.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_4.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_5.jpg"]];
-    
-    self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, ScreenHeight - TBH - 40, ScreenWith, 30)];
-    [self.view addSubview:_pageControl];
-    _pageControl.numberOfPages = self.dataSource.count;
-    _pageControl.currentPageIndicatorTintColor = YCNavTitleColor;
-    _pageControl.currentPage = 0;
-    
-    [_myScrollView loadImagesWithUrl:self.dataSource];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     YCTabBarController *tabBarController = (YCTabBarController*)self.tabBarController;
     tabBarController.customView.hidden = NO;
-//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//    NSString *hasUserInfo = [userDefault objectForKey:@"UserInfo"];
-//    if (!hasUserInfo) {
-//        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LoginAndRegister" bundle:nil];
-//        UINavigationController *loginNV = [storyBoard instantiateViewControllerWithIdentifier:@"LoginNV"];
-//        [self.navigationController presentViewController:loginNV animated:NO completion:nil];
-//    } else {
-////        [UIView animateWithDuration:60.f animations:^{
-////            self.backImageView.frame = CGRectMake(-18.7*ScreenHeight/4.59+ScreenWith, 0, 18.7*ScreenHeight/4.59, ScreenHeight);
-////        }completion:^(BOOL finished) {
-////            
-////        }];
-//        
-//    }
-//    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *hasUserInfo = [userDefault objectForKey:@"UserInfo"];
+    if (!hasUserInfo) {
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LoginAndRegister" bundle:nil];
+        UINavigationController *loginNV = [storyBoard instantiateViewControllerWithIdentifier:@"LoginNV"];
+        [self.navigationController presentViewController:loginNV animated:NO completion:nil];
+    } else {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _imageView = [[YGGravityImageView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+            _imageView.image = [UIImage imageNamed:@"backImage"];
+            [self.view addSubview:_imageView];
+            
+            self.myScrollView = [[MyScrollview alloc] initWithFrame:self.view.bounds target:self];
+            [self.view addSubview:_myScrollView];
+            
+            [self.dataSource addObjectsFromArray:@[@"http://box.dwstatic.com/skin/Irelia/Irelia_0.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_1.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_2.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_3.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_4.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_5.jpg"]];
+            
+            self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, ScreenHeight - TBH - 40, ScreenWith, 30)];
+            [self.view addSubview:_pageControl];
+            _pageControl.numberOfPages = self.dataSource.count;
+            _pageControl.currentPageIndicatorTintColor = YCNavTitleColor;
+            _pageControl.currentPage = 0;
+            
+            [_myScrollView loadImagesWithUrl:self.dataSource];
+        });
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated{
