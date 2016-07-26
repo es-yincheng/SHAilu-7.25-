@@ -17,6 +17,8 @@ PODS:
   - FLAnimatedImage (1.0.12)
   - IQKeyboardManager (4.0.4)
   - MJRefresh (3.1.9)
+  - Pgyer (2.8.4)
+  - PgyUpdate (1.2)
   - pop (1.0.9)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
@@ -27,6 +29,8 @@ DEPENDENCIES:
   - FLAnimatedImage (~> 1.0)
   - IQKeyboardManager
   - MJRefresh
+  - Pgyer
+  - PgyUpdate
   - pop (~> 1.0)
   - SDWebImage (~> 3.7)
 
@@ -35,9 +39,11 @@ SPEC CHECKSUMS:
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   IQKeyboardManager: 4a6f83b540283c2645aaeba2bd8dc0f09b5c77f8
   MJRefresh: c5f1f1653e5a1b932c90f78074f2bc86f3f9bd5e
+  Pgyer: 26edfcc8da6da6383fabfdbccd2f77c623b9d6eb
+  PgyUpdate: a42e82cec5ad4e992af390e9d494f6fc62db65e4
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-PODFILE CHECKSUM: d20e8558a96459d4bafbce06f0f474a44e45ea8b
+PODFILE CHECKSUM: 197e628e3f5c0df5aec2f3c24db6ba3f2d98b47a
 
 COCOAPODS: 1.0.1

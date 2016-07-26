@@ -119,7 +119,9 @@
                 if (canLogin) {
                     [circle removeFromSuperlayer];
                     POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-                    anim.toValue = [NSValue valueWithCGSize:CGSizeMake(50, 50)];
+//                    NSInteger makScal = sqrt(exp(40+(ScreenWith-80)/2) + exp(self.xline.yc_y+50+45+25))/20;
+                    NSInteger makScal = 25;
+                    anim.toValue = [NSValue valueWithCGSize:CGSizeMake(makScal, makScal)];
                     [btn pop_addAnimation:anim forKey:@"scaleAnimationKey"];
                     anim.completionBlock = ^(POPAnimation *animation,BOOL finish) {
                         [[Factory sharedMethod] saveUserInfo:nil];

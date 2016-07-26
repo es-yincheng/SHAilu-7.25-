@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "TestViewController.h"
 
+#import <PgySDK/PgyManager.h>
+#import <PgyUpdate/PgyUpdateManager.h>
+
 @interface AppDelegate ()
 
 @end
@@ -31,8 +34,15 @@
 //    self.window.rootViewController = [[TestViewController alloc] init];
     
     self.window.backgroundColor = [UIColor whiteColor];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults removeObjectForKey:@"UserInfo"];
+
+    [[Factory sharedMethod] removeUserInfo];
+    
+    //启动基本SDK
+    [[PgyManager sharedPgyManager] startManagerWithAppId:PGY_APP_ID];
+    //启动更新检查SDK
+    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:PGY_APP_ID];
+    [[PgyUpdateManager sharedPgyManager] checkUpdate];
+    
     return YES;
 }
 

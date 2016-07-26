@@ -8,6 +8,12 @@
 
 #import "TypeCell.h"
 
+@interface TypeCell()
+
+
+
+@end
+
 @implementation TypeCell
 
 - (void)awakeFromNib {

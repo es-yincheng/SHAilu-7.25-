@@ -22,4 +22,8 @@ pod 'FLAnimatedImage', '~> 1.0'
 
 pod 'IQKeyboardManager'
 
+#蒲公英,上线前需拿掉,测试专用
+pod 'Pgyer'
+pod 'PgyUpdate'
+
 end

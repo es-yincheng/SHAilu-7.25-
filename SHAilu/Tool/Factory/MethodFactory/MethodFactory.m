@@ -17,4 +17,9 @@
     [userDefualts synchronize];
 }
 
+- (void)removeUserInfo{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey:@"UserInfo"];
+}
+
 @end

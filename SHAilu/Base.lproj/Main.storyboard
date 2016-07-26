@@ -978,8 +978,8 @@
                                             <constraint firstAttribute="height" constant="28" id="Dc0-Rt-tbs"/>
                                             <constraint firstAttribute="width" constant="64" id="TSI-vd-PVd"/>
                                         </constraints>
-                                        <state key="normal" image="login_hiddenPWD"/>
-                                        <state key="selected" image="login_showPWD"/>
+                                        <state key="normal" image="login_showPWD"/>
+                                        <state key="selected" image="login_hiddenPWD"/>
                                         <connections>
                                             <action selector="showPWDAction:" destination="t6h-5D-WDR" eventType="touchUpInside" id="73e-sa-XDU"/>
                                         </connections>

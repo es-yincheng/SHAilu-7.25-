@@ -14,6 +14,7 @@
 #import "YCSelectPhotoModel.h"
 #import "UIImageView+SelectPhoto.h"
 #import <objc/runtime.h>
+#import "CustomizeItemView.h"
 
 #define CustomizeViewHeight ScreenWith*320/300
 #define CustomizeCenterY (ScreenHeight - customizeViewHeight/2)
@@ -28,8 +29,8 @@
 @property (nonatomic, strong) NSMutableArray             *typeArray;
 @property (nonatomic, strong) NSMutableArray             *imageArray;
 
-@property (nonatomic, strong) UIView *backView;
-@property (nonatomic, strong) UIView *customizeView;
+@property (nonatomic, strong) UIView            *backView;
+@property (nonatomic, strong) CustomizeItemView *customizeView;
 
 @end
 
@@ -86,19 +87,16 @@
 
 #pragma mark - action
 - (IBAction)selectSpecificationsAction:(id)sender {
-//    self.backView.alpha = 0.5;
-//    self.customizeView.yc_centerY = ScreenHeight - CustomizeViewHeight/2;
+
+    POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+    opacityAnimation.toValue = @(0.5);
+    [self.backView.layer pop_addAnimation:opacityAnimation forKey:@"opacityAnimation"];
+
     POPSpringAnimation *spring = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
     spring.toValue = @(ScreenHeight - CustomizeViewHeight/2);
     spring.beginTime = CACurrentMediaTime();
     spring.springBounciness = 0.0f;
     [self.customizeView pop_addAnimation:spring forKey:@"aposition"];
-    
-    POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-    opacityAnimation.toValue = @(0.5);
-    [self.backView.layer pop_addAnimation:opacityAnimation forKey:@"opacityAnimation"];
-
-
 }
 
 - (IBAction)submitAction:(id)sender {
@@ -135,7 +133,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView.tag == 1000) {
         TypeCell *cell = [_typeCollection dequeueReusableCellWithReuseIdentifier:@"TypeCell" forIndexPath:indexPath];
-        
+        cell.imageIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"bz_%ld",(long)indexPath.row]];
         return cell;
     }
     {
@@ -239,9 +237,9 @@
     return _backView;
 }
 
-- (UIView *)customizeView{
+- (CustomizeItemView *)customizeView{
     if (!_customizeView) {
-        _customizeView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWith, ScreenWith*320/300)];
+        _customizeView = [[CustomizeItemView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWith, ScreenWith*320/300)];
         _customizeView.backgroundColor = [UIColor orangeColor];
         [self.view addSubview:_customizeView];
     }

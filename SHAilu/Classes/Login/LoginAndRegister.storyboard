@@ -290,8 +290,8 @@
                                             <constraint firstAttribute="width" constant="64" id="BHW-Tx-EjS"/>
                                             <constraint firstAttribute="height" constant="28" id="ClK-yQ-euo"/>
                                         </constraints>
-                                        <state key="normal" image="login_hiddenPWD"/>
-                                        <state key="selected" image="login_showPWD"/>
+                                        <state key="normal" image="login_showPWD"/>
+                                        <state key="selected" image="login_hiddenPWD"/>
                                         <connections>
                                             <action selector="seePWDAction:" destination="bet-QZ-2nJ" eventType="touchUpInside" id="gm9-sj-zGr"/>
                                         </connections>
@@ -541,8 +541,8 @@
                                     <constraint firstAttribute="width" constant="64" id="2RJ-kS-VGD"/>
                                     <constraint firstAttribute="height" constant="28" id="fWz-yJ-ObW"/>
                                 </constraints>
-                                <state key="normal" image="login_hiddenPWD"/>
-                                <state key="selected" image="login_showPWD"/>
+                                <state key="normal" image="login_showPWD"/>
+                                <state key="selected" image="login_hiddenPWD"/>
                                 <connections>
                                     <action selector="seePWDAction:" destination="bet-QZ-2nJ" eventType="touchUpInside" id="88y-nK-TPH"/>
                                     <action selector="showPWDAction:" destination="bL2-Fv-HIl" eventType="touchUpInside" id="jKV-Xj-z0y"/>
