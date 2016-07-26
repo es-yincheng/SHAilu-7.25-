@@ -75,6 +75,10 @@
     return NO;
 }
 
+- (void)dismissVC{
+    [[Factory sharedMethod] saveUserInfo:nil];
+    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+}
 
 #pragma mark - action
 - (void)registerAction{
@@ -113,20 +117,34 @@
         POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPShapeLayerStrokeEnd];
         anim.fromValue = [NSNumber numberWithFloat:0];
         anim.toValue = [NSNumber numberWithFloat:0.9];
-        anim.duration = 1;
+//        anim.duration = 1;
         anim.completionBlock = ^(POPAnimation *anim, BOOL finished) {
             if (finished) {
                 if (canLogin) {
                     [circle removeFromSuperlayer];
-                    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-//                    NSInteger makScal = sqrt(exp(40+(ScreenWith-80)/2) + exp(self.xline.yc_y+50+45+25))/20;
-                    NSInteger makScal = 25;
+                    
+                    POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+                    anim.duration = 0.3f;
+                    NSInteger makScal = sqrt(pow((40+(ScreenWith-80)/2), 2) + pow((self.xline.yc_y+50+45+25),2))/22;
                     anim.toValue = [NSValue valueWithCGSize:CGSizeMake(makScal, makScal)];
                     [btn pop_addAnimation:anim forKey:@"scaleAnimationKey"];
                     anim.completionBlock = ^(POPAnimation *animation,BOOL finish) {
-                        [[Factory sharedMethod] saveUserInfo:nil];
-                        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+
                     };
+                    
+                    [self performSelector:@selector(dismissVC) withObject:nil afterDelay:0.25f];
+                    
+                    
+//                    [UIView animateWithDuration:0.5f animations:^{
+//                        CGPoint center = btn.center;
+//                        btn.frame = CGRectMake(0, 0, ScreenHeight, ScreenHeight);
+//                        btn.layer.cornerRadius = 20;
+//                        btn.center = center;
+//                    } completion:^(BOOL finished) {
+//                        [[Factory sharedMethod] saveUserInfo:nil];
+//                        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+//                    }];
+                    
                 } else {
                     [[BaseAPI sharedAPI].userService loginWithUserName:nil
                                                               Password:nil

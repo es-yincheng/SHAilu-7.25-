@@ -942,11 +942,6 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请再次输入新密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vxV-Ba-aYK">
-                                        <rect key="frame" x="94" y="114" width="475" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="旧密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="is4-RJ-AdJ">
                                         <rect key="frame" x="25" y="19" width="39" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -984,6 +979,11 @@
                                             <action selector="showPWDAction:" destination="t6h-5D-WDR" eventType="touchUpInside" id="73e-sa-XDU"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请再次输入新密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vxV-Ba-aYK">
+                                        <rect key="frame" x="94" y="114" width="475" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1055,7 +1055,6 @@
                     <connections>
                         <outlet property="changePwd" destination="yQE-4G-B3x" id="KCm-hh-lPa"/>
                         <outlet property="confirmPwd" destination="vxV-Ba-aYK" id="kJQ-Rn-sn7"/>
-                        <outlet property="newPwd" destination="yQE-4G-B3x" id="Xk1-Xb-jkc"/>
                         <outlet property="nowPWD" destination="cPa-Bj-uoh" id="eiP-H7-bNt"/>
                     </connections>
                 </viewController>

@@ -18,7 +18,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.backgroundColor = [UIColor randomColor];
+//    self.backgroundColor = [UIColor randomColor];
 }
 
 @end

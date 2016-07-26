@@ -49,6 +49,12 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddenBackView) name:@"HiddenCustomizItemView" object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -133,7 +139,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView.tag == 1000) {
         TypeCell *cell = [_typeCollection dequeueReusableCellWithReuseIdentifier:@"TypeCell" forIndexPath:indexPath];
-        cell.imageIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"bz_%ld",(long)indexPath.row]];
+        cell.imageIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"bz_%ld",(long)(indexPath.row+1)]];
         return cell;
     }
     {
@@ -192,8 +198,9 @@
 
 #pragma mark - setUI
 - (void)setCollection{
-    _typeLayout.itemSize = CGSizeMake(_typeCollection.yc_width/3, _typeCollection.yc_height);
+    _typeLayout.itemSize = CGSizeMake(_typeCollection.yc_width/3.5, _typeCollection.yc_height);
     [_typeCollection registerNib:[UINib nibWithNibName:@"TypeCell" bundle:nil] forCellWithReuseIdentifier:@"TypeCell"];
+    _typeCollection.showsHorizontalScrollIndicator = NO;
     _typeCollection.delegate = self;
     _typeCollection.dataSource = self;
     
@@ -201,6 +208,7 @@
     [_imageCollection registerNib:[UINib nibWithNibName:@"PublishCell" bundle:nil] forCellWithReuseIdentifier:@"PublishCell"];
     [_imageCollection registerNib:[UINib nibWithNibName:@"AddCell" bundle:nil] forCellWithReuseIdentifier:@"AddCell"];
     [_imageCollection registerNib:[UINib nibWithNibName:@"AddCell" bundle:nil] forCellWithReuseIdentifier:@"PublishBackCell"];
+    _imageCollection.scrollEnabled = NO;
     _imageCollection.delegate   = self;
     _imageCollection.dataSource = self;
 }
@@ -240,7 +248,7 @@
 - (CustomizeItemView *)customizeView{
     if (!_customizeView) {
         _customizeView = [[CustomizeItemView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWith, ScreenWith*320/300)];
-        _customizeView.backgroundColor = [UIColor orangeColor];
+//        _customizeView.backgroundColor = [UIColor orangeColor];
         [self.view addSubview:_customizeView];
     }
     return _customizeView;
