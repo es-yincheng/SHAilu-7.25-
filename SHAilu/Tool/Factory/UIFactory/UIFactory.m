@@ -68,7 +68,7 @@
     UIView *view = [[UIView alloc] init];
     view.frame = CGRectMake(0, 0, ScreenWith, 54 * ScreenScale);
     
-    CGRect itemFram = CGRectMake(0, 0, view.yc_width/attributes.count, view.yc_height);
+//    CGRect itemFram = CGRectMake(0, 0, view.yc_width/attributes.count, view.yc_height);
     NSUInteger index;
     for (NSDictionary *dict in attributes) {
         index = [attributes indexOfObject:dict];

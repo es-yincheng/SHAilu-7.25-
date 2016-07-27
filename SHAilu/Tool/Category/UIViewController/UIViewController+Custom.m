@@ -37,12 +37,12 @@
     });
 }
 
-//- (void)excueBlockAfterLogin:(void (^)())action{
+- (void)excueBlockAfterLogin:(void (^)())action{
 //    if (![UserModel getUserInfo]) {
 //        [self startLogin];
 //        return;
 //    }
 //    action();
-//}
+}
 
 @end

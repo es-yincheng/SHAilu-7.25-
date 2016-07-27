@@ -10,6 +10,8 @@
 #import "RegisterViewController.h"
 #import "YGGravityImageView.h"
 
+#define LoginButtonY (self.xline.yc_y + (50 + 45 +10)*(ScreenHeight/667.0))
+
 @interface LoginViewController (){
     BOOL canLogin;
 }
@@ -26,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSLog(@"h:%f",ScreenHeight);
     [_phoneField setValue:YCNavTitleColor forKeyPath:@"_placeholderLabel.textColor"];
     [_pwdField setValue:YCNavTitleColor forKeyPath:@"_placeholderLabel.textColor"];
     
@@ -35,6 +37,10 @@
     [self.view insertSubview:_imageView atIndex:0];
     
     [self.view addSubview:self.loginButton];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenKeyBoard)];
+    [self.view addGestureRecognizer:tap];
+    self.view.userInteractionEnabled = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -60,7 +66,7 @@
 - (void)setLoginButton{
     _loginButton.layer.cornerRadius = 8.f;
     _loginButton.layer.masksToBounds = YES;
-    _loginButton.bounds = CGRectMake(40, self.xline.yc_y + 50 + 45, ScreenWith - 80, 50);
+    _loginButton.bounds = CGRectMake(40, LoginButtonY, ScreenWith - 80, 40);
     [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
     _loginButton.titleLabel.font = [UIFont systemFontOfSize:13.f];
     [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -78,6 +84,11 @@
 - (void)dismissVC{
     [[Factory sharedMethod] saveUserInfo:nil];
     [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (void)hiddenKeyBoard{
+    [self.phoneField resignFirstResponder];
+    [self.pwdField resignFirstResponder];
 }
 
 #pragma mark - action
@@ -125,7 +136,7 @@
                     
                     POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
                     anim.duration = 0.3f;
-                    NSInteger makScal = sqrt(pow((40+(ScreenWith-80)/2), 2) + pow((self.xline.yc_y+50+45+25),2))/22;
+                    NSInteger makScal = sqrt(pow((40+(ScreenWith-80)/2), 2) + pow((LoginButtonY+25),2))/22;
                     anim.toValue = [NSValue valueWithCGSize:CGSizeMake(makScal, makScal)];
                     [btn pop_addAnimation:anim forKey:@"scaleAnimationKey"];
                     anim.completionBlock = ^(POPAnimation *animation,BOOL finish) {
@@ -186,7 +197,7 @@
 #pragma mark - lazy
 - (UIButton *)loginButton{
     if (!_loginButton) {
-        _loginButton = [[UIButton alloc] initWithFrame:CGRectMake(40, self.xline.yc_y + 50+ 45, ScreenWith-80, 50)];
+        _loginButton = [[UIButton alloc] initWithFrame:CGRectMake(40, LoginButtonY, ScreenWith-80, 40)];
         _loginButton.backgroundColor = YCNavTitleColor;
         [_loginButton addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
         [self setLoginButton];

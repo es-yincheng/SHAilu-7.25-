@@ -670,8 +670,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pRO-3n-Bh0">
-                                <rect key="frame" x="4" y="0.0" width="592" height="551"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pRO-3n-Bh0">
+                                <rect key="frame" x="4" y="0.0" width="592" height="600"/>
                                 <color key="backgroundColor" red="0.4823529412" green="0.29411764709999999" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lq1-1k-9Ir" customClass="RGCardViewLayout">
                                     <size key="itemSize" width="363" height="608"/>
@@ -890,7 +890,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVF-FM-NUl">
-                                <rect key="frame" x="70" y="267" width="460" height="38"/>
+                                <rect key="frame" x="47" y="267" width="506" height="38"/>
                                 <color key="backgroundColor" red="0.62352941179999999" green="0.49019607840000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="xif-Z1-AwY"/>
@@ -1038,7 +1038,7 @@
                             <constraint firstItem="bBb-Vn-cQg" firstAttribute="leading" secondItem="U9j-qe-2Xo" secondAttribute="leadingMargin" constant="-20" id="3wX-vy-na1"/>
                             <constraint firstItem="TVF-FM-NUl" firstAttribute="centerX" secondItem="U9j-qe-2Xo" secondAttribute="centerX" id="AMy-EF-aho"/>
                             <constraint firstItem="TVF-FM-NUl" firstAttribute="top" secondItem="bBb-Vn-cQg" secondAttribute="bottom" constant="45" id="LDr-8d-Aag"/>
-                            <constraint firstItem="TVF-FM-NUl" firstAttribute="leading" secondItem="U9j-qe-2Xo" secondAttribute="leadingMargin" constant="50" id="Mlq-06-igh"/>
+                            <constraint firstItem="TVF-FM-NUl" firstAttribute="leading" secondItem="U9j-qe-2Xo" secondAttribute="leadingMargin" constant="27" id="Mlq-06-igh"/>
                             <constraint firstItem="bBb-Vn-cQg" firstAttribute="top" secondItem="kBQ-7K-R9d" secondAttribute="bottom" constant="8" id="QqA-hf-2X8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bBb-Vn-cQg" secondAttribute="trailing" constant="-20" id="fXm-2k-2T5"/>
                             <constraint firstItem="bBb-Vn-cQg" firstAttribute="top" secondItem="kBQ-7K-R9d" secondAttribute="bottom" constant="8" id="x5M-Rm-jFv"/>

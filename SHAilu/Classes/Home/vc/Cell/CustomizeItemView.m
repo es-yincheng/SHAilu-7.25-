@@ -71,6 +71,10 @@
         
     if ([self.selectArray[indexPath.section][indexPath.row] isEqualToString:@"b"]) {
         cell.title.layer.borderColor = YCNavTitleColor.CGColor;
+        POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+        scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.1, 1.1)];
+        scaleAnimation.springBounciness = 25.f;
+        [cell.layer pop_addAnimation:scaleAnimation forKey:@"scaleAnim"];
     } else {
         cell.title.layer.borderColor = [UIColor colorWithWhite:0.941 alpha:1.000].CGColor;
     }

@@ -26,9 +26,9 @@
 @property (weak, nonatomic  ) IBOutlet UICollectionViewFlowLayout *imageLayout;
 @property (weak, nonatomic  ) IBOutlet UICollectionView           *imageCollection;
 @property (weak, nonatomic  ) IBOutlet UITextField                *countField;
-@property (nonatomic, strong) NSMutableArray             *typeArray;
-@property (nonatomic, strong) NSMutableArray             *imageArray;
-
+@property (nonatomic, strong) NSMutableArray    *typeArray;
+@property (nonatomic, strong) NSMutableArray    *imageArray;
+@property (nonatomic, strong) NSMutableArray    *selectTypeArray;
 @property (nonatomic, strong) UIView            *backView;
 @property (nonatomic, strong) CustomizeItemView *customizeView;
 
@@ -131,7 +131,7 @@
 //        NSInteger count = self.typeArray.count;
 //        NSLog(@"self.typeArray.count:%lu",count);
 //        return self.typeArray.count
-        return 11;
+        return 6;
     }
     return 4;
 }
@@ -140,6 +140,21 @@
     if (collectionView.tag == 1000) {
         TypeCell *cell = [_typeCollection dequeueReusableCellWithReuseIdentifier:@"TypeCell" forIndexPath:indexPath];
         cell.imageIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"bz_%ld",(long)(indexPath.row+1)]];
+        if ([self.selectTypeArray[indexPath.row] isEqualToString:@"b"]) {
+            cell.layer.masksToBounds = YES;
+            cell.layer.cornerRadius = 8;
+            cell.layer.borderColor = YCNavTitleColor.CGColor;
+            cell.layer.borderWidth = 1;
+            POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+            scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.1, 1.1)];
+            scaleAnimation.springBounciness = 25.f;
+            [cell.layer pop_addAnimation:scaleAnimation forKey:@"scaleAnim"];
+        } else {
+            cell.layer.masksToBounds = NO;
+//            cell.layer.cornerRadius = 8;
+            cell.layer.borderColor = [UIColor clearColor].CGColor;
+            cell.layer.borderWidth = 1;
+        }
         return cell;
     }
     {
@@ -190,6 +205,20 @@
     }
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (collectionView.tag == 1000) {
+        
+        for (NSInteger x = 0; x < self.selectTypeArray.count; x++) {
+            if (x == indexPath.row) {
+                [_selectTypeArray replaceObjectAtIndex:indexPath.row withObject:@"b"];
+            } else {
+                [_selectTypeArray replaceObjectAtIndex:x withObject:@"a"];
+            }
+        }
+        [_typeCollection reloadData];
+    }
+}
+
 #pragma mark - setData
 - (void)setData{
     [self.typeArray addObjectsFromArray:@[@"a",@"b",@"d",@"",@"d"]];
@@ -214,6 +243,13 @@
 }
 
 #pragma mark - lazy
+- (NSMutableArray *)selectTypeArray{
+    if (!_selectTypeArray) {
+        _selectTypeArray = [[NSMutableArray alloc] initWithObjects:@"a",@"a",@"a",@"a",@"a",@"a", nil];
+    }
+    return _selectTypeArray;
+}
+
 - (NSMutableArray *)typeArray{
     if (!_typeArray) {
         _typeArray = [[NSMutableArray alloc] init];

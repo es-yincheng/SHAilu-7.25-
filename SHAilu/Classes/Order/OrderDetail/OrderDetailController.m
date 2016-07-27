@@ -28,6 +28,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *moveView;
 
+@property (weak, nonatomic) IBOutlet UILabel *statuTitle;
 
 
 @end
@@ -81,6 +82,7 @@
             NSData *gifData = [NSData dataWithContentsOfFile:path];
             FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:gifData];
             _stepOne.animatedImage = image;
+            _statuTitle.text = @"正在生产中……";
         }
             break;
         case 2:
@@ -90,6 +92,7 @@
             NSData *gifData2 = [NSData dataWithContentsOfFile:path2];
             FLAnimatedImage *image2 = [FLAnimatedImage animatedImageWithGIFData:gifData2];
             _stepTwo.animatedImage = image2;
+            _statuTitle.text = @"正在打包中……";
         }
             break;
         case 3:
@@ -99,6 +102,7 @@
             NSData *gifData3 = [NSData dataWithContentsOfFile:path3];
             FLAnimatedImage *image3 = [FLAnimatedImage animatedImageWithGIFData:gifData3];
             _stepThree.animatedImage = image3;
+            _statuTitle.text = @"正在配送中……";
         }
             break;
             
@@ -114,17 +118,28 @@
     [self moveToStep:stepCount/2];
     stepCount ++ ;
     [self.tableView beginUpdates];
-    [self.dataSource insertObject:@"您的订单已有2000件完成并打包，已有2000件制作完成，准备打包，还剩余1000件正在制作" atIndex:0];
+    [self.dataSource insertObject:[NSString stringWithFormat:@"您的订单已有2000件完成并打包，已有2000件制作完成，准备打包，还剩余1000件正在制作(%ld)",(long)stepCount] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     NSArray *insertIndexPath = [NSArray arrayWithObjects:indexPath, nil];
     [self.tableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationBottom];
     [self.tableView endUpdates];
+    
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0],[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
-
 
 #pragma mark - delegate/dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataSource.count + 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    NSDictionary *attribute = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:13],NSFontAttributeName, nil];
+    CGSize size = [[self.dataSource yc_objectAtIndex:indexPath.row] boundingRectWithSize:CGSizeMake(ScreenWith-(45+8)-(8+8)-40, 999)
+                                                                                 options: NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                                                              attributes:attribute context:nil].size;
+//    NSLog(@"[self.dataSource yc_objectAtIndex:indexPath.row]:%@  size.height:%f",[self.dataSource yc_objectAtIndex:indexPath.row],size.height);
+    return  size.height+(8+8)+2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -136,6 +151,20 @@
         } else {
             cell.buttonLine.hidden = NO;
         }
+        
+        if (indexPath.row == 0) {
+            cell.orderText.textColor = YCNavTitleColor;
+            cell.topLine.backgroundColor = YCNavTitleColor;
+            cell.centerLine.backgroundColor = YCNavTitleColor;
+            cell.topLine.backgroundColor = YCNavTitleColor;
+            
+        } else {
+            cell.orderText.textColor = [UIColor blackColor];
+            cell.topLine.backgroundColor = [UIColor lightGrayColor];
+            cell.centerLine.backgroundColor = [UIColor lightGrayColor];;
+            cell.topLine.backgroundColor = [UIColor lightGrayColor];;
+        }
+        
         return cell;
     } else {
         OrderFooter *cell = [_tableView dequeueReusableCellWithIdentifier:@"OrderFooter"];
@@ -157,9 +186,9 @@
 - (void)setTableView{
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    _tableView.estimatedRowHeight = 30;
+    //    _tableView.rowHeight = UITableViewAutomaticDimension;
+    //    _tableView.estimatedRowHeight = 30;
     _tableView.backgroundColor = [UIColor clearColor];
-    _tableView.rowHeight = UITableViewAutomaticDimension;
     _tableView.showsVerticalScrollIndicator = NO;
     
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

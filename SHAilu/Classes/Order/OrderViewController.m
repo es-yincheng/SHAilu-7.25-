@@ -16,10 +16,10 @@
 
 @interface OrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UITableView    *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic ,strong) NSMutableArray *showedIndexPaths;
-@property (nonatomic, strong) FLAnimatedImageView *busyView;
+@property (nonatomic, strong) UIImageView    *busyView;
 
 @end
 
@@ -33,25 +33,42 @@
 
     [self.dataSource addObjectsFromArray:@[@"",@"",@""]];
     self.title = @"订单";
+    
+    _busyView= [[UIImageView alloc] init];
+    _busyView.bounds = CGRectMake(0, 0, 100, 100);
+    _busyView.center = [[UIApplication sharedApplication].delegate window].center;
+    
+    NSMutableArray *imageArray = [NSMutableArray array];
+    for (int i=0; i<57; i++) {
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"load%d",i]];
+        [imageArray addObject:image];
+    }
+    
+    _busyView.animationImages = imageArray;
+    _busyView.animationDuration = 57*0.05;
+    _busyView.animationRepeatCount = 100;
+    [self.view addSubview:_busyView];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     YCTabBarController *tabBarController = (YCTabBarController*)self.tabBarController;
     tabBarController.customView.hidden = NO;
+    [_busyView startAnimating];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    _busyView= [[FLAnimatedImageView alloc] init];
-    _busyView.bounds = CGRectMake(0, 0, 55, 55);
-    _busyView.center = [[UIApplication sharedApplication].delegate window].center;
-    //得到图片的路径
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"loading" ofType:@"gif"];
-    //将图片转为NSData
-    NSData *gifData = [NSData dataWithContentsOfFile:path];
-    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:gifData];
-    _busyView.animatedImage = image;
-    [[[UIApplication sharedApplication].delegate window] addSubview:_busyView];
+
     
+    
+    
+    //得到图片的路径
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"loading" ofType:@"gif"];
+//    //将图片转为NSData
+//    NSData *gifData = [NSData dataWithContentsOfFile:path];
+//    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:gifData];
+//    _busyView.animatedImage = image;
+//    [[[UIApplication sharedApplication].delegate window] addSubview:_busyView];
+//    [_busyView startAnimating];
     [self performSelector:@selector(loadData) withObject:nil afterDelay:2.0f];
 }
 
@@ -79,7 +96,6 @@
     [self.tableView.mj_footer endRefreshing];
 }
 
-
 #pragma mark - delegate/dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataSource.count;
@@ -96,13 +112,11 @@
 //}
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     //indexpath第一次加载的有动画  否则没有
     if ([self.showedIndexPaths containsObject:indexPath]) {
         return;
     }
-    else
-    {
+    else {
         [self.showedIndexPaths addObject:indexPath];
     }
     //!!!: 次页面中 cell加载时 自定义了动画

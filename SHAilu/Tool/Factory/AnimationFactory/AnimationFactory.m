@@ -18,6 +18,14 @@
     return spring;
 }
 
+- (POPSpringAnimation *)moveToX:(CGFloat)x{
+    POPSpringAnimation *spring = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionX];
+    spring.toValue = @(x);
+    spring.beginTime = CACurrentMediaTime();
+    spring.springBounciness = 0.0f;
+    return spring;
+}
+
 - (CABasicAnimation *)rotate{
     CABasicAnimation *circleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     circleAnimation.duration = 2.5f;

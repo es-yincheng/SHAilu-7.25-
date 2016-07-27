@@ -11,6 +11,7 @@
 
 @implementation UIView (Custom)
 
+@dynamic viewController;
 
 #pragma mark 大小、位置属性
 - (void)setYc_size:(CGSize)yc_size{

@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *orderText;
 @property (weak, nonatomic) IBOutlet UILabel *buttonLine;
+@property (weak, nonatomic) IBOutlet UILabel *centerLine;
+@property (weak, nonatomic) IBOutlet UILabel *topLine;
 
 @end

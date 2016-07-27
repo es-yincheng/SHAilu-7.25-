@@ -72,5 +72,8 @@
     _customTouchUpInsideBlock = customTouchUpInsideBlock;
 }
 
+- (void)changeCustomStatu{
+    
+}
 
 @end
