@@ -11,6 +11,7 @@
 #import "OrderDetail.h"
 #import "MJChiBaoZiHeader.h"
 #import "MJDiyFooter.h"
+#import "UIImage+GIF.h"
 
 //NSString *CellIdentifier = @"OrderCell";
 
@@ -34,17 +35,8 @@
     [self.dataSource addObjectsFromArray:@[@"",@"",@""]];
     self.title = @"订单";
     
-    _busyView= [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWith/2-60, ScreenHeight/2-100, 120, 120)];
-    
-    NSMutableArray *imageArray = [NSMutableArray array];
-    for (int i=0; i<57; i++) {
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"load%d",i]];
-        [imageArray addObject:image];
-    }
-    
-    _busyView.animationImages = imageArray;
-    _busyView.animationDuration = 57*0.05;
-    _busyView.animationRepeatCount = 100;
+    _busyView= [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWith/2-35, ScreenHeight/2-100, 70, 70)];
+    _busyView.image = [UIImage sd_animatedGIFNamed:@"loading"];
     [self.view addSubview:_busyView];
 }
 
@@ -55,15 +47,6 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-
-    //得到图片的路径
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"loading" ofType:@"gif"];
-//    //将图片转为NSData
-//    NSData *gifData = [NSData dataWithContentsOfFile:path];
-//    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:gifData];
-//    _busyView.animatedImage = image;
-//    [[[UIApplication sharedApplication].delegate window] addSubview:_busyView];
-//    [_busyView startAnimating];
     [self performSelector:@selector(loadData) withObject:nil afterDelay:2.0f];
 }
 

@@ -440,7 +440,49 @@
                     <view key="view" contentMode="scaleToFill" id="c0O-uS-0rk">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Applogo" translatesAutoresizingMaskIntoConstraints="NO" id="C9X-84-dej">
+                                <rect key="frame" x="270.5" y="104" width="60.5" height="60.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="C9X-84-dej" secondAttribute="height" multiplier="1:1" id="Nj3-6r-T2l"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Nj3-6r-T2l"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OeK-NL-lQh">
+                                <rect key="frame" x="20" y="184.5" width="560" height="366.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">       上海艾录包装股份有限公司（证券代码：830970）作为中国高端质包装行业的领军企业，始终秉承安全、品质、低碳、环保、细微服务之经营理念，汇聚当今制袋技术精华，始终致力于高端产品的研发、设计和生产，融合“包装袋整体解决方案”之能力，让国内外客户充分体验到高端产品的精妙之处，享受到采购过程的轻松和喜悦，从而赢得了诸多世界500强企业的惠顾！</string>
+                                <fontDescription key="fontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUI-Zs-XD5">
+                                <rect key="frame" x="0.0" y="199.5" width="600" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="P3p-xS-FjT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="C9X-84-dej" firstAttribute="width" secondItem="C9X-84-dej" secondAttribute="height" multiplier="1:1" id="0P1-EI-ocI"/>
+                            <constraint firstItem="OeK-NL-lQh" firstAttribute="top" secondItem="C9X-84-dej" secondAttribute="bottom" constant="20" id="BPF-Df-aRM"/>
+                            <constraint firstItem="OeK-NL-lQh" firstAttribute="trailing" secondItem="c0O-uS-0rk" secondAttribute="trailingMargin" id="MZh-Qx-1a1"/>
+                            <constraint firstItem="KUI-Zs-XD5" firstAttribute="leading" secondItem="c0O-uS-0rk" secondAttribute="leadingMargin" constant="-20" id="NHO-x9-4vs"/>
+                            <constraint firstItem="C9X-84-dej" firstAttribute="top" secondItem="ekW-7P-Tb7" secondAttribute="bottom" constant="40" id="PTL-78-VfG"/>
+                            <constraint firstItem="KIt-63-Qdu" firstAttribute="top" secondItem="OeK-NL-lQh" secondAttribute="bottom" id="V3K-6U-dCO"/>
+                            <constraint firstItem="KUI-Zs-XD5" firstAttribute="centerX" secondItem="c0O-uS-0rk" secondAttribute="centerX" id="cXh-nO-FO6"/>
+                            <constraint firstItem="C9X-84-dej" firstAttribute="centerX" secondItem="c0O-uS-0rk" secondAttribute="centerX" id="gnU-eR-YYt"/>
+                            <constraint firstItem="KUI-Zs-XD5" firstAttribute="centerY" secondItem="c0O-uS-0rk" secondAttribute="centerY" constant="-100" id="jNV-5Y-ffJ"/>
+                            <constraint firstItem="KUI-Zs-XD5" firstAttribute="top" secondItem="C9X-84-dej" secondAttribute="bottom" constant="35" id="mq7-fX-7c1"/>
+                            <constraint firstItem="OeK-NL-lQh" firstAttribute="leading" secondItem="c0O-uS-0rk" secondAttribute="leadingMargin" id="r19-ga-Ml1"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="关于我们" id="lgo-di-c94">
                         <barButtonItem key="backBarButtonItem" title=" " id="g4O-8Y-iOA"/>
