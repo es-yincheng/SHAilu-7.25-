@@ -38,12 +38,16 @@
     [[Factory sharedMethod] removeUserInfo];
     
     
-    [[PgyManager sharedPgyManager] setEnableFeedback:NO];
+//    [[PgyManager sharedPgyManager] setEnableFeedback:NO];
+    // 设置用户反馈界面激活方式为摇一摇
+    [[PgyManager sharedPgyManager] setFeedbackActiveType:kPGYFeedbackActiveTypeShake];
+    [[PgyManager sharedPgyManager] setShakingThreshold:3.0];
     //启动基本SDK
     [[PgyManager sharedPgyManager] startManagerWithAppId:PGY_APP_ID];
     //启动更新检查SDK
     [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:PGY_APP_ID];
     [[PgyUpdateManager sharedPgyManager] checkUpdate];
+    
     
     return YES;
 }

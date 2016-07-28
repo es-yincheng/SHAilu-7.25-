@@ -26,6 +26,7 @@
 @property (weak, nonatomic  ) IBOutlet UICollectionViewFlowLayout *imageLayout;
 @property (weak, nonatomic  ) IBOutlet UICollectionView           *imageCollection;
 @property (weak, nonatomic  ) IBOutlet UITextField                *countField;
+@property (weak, nonatomic  ) IBOutlet UILabel                    *selectItems;
 @property (nonatomic, strong) NSMutableArray    *typeArray;
 @property (nonatomic, strong) NSMutableArray    *imageArray;
 @property (nonatomic, strong) NSMutableArray    *selectTypeArray;
@@ -49,7 +50,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddenBackView) name:@"HiddenCustomizItemView" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSelectCustomizeItem:) name:@"HiddenCustomizItemView" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -110,9 +111,24 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)showSelectCustomizeItem:(NSNotification *)notifaction{
+    NSMutableArray *items = notifaction.object;
+    
+    NSInteger itemCount = 0;
+    for (NSArray *temp in items) {
+        for (NSString *temStr in temp) {
+            if ([temStr isEqualToString:@"b"]) {
+                itemCount ++;
+            }
+        }
+    }
+    
+    _selectItems.text = [NSString stringWithFormat:@"选中了 %ld 个Item！",(long)itemCount];
+    
+    [self hiddenBackView];
+}
+
 - (void)hiddenBackView{
-//    self.backView.alpha = 0;
-//    self.customizeView.yc_centerY = ScreenHeight + CustomizeViewHeight/2;
     POPSpringAnimation *spring = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
     spring.toValue = @(ScreenHeight + CustomizeViewHeight/2);
     spring.beginTime = CACurrentMediaTime();

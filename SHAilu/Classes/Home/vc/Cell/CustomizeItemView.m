@@ -45,7 +45,8 @@
 }
 
 - (IBAction)submitAction:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"HiddenCustomizItemView" object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"" object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HiddenCustomizItemView" object:self.selectArray];
 }
 
 

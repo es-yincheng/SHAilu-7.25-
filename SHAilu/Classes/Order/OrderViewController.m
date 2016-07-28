@@ -34,9 +34,7 @@
     [self.dataSource addObjectsFromArray:@[@"",@"",@""]];
     self.title = @"订单";
     
-    _busyView= [[UIImageView alloc] init];
-    _busyView.bounds = CGRectMake(0, 0, 100, 100);
-    _busyView.center = [[UIApplication sharedApplication].delegate window].center;
+    _busyView= [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWith/2-60, ScreenHeight/2-100, 120, 120)];
     
     NSMutableArray *imageArray = [NSMutableArray array];
     for (int i=0; i<57; i++) {
@@ -58,9 +56,6 @@
 
 - (void)viewDidAppear:(BOOL)animated{
 
-    
-    
-    
     //得到图片的路径
 //    NSString *path = [[NSBundle mainBundle] pathForResource:@"loading" ofType:@"gif"];
 //    //将图片转为NSData
