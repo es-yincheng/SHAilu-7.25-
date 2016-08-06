@@ -74,12 +74,27 @@
     [scrollview.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     for(NSString * name in array){
-//        CardCell *iv = (CardCell *)[YCNibManager loadCardCell];
-//        iv.frame = CGRectMake(CellWidth*index, self.frame.origin.y + 64 + 15, CellWidth, CellHeight);
         CardCell *iv = [[CardCell alloc] initWithFrame:CGRectMake(CellWidth*index, self.frame.origin.y + 64 + 15, CellWidth, CellHeight)];
         iv.frame = CGRectMake(CellWidth*index, self.frame.origin.y + 64 + 15, CellWidth, CellHeight);
         iv.typeIcon.layer.cornerRadius = CellWidth*3/5/2;
-        iv.backgroundColor = [UIColor randomColor];
+        
+        switch (index) {
+            case 0:
+                iv.backgroundColor = [UIColor colorWithRed:0.957 green:0.843 blue:0.576 alpha:1.000];
+                break;
+            case 1:
+                iv.backgroundColor = [UIColor colorWithRed:0.961 green:0.773 blue:0.576 alpha:1.000];
+                break;
+            case 2:
+                iv.backgroundColor = [UIColor colorWithRed:0.953 green:0.804 blue:0.565 alpha:1.000];
+                break;
+            case 3:
+                iv.backgroundColor = [UIColor colorWithRed:0.914 green:0.725 blue:0.588 alpha:1.000];
+                break;
+                
+            default:
+                break;
+        }
 
         iv.typeIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"bz_%d",index+1]];
         

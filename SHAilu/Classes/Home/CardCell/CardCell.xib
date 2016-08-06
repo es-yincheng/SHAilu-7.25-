@@ -25,7 +25,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="艾录包装" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeR-bQ-1MC">
                     <rect key="frame" x="136" y="543" width="48" height="14.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" red="0.64705882349999999" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.68627450980392157" green="0.5607843137254902" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="热封口袋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwd-Sb-34C">
@@ -49,28 +49,15 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FdG-Q7-iLY">
                     <rect key="frame" x="0.0" y="379" width="320" height="148.5"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWK-VO-nw5">
-                            <rect key="frame" x="35" y="55" width="250" height="38"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="6"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7Q-Wr-pbl">
                             <rect key="frame" x="35" y="55" width="250" height="38"/>
-                            <color key="backgroundColor" red="0.64705882349999999" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="38" id="65C-vy-rwF"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="我要定制">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" red="0.68627450980392157" green="0.5607843137254902" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -86,11 +73,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="U7Q-Wr-pbl" firstAttribute="centerY" secondItem="FdG-Q7-iLY" secondAttribute="centerY" id="93r-RJ-8fo"/>
-                        <constraint firstItem="U7Q-Wr-pbl" firstAttribute="bottom" secondItem="YWK-VO-nw5" secondAttribute="bottom" id="9kl-Vg-zSj"/>
                         <constraint firstItem="U7Q-Wr-pbl" firstAttribute="leading" secondItem="FdG-Q7-iLY" secondAttribute="leading" constant="35" id="Ekg-fO-s3F"/>
-                        <constraint firstItem="U7Q-Wr-pbl" firstAttribute="top" secondItem="YWK-VO-nw5" secondAttribute="top" id="Gh5-KC-USK"/>
-                        <constraint firstItem="U7Q-Wr-pbl" firstAttribute="trailing" secondItem="YWK-VO-nw5" secondAttribute="trailing" id="Nvy-QY-cff"/>
-                        <constraint firstItem="U7Q-Wr-pbl" firstAttribute="leading" secondItem="YWK-VO-nw5" secondAttribute="leading" id="ebw-wk-6LI"/>
                         <constraint firstItem="U7Q-Wr-pbl" firstAttribute="centerX" secondItem="FdG-Q7-iLY" secondAttribute="centerX" id="v1C-sg-uCd"/>
                     </constraints>
                 </view>

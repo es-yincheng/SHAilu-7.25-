@@ -12,7 +12,6 @@
 
 @interface HomeViewController ()<UIScrollViewDelegate>
 
-//@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) YGGravityImageView *imageView;
 @property (nonatomic, strong) MyScrollview *myScrollView;
@@ -46,7 +45,10 @@
             self.myScrollView = [[MyScrollview alloc] initWithFrame:self.view.bounds target:self];
             [self.view addSubview:_myScrollView];
             
-            [self.dataSource addObjectsFromArray:@[@"http://box.dwstatic.com/skin/Irelia/Irelia_0.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_1.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_2.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_3.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_4.jpg", @"http://box.dwstatic.com/skin/Irelia/Irelia_5.jpg"]];
+            [self.dataSource addObjectsFromArray:@[@"http://box.dwstatic.com/skin/Irelia/Irelia_0.jpg",
+                                                   @"http://box.dwstatic.com/skin/Irelia/Irelia_1.jpg",
+                                                   @"http://box.dwstatic.com/skin/Irelia/Irelia_2.jpg",
+                                                   @"http://box.dwstatic.com/skin/Irelia/Irelia_3.jpg"]];
             
             self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, ScreenHeight - TBH - 40, ScreenWith, 30)];
             [self.view addSubview:_pageControl];
@@ -66,10 +68,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [_imageView stopAnimate];
-//    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
-
-
 
 #pragma mark - delegate
 // scrollView代理方法
@@ -82,7 +81,6 @@
     [_myScrollView scroll];
 }
 
-
 #pragma mark - lazy
 - (NSMutableArray *)dataSource{
     if (!_dataSource) {
@@ -90,19 +88,5 @@
     }
     return _dataSource;
 }
-
-//- (FLAnimatedImageView *)backImageView{
-//    if (!_backImageView) {
-//        _backImageView = [[FLAnimatedImageView alloc] init];
-//        _backImageView.frame = CGRectMake(0, 0, ScreenWith, ScreenHeight);
-//        //得到图片的路径
-//        NSString *path = [[NSBundle mainBundle] pathForResource:@"testgif" ofType:@"gif"];
-//        //将图片转为NSData
-//        NSData *gifData = [NSData dataWithContentsOfFile:path];
-//        FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:gifData];
-//        _backImageView.animatedImage = image;
-//    }
-//    return _backImageView;
-//}
 
 @end

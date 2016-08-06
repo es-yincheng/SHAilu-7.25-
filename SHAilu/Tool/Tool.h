@@ -45,8 +45,8 @@
 
 
 //---------------------------color---------------------------------
-#define YCItemColor       [UIColor colorWithRed:0.071 green:0.035 blue:0.004 alpha:1.000]
-#define YCNavTitleColor       [UIColor colorWithRed:0.624 green:0.494 blue:0.200 alpha:1.000]
+#define YCItemColor       [UIColor colorWithRed:0.090 green:0.027 blue:0.004 alpha:1.000]
+#define YCNavTitleColor       [UIColor colorWithRed:0.686 green:0.561 blue:0.259 alpha:1.000]
 
 #define YCBlackColor     [UIColor colorWithWhite:0.200 alpha:1.000]
 #define YCGrayColor      [UIColor colorWithWhite:0.400 alpha:1.000]

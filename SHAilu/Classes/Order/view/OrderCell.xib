@@ -114,7 +114,7 @@
                                 <color key="backgroundColor" red="0.64705882349999999" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="   查看进度   ">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.45098039215686275" green="0.3529411764705882" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="orderDetailAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="q6Z-Rh-qyB"/>

@@ -31,6 +31,12 @@
     [_yzmField setValue:YCNavTitleColor forKeyPath:@"_placeholderLabel.textColor"];
     [_pwdField setValue:YCNavTitleColor forKeyPath:@"_placeholderLabel.textColor"];
     
+    _nameField.textColor = [UIColor whiteColor];
+    _companyField.textColor = [UIColor whiteColor];
+    _phoneField.textColor = [UIColor whiteColor];
+    _yzmField.textColor = [UIColor whiteColor];
+    _pwdField.textColor = [UIColor whiteColor];
+    
     _imageView = [[YGGravityImageView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     _imageView.image = [UIImage imageNamed:@"backImage"];
     [self.view insertSubview:_imageView atIndex:0]; 
