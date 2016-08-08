@@ -26,7 +26,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-07-18 13:46:19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0q-Jl-Lr3">
-                                <rect key="frame" x="44" y="33.5" width="119.5" height="14.5"/>
+                                <rect key="frame" x="44" y="33" width="119.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -83,13 +83,22 @@
                                 <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugd-fV-qJ0">
+                                <rect key="frame" x="282" y="8" width="25" height="25"/>
+                                <state key="normal" image="order_message"/>
+                                <connections>
+                                    <action selector="messageAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sJk-er-pbq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Yeb-ds-gg3" firstAttribute="leading" secondItem="4gP-ir-n85" secondAttribute="trailing" constant="8" id="0gV-U7-l7U"/>
+                            <constraint firstItem="ugd-fV-qJ0" firstAttribute="top" secondItem="l2g-vg-ZaV" secondAttribute="top" constant="8" id="1ZS-bv-w29"/>
                             <constraint firstItem="4gP-ir-n85" firstAttribute="top" secondItem="l2g-vg-ZaV" secondAttribute="top" constant="12" id="8KQ-1P-D5H"/>
                             <constraint firstAttribute="bottom" secondItem="4gP-ir-n85" secondAttribute="bottom" constant="12" id="9h0-Rt-sw9"/>
                             <constraint firstItem="K7T-C8-LGm" firstAttribute="leading" secondItem="4gP-ir-n85" secondAttribute="trailing" constant="8" id="A3a-uC-z2t"/>
+                            <constraint firstAttribute="trailing" secondItem="ugd-fV-qJ0" secondAttribute="trailing" constant="13" id="Cje-AS-poe"/>
                             <constraint firstItem="Yeb-ds-gg3" firstAttribute="top" secondItem="yxK-Rx-79p" secondAttribute="bottom" constant="8" id="HQy-GD-BVV"/>
                             <constraint firstItem="yxK-Rx-79p" firstAttribute="leading" secondItem="4gP-ir-n85" secondAttribute="trailing" constant="8" id="P7n-ek-F75"/>
                             <constraint firstItem="Djn-2Q-9K1" firstAttribute="top" secondItem="Yeb-ds-gg3" secondAttribute="bottom" constant="2" id="YLQ-Mp-DbU"/>
@@ -110,29 +119,41 @@
                         <rect key="frame" x="0.0" y="168" width="320" height="35.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1X-yX-8Ee">
-                                <rect key="frame" x="233" y="3.5" width="74" height="28"/>
+                                <rect key="frame" x="233" y="3" width="74" height="28"/>
                                 <color key="backgroundColor" red="0.64705882349999999" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="   查看进度   ">
-                                    <color key="titleColor" red="0.45098039215686275" green="0.3529411764705882" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="orderDetailAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="q6Z-Rh-qyB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="等待报价" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dD-xO-zkl">
-                                <rect key="frame" x="12" y="9.5" width="52" height="16"/>
+                                <rect key="frame" x="12" y="9" width="52" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.64705882349999999" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCB-pn-ZEE">
+                                <rect key="frame" x="147" y="3" width="74" height="28"/>
+                                <color key="backgroundColor" red="0.64705882349999999" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="   再次购买   ">
+                                    <color key="titleColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="H1X-yX-8Ee" secondAttribute="trailing" constant="13" id="Vse-yU-9Xn"/>
                             <constraint firstItem="4dD-xO-zkl" firstAttribute="leading" secondItem="DPH-x5-a4b" secondAttribute="leading" constant="12" id="bhR-c7-WA1"/>
                             <constraint firstItem="H1X-yX-8Ee" firstAttribute="centerY" secondItem="DPH-x5-a4b" secondAttribute="centerY" id="cRh-Ez-q9J"/>
+                            <constraint firstItem="H1X-yX-8Ee" firstAttribute="centerY" secondItem="hCB-pn-ZEE" secondAttribute="centerY" id="gyX-PM-GcS"/>
                             <constraint firstItem="H1X-yX-8Ee" firstAttribute="centerY" secondItem="4dD-xO-zkl" secondAttribute="centerY" id="hkj-gK-6Z3"/>
+                            <constraint firstItem="H1X-yX-8Ee" firstAttribute="leading" secondItem="hCB-pn-ZEE" secondAttribute="trailing" constant="12" id="itY-4G-nYw"/>
+                            <constraint firstItem="H1X-yX-8Ee" firstAttribute="width" secondItem="hCB-pn-ZEE" secondAttribute="width" id="qMT-vV-Tmc"/>
+                            <constraint firstItem="H1X-yX-8Ee" firstAttribute="height" secondItem="hCB-pn-ZEE" secondAttribute="height" id="qZf-11-Zhq"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -151,6 +172,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="buyButton" destination="hCB-pn-ZEE" id="1V7-A6-ISU"/>
                 <outlet property="orderButton" destination="H1X-yX-8Ee" id="xgk-GN-YZ3"/>
             </connections>
             <point key="canvasLocation" x="356" y="370"/>
@@ -158,6 +180,7 @@
     </objects>
     <resources>
         <image name="orderTypeIcon" width="124" height="110"/>
+        <image name="order_message" width="25" height="25"/>
         <image name="time" width="72" height="68"/>
     </resources>
 </document>

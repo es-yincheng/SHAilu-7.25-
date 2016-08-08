@@ -71,7 +71,7 @@
     _loginButton.bounds = CGRectMake(40, LoginButtonY, ScreenWith - 80, 40);
     [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
     _loginButton.titleLabel.font = [UIFont systemFontOfSize:13.f];
-    [_loginButton setTitleColor:[UIColor colorWithRed:0.451 green:0.353 blue:0.129 alpha:1.000] forState:UIControlStateNormal];
+    [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (BOOL)checkLogin{

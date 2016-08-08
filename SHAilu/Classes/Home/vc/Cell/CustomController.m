@@ -1,12 +1,12 @@
 //
-//  CustomizeController.m
+//  CustomController.m
 //  SHAilu
 //
-//  Created by 尹成 on 16/7/21.
+//  Created by 尹成 on 16/8/8.
 //  Copyright © 2016年 尹成. All rights reserved.
 //
 
-#import "CustomizeController.h"
+#import "CustomController.h"
 #import "SuccessController.h"
 #import "TypeCell.h"
 #import "PublishCell.h"
@@ -18,8 +18,9 @@
 
 #define CustomizeViewHeight ScreenWith*320/300
 #define CustomizeCenterY (ScreenHeight - customizeViewHeight/2)
+static NSString *placeHolder = @"如有其它需求,请备注";
 
-@interface CustomizeController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
+@interface CustomController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UITextViewDelegate>
 
 @property (weak, nonatomic  ) IBOutlet UICollectionViewFlowLayout *typeLayout;
 @property (weak, nonatomic  ) IBOutlet UICollectionView           *typeCollection;
@@ -27,6 +28,7 @@
 @property (weak, nonatomic  ) IBOutlet UICollectionView           *imageCollection;
 @property (weak, nonatomic  ) IBOutlet UITextField                *countField;
 @property (weak, nonatomic  ) IBOutlet UILabel                    *selectItems;
+@property (weak, nonatomic) IBOutlet UITextView *markText;
 @property (nonatomic, strong) NSMutableArray    *typeArray;
 @property (nonatomic, strong) NSMutableArray    *imageArray;
 @property (nonatomic, strong) NSMutableArray    *selectTypeArray;
@@ -35,17 +37,18 @@
 
 @end
 
-@implementation CustomizeController
+@implementation CustomController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"定制";
     [self setData];
     [self setCollection];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+    _markText.layer.borderWidth = 1;
+    _markText.layer.borderColor = YCCellLineColor.CGColor;
+    _markText.text = placeHolder;
+    _markText.textColor = [UIColor lightGrayColor];
+    _markText.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -61,9 +64,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - custom
@@ -97,11 +101,11 @@
 
 #pragma mark - action
 - (IBAction)selectSpecificationsAction:(id)sender {
-
+    
     POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
     opacityAnimation.toValue = @(0.5);
     [self.backView.layer pop_addAnimation:opacityAnimation forKey:@"opacityAnimation"];
-
+    
     POPSpringAnimation *spring = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
     spring.toValue = @(ScreenHeight - CustomizeViewHeight/2);
     spring.beginTime = CACurrentMediaTime();
@@ -144,12 +148,27 @@
 }
 
 #pragma mark - delegate/dataSource
+#pragma textView
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+    if ([textView.text isEqualToString:placeHolder]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor];
+    }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    if (textView.text.length<1) {
+        textView.text = placeHolder;
+        textView.textColor = [UIColor grayColor];
+    }
+}
+
 #pragma mark Collection
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (collectionView.tag == 1000) {
-//        NSInteger count = self.typeArray.count;
-//        NSLog(@"self.typeArray.count:%lu",count);
-//        return self.typeArray.count
+        //        NSInteger count = self.typeArray.count;
+        //        NSLog(@"self.typeArray.count:%lu",count);
+        //        return self.typeArray.count
         return 6;
     }
     return 4;
@@ -170,7 +189,7 @@
             [cell.layer pop_addAnimation:scaleAnimation forKey:@"scaleAnim"];
         } else {
             cell.layer.masksToBounds = NO;
-//            cell.layer.cornerRadius = 8;
+            //            cell.layer.cornerRadius = 8;
             cell.layer.borderColor = [UIColor clearColor].CGColor;
             cell.layer.borderWidth = 1;
         }
@@ -303,7 +322,7 @@
 - (CustomizeItemView *)customizeView{
     if (!_customizeView) {
         _customizeView = [[CustomizeItemView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWith, ScreenWith*320/300)];
-//        _customizeView.backgroundColor = [UIColor orangeColor];
+        //        _customizeView.backgroundColor = [UIColor orangeColor];
         [self.view addSubview:_customizeView];
     }
     return _customizeView;

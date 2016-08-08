@@ -121,6 +121,12 @@
 		5884E8F11D41F9960068C438 /* PublishCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5884E8ED1D41F9960068C438 /* PublishCell.m */; };
 		5884E8F21D41F9960068C438 /* PublishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5884E8EE1D41F9960068C438 /* PublishCell.xib */; };
 		5884E8F61D41FA6C0068C438 /* ToastUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5884E8F51D41FA6C0068C438 /* ToastUtils.m */; };
+		589D1E9D1D581FAE00D713A7 /* CustomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 589D1E9B1D581FAE00D713A7 /* CustomController.m */; };
+		589D1E9E1D581FAE00D713A7 /* CustomController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589D1E9C1D581FAE00D713A7 /* CustomController.xib */; };
+		589D1EA31D58305200D713A7 /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 589D1EA11D58305200D713A7 /* MessageController.m */; };
+		589D1EA41D58305200D713A7 /* MessageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589D1EA21D58305200D713A7 /* MessageController.xib */; };
+		589D1EA61D5830D000D713A7 /* BuyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589D1EA51D5830D000D713A7 /* BuyView.xib */; };
+		589D1EA91D585D9500D713A7 /* BuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589D1EA81D585D9500D713A7 /* BuyView.m */; };
 		58A17FA01D45A40200E812F8 /* YCUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A17F9F1D45A40200E812F8 /* YCUserDefaults.m */; };
 		58A17FA31D45A9D000E812F8 /* CardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A17FA21D45A9D000E812F8 /* CardCell.m */; };
 		58A17FA51D45A9E300E812F8 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A17FA41D45A9E300E812F8 /* CardCell.xib */; };
@@ -369,6 +375,15 @@
 		5884E8EE1D41F9960068C438 /* PublishCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublishCell.xib; sourceTree = "<group>"; };
 		5884E8F41D41FA6C0068C438 /* ToastUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastUtils.h; sourceTree = "<group>"; };
 		5884E8F51D41FA6C0068C438 /* ToastUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastUtils.m; sourceTree = "<group>"; };
+		589D1E9A1D581FAE00D713A7 /* CustomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomController.h; sourceTree = "<group>"; };
+		589D1E9B1D581FAE00D713A7 /* CustomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomController.m; sourceTree = "<group>"; };
+		589D1E9C1D581FAE00D713A7 /* CustomController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomController.xib; sourceTree = "<group>"; };
+		589D1EA01D58305200D713A7 /* MessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageController.h; sourceTree = "<group>"; };
+		589D1EA11D58305200D713A7 /* MessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageController.m; sourceTree = "<group>"; };
+		589D1EA21D58305200D713A7 /* MessageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageController.xib; sourceTree = "<group>"; };
+		589D1EA51D5830D000D713A7 /* BuyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyView.xib; sourceTree = "<group>"; };
+		589D1EA71D585D9500D713A7 /* BuyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyView.h; sourceTree = "<group>"; };
+		589D1EA81D585D9500D713A7 /* BuyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyView.m; sourceTree = "<group>"; };
 		58A17F9E1D45A40200E812F8 /* YCUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCUserDefaults.h; sourceTree = "<group>"; };
 		58A17F9F1D45A40200E812F8 /* YCUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCUserDefaults.m; sourceTree = "<group>"; };
 		58A17FA11D45A9D000E812F8 /* CardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCell.h; sourceTree = "<group>"; };
@@ -869,6 +884,7 @@
 		583155CA1D35F59E00F612F9 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				589D1E9F1D58303E00D713A7 /* message */,
 				58A192D41D3CAA670094EFC9 /* OrderDetail */,
 				58A192C31D3C725C0094EFC9 /* view */,
 				583155D21D360BBC00F612F9 /* OrderViewController.h */,
@@ -1054,6 +1070,9 @@
 				584B8F091D470A84000FA571 /* HeaderReusableView.h */,
 				584B8F0A1D470A84000FA571 /* HeaderReusableView.m */,
 				584B8F0B1D470A84000FA571 /* HeaderReusableView.xib */,
+				589D1E9A1D581FAE00D713A7 /* CustomController.h */,
+				589D1E9B1D581FAE00D713A7 /* CustomController.m */,
+				589D1E9C1D581FAE00D713A7 /* CustomController.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1065,6 +1084,16 @@
 				5884E8F51D41FA6C0068C438 /* ToastUtils.m */,
 			);
 			path = AlterTool;
+			sourceTree = "<group>";
+		};
+		589D1E9F1D58303E00D713A7 /* message */ = {
+			isa = PBXGroup;
+			children = (
+				589D1EA01D58305200D713A7 /* MessageController.h */,
+				589D1EA11D58305200D713A7 /* MessageController.m */,
+				589D1EA21D58305200D713A7 /* MessageController.xib */,
+			);
+			path = message;
 			sourceTree = "<group>";
 		};
 		58A17F9D1D45A3DE00E812F8 /* NSUserDefaults */ = {
@@ -1153,6 +1182,9 @@
 				58A192CF1D3CA2430094EFC9 /* OrderCell.h */,
 				58A192D01D3CA2430094EFC9 /* OrderCell.m */,
 				58A192D11D3CA2430094EFC9 /* OrderCell.xib */,
+				589D1EA51D5830D000D713A7 /* BuyView.xib */,
+				589D1EA71D585D9500D713A7 /* BuyView.h */,
+				589D1EA81D585D9500D713A7 /* BuyView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1460,6 +1492,7 @@
 				584B8F0D1D470A84000FA571 /* HeaderReusableView.xib in Resources */,
 				5884E8E01D41F95A0068C438 /* btn_selected@3x.png in Resources */,
 				583E80561D4097D70077EEE1 /* nav_close@2x.png in Resources */,
+				589D1EA41D58305200D713A7 /* MessageController.xib in Resources */,
 				58A192EB1D3CD56F0094EFC9 /* OrderFooter.xib in Resources */,
 				58A192D31D3CA2430094EFC9 /* OrderCell.xib in Resources */,
 				583155E71D37358100F612F9 /* LoginAndRegister.storyboard in Resources */,
@@ -1468,6 +1501,7 @@
 				583E80701D40D8A60077EEE1 /* stepOne.gif in Resources */,
 				582703E11D34DA6B00C8209A /* nav_close@3x.png in Resources */,
 				58A17FB21D45FD8800E812F8 /* bz_4.png in Resources */,
+				589D1EA61D5830D000D713A7 /* BuyView.xib in Resources */,
 				582703E01D34DA6B00C8209A /* nav_close@2x.png in Resources */,
 				583E804B1D4072C70077EEE1 /* TypeCell.xib in Resources */,
 				58A17FB61D45FE2A00E812F8 /* bz_6.png in Resources */,
@@ -1487,6 +1521,7 @@
 				58F35E2D1D41E4FB00BEC3BE /* backImage.png in Resources */,
 				58A17FA51D45A9E300E812F8 /* CardCell.xib in Resources */,
 				583E80601D40A9080077EEE1 /* OrderDetailController.xib in Resources */,
+				589D1E9E1D581FAE00D713A7 /* CustomController.xib in Resources */,
 				5884E8DD1D41F95A0068C438 /* btn_circle@3x.png in Resources */,
 				5884E8F01D41F9960068C438 /* AddCell.xib in Resources */,
 				582703E51D34DA6B00C8209A /* nav_search_white@3x.png in Resources */,
@@ -1585,6 +1620,7 @@
 				584B8F0C1D470A84000FA571 /* HeaderReusableView.m in Sources */,
 				58A192E61D3CCDA60094EFC9 /* OrderModel.m in Sources */,
 				583155BE1D35D4A100F612F9 /* YCButton.m in Sources */,
+				589D1E9D1D581FAE00D713A7 /* CustomController.m in Sources */,
 				5827041A1D34DC2300C8209A /* NSArray+Custom.m in Sources */,
 				582703DC1D34DA6B00C8209A /* Factory.m in Sources */,
 				582703DD1D34DA6B00C8209A /* MethodFactory.m in Sources */,
@@ -1595,6 +1631,7 @@
 				5884E8D51D41F95A0068C438 /* YCPhotoBrowser.m in Sources */,
 				58F35E2B1D41E4CD00BEC3BE /* YGGravityImageView.m in Sources */,
 				5884E8D91D41F95A0068C438 /* YCShowBigImgViewController.m in Sources */,
+				589D1EA31D58305200D713A7 /* MessageController.m in Sources */,
 				583155C21D35DC9700F612F9 /* CustomButton.m in Sources */,
 				582704261D34DC2300C8209A /* UIPickerView+Custom.m in Sources */,
 				58A192FE1D3CDE250094EFC9 /* OrderService.m in Sources */,
@@ -1642,6 +1679,7 @@
 				58F35E2A1D41E4CD00BEC3BE /* YGGravity.m in Sources */,
 				584B8F071D470A67000FA571 /* CollectionViewCell.m in Sources */,
 				582704391D3501BF00C8209A /* YCLoginButton.m in Sources */,
+				589D1EA91D585D9500D713A7 /* BuyView.m in Sources */,
 				583155DA1D360DAE00F612F9 /* YCViewController.m in Sources */,
 				583155D41D360BBC00F612F9 /* OrderViewController.m in Sources */,
 				58A17FA01D45A40200E812F8 /* YCUserDefaults.m in Sources */,

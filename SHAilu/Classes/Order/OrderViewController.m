@@ -21,6 +21,10 @@
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic ,strong) NSMutableArray *showedIndexPaths;
 @property (nonatomic, strong) UIImageView    *busyView;
+@property (nonatomic, weak) IBOutlet UIView *buyView;
+@property (nonatomic, weak) IBOutlet UITextField *buyCount;
+//@property (nonatomic, weak) IBOutlet UIButton *buyButton;
+//@property (nonatomic, weak) IBOutlet UIButton *cancelBuuton;
 
 @end
 
@@ -38,6 +42,14 @@
     _busyView= [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWith/2-35, ScreenHeight/2-100, 70, 70)];
     _busyView.image = [UIImage sd_animatedGIFNamed:@"loading"];
     [self.view addSubview:_busyView];
+    
+    [[NSBundle mainBundle] loadNibNamed:@"BuyView" owner:self options:nil];
+    _buyView.frame = self.view.bounds;
+    [self.view addSubview:_buyView];
+    _buyView.alpha = 0;
+    
+//    [_buyButton addTarget:self action:@selector(disMissBuyView:) forControlEvents:UIControlEventTouchUpInside];
+//    [_cancelBuuton addTarget:self action:@selector(disMissBuyView:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -62,6 +74,24 @@
     [self.tableView reloadData];
 }
 
+- (IBAction)buyAction:(id)sender{
+    [self.view bringSubviewToFront:_buyView];
+    _buyView.alpha = 1;
+    _buyView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+}
+
+- (IBAction)buyOkAction:(id)sender{
+    if (_buyCount.text.length > 0) {
+        _buyView.alpha = 0;
+        [MBProgressHUD showMessageAuto:@"再次购买成功"];
+    } else {
+        [MBProgressHUD showMessageAuto:@"请输入购买数量"];
+    }
+}
+
+- (IBAction)disMissBuyView:(id)sender{
+    _buyView.alpha = 0;
+}
 
 #pragma mark - action
 - (void)loadNewData{
@@ -81,7 +111,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     OrderCell *cell = [_tableView dequeueReusableCellWithIdentifier:@"OrderCell"];
-    
+    [cell.buyButton addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 

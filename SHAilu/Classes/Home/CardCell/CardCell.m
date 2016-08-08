@@ -7,7 +7,8 @@
 //
 
 #import "CardCell.h"
-#import "CustomizeController.h"
+//#import "CustomizeController.h"
+#import "CustomController.h"
 
 @interface CardCell()
 
@@ -51,7 +52,7 @@
 //}
 
 - (IBAction)customAction:(id)sender {
-    CustomizeController *vc = [[CustomizeController alloc] init];
+    CustomController *vc = [[CustomController alloc] init];
     [self.viewController.navigationController pushViewController:vc animated:YES];
     YCTabBarController *tabBarController = (YCTabBarController*)self.viewController.tabBarController;
     tabBarController.customView.hidden = YES;
