@@ -16,7 +16,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    
+    CGRect frame = self.tableView.tableHeaderView.frame;
+    frame.size.height = 1;
+    UIView *headerView = [[UIView alloc] initWithFrame:frame];
+    headerView.backgroundColor = YCItemColor;
+    [self.tableView setTableHeaderView:headerView];
+    
+    self.tableView.scrollEnabled = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +41,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -1089,11 +1089,19 @@
 		589D1E9F1D58303E00D713A7 /* message */ = {
 			isa = PBXGroup;
 			children = (
+				589D1F1A1D58702200D713A7 /* Cell */,
 				589D1EA01D58305200D713A7 /* MessageController.h */,
 				589D1EA11D58305200D713A7 /* MessageController.m */,
 				589D1EA21D58305200D713A7 /* MessageController.xib */,
 			);
 			path = message;
+			sourceTree = "<group>";
+		};
+		589D1F1A1D58702200D713A7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		58A17F9D1D45A3DE00E812F8 /* NSUserDefaults */ = {

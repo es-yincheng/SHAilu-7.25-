@@ -30,8 +30,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    
-    
 }
 
 - (void)cellWithModel:(OrderModel *)model{
@@ -52,6 +50,8 @@
 - (IBAction)messageAction:(id)sender {
     MessageController *vc = [[MessageController alloc] init];
     [self.viewController.navigationController pushViewController:vc animated:YES];
+    YCTabBarController *tabBarController = (YCTabBarController*)self.viewController.tabBarController;
+    tabBarController.customView.hidden = YES;
 }
 
 - (UIView *)buyView{

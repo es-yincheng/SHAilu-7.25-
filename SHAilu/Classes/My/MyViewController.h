@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "YCViewController.h"
 
-@interface MyViewController : YCViewController
+@interface MyViewController : UITableViewController
 
 @end

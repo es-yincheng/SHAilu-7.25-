@@ -31,7 +31,7 @@
     tabBarController.customView.hidden = NO;
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *hasUserInfo = [userDefault objectForKey:@"UserInfo"];
-    if (!hasUserInfo) {
+    if (hasUserInfo) {
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LoginAndRegister" bundle:nil];
         UINavigationController *loginNV = [storyBoard instantiateViewControllerWithIdentifier:@"LoginNV"];
         [self.navigationController presentViewController:loginNV animated:NO completion:nil];
