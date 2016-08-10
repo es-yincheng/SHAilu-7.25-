@@ -166,6 +166,9 @@
                                         <constraint firstAttribute="height" constant="45" id="POx-4c-0Ku"/>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="ovP-dA-qmp"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="selectSpecificationsAction:" destination="-1" eventType="touchUpInside" id="fQW-AE-I0Z"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="规格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwS-At-BTW">
                                     <rect key="frame" x="8" y="162" width="26" height="16"/>

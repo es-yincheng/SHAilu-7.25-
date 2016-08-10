@@ -78,6 +78,7 @@
     [self.view bringSubviewToFront:_buyView];
     _buyView.alpha = 1;
     _buyView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    [_buyCount becomeFirstResponder];
 }
 
 - (IBAction)buyOkAction:(id)sender{

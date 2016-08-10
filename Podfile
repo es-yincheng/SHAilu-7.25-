@@ -26,6 +26,4 @@ pod 'IQKeyboardManager'
 pod 'Pgyer'
 pod 'PgyUpdate'
 
-pod 'JSQMessagesViewController'
-
 end

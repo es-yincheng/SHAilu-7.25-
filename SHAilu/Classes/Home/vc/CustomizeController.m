@@ -26,6 +26,7 @@
 @property (weak, nonatomic  ) IBOutlet UICollectionViewFlowLayout *imageLayout;
 @property (weak, nonatomic  ) IBOutlet UICollectionView           *imageCollection;
 @property (weak, nonatomic  ) IBOutlet UITextField                *countField;
+//@property (weak, nonatomic) IBOutlet UIButton *showItemsViewAction;
 @property (weak, nonatomic  ) IBOutlet UILabel                    *selectItems;
 @property (nonatomic, strong) NSMutableArray    *typeArray;
 @property (nonatomic, strong) NSMutableArray    *imageArray;

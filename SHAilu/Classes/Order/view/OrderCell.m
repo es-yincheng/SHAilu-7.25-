@@ -10,6 +10,7 @@
 //#import "OrderDetail.h"
 #import "OrderDetailController.h"
 #import "MessageController.h"
+#import "DemoMessagesViewController.h"
 
 @interface OrderCell()
 
@@ -48,7 +49,7 @@
 }
 
 - (IBAction)messageAction:(id)sender {
-    MessageController *vc = [[MessageController alloc] init];
+    DemoMessagesViewController *vc = [[DemoMessagesViewController alloc] init];
     [self.viewController.navigationController pushViewController:vc animated:YES];
     YCTabBarController *tabBarController = (YCTabBarController*)self.viewController.tabBarController;
     tabBarController.customView.hidden = YES;
