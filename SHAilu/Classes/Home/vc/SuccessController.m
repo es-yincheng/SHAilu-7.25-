@@ -7,6 +7,7 @@
 //
 
 #import "SuccessController.h"
+#import "FLAnimatedImage.h"
 
 @interface SuccessController ()
 
@@ -24,8 +25,6 @@
     NSData *gifData = [NSData dataWithContentsOfFile:path];
     FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:gifData];
     _successIcon.animatedImage = image;
-
-    
     
     UIImage *backImage = [UIImage imageNamed:@"nav_back_white"];
     [backImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

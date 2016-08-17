@@ -14,7 +14,7 @@ pod 'MJRefresh'
 
 pod 'pop', '~> 1.0'
 
-#pod 'MJExtension'
+pod 'MJExtension'
 
 #pod 'UMengSocialCOM', '~> 5.2.1'
 

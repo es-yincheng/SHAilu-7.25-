@@ -9,12 +9,11 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "YGGravityImageView.h"
+#import "UserModel.h"
 
 #define LoginButtonY (self.xline.yc_y + (50 + 45 +10)*(ScreenHeight/667.0))
 
-@interface LoginViewController (){
-    BOOL canLogin;
-}
+@interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *xline;
 @property (strong, nonatomic) UIButton *loginButton;
@@ -28,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"h:%f",ScreenHeight);
+//    NSLog(@"h:%f",ScreenHeight);
     [_phoneField setValue:YCNavTitleColor forKeyPath:@"_placeholderLabel.textColor"];
     [_pwdField setValue:YCNavTitleColor forKeyPath:@"_placeholderLabel.textColor"];
     _phoneField.textColor = [UIColor whiteColor];
@@ -130,60 +129,32 @@
         POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPShapeLayerStrokeEnd];
         anim.fromValue = [NSNumber numberWithFloat:0];
         anim.toValue = [NSNumber numberWithFloat:0.9];
-//        anim.duration = 1;
         anim.completionBlock = ^(POPAnimation *anim, BOOL finished) {
-//            if (finished) {
-//                if (canLogin) {
-                    [circle removeFromSuperlayer];
-                    
-                    POPBasicAnimation *loginAnim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-                    loginAnim.duration = 0.3f;
-                    NSInteger makScal = sqrt(pow((40+(ScreenWith-80)/2), 2) + pow((LoginButtonY+25),2))/22;
-                    loginAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(makScal, makScal)];
-                    [btn pop_addAnimation:loginAnim forKey:@"scaleAnimationKey"];
-                    loginAnim.completionBlock = ^(POPAnimation *animation,BOOL finish) {
-
-                    };
-                    
-                    [self performSelector:@selector(dismissVC) withObject:nil afterDelay:0.25f];
-                    
-                    
-//                    [UIView animateWithDuration:0.5f animations:^{
-//                        CGPoint center = btn.center;
-//                        btn.frame = CGRectMake(0, 0, ScreenHeight, ScreenHeight);
-//                        btn.layer.cornerRadius = 20;
-//                        btn.center = center;
-//                    } completion:^(BOOL finished) {
-//                        [[Factory sharedMethod] saveUserInfo:nil];
-//                        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
-//                    }];
-                    
-//                } else {
-//                    [[BaseAPI sharedAPI].userService loginWithUserName:nil
-//                                                              Password:nil
-//                                                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//                                                                   [circle removeFromSuperlayer];
-//                                                                   
-//                                                                   POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-//                                                                   anim.toValue = [NSValue valueWithCGSize:CGSizeMake(50, 50)];
-//                                                                   anim.completionBlock = ^(POPAnimation *animation,BOOL finish) {
-//                                                                       [[Factory sharedMethod] saveUserInfo:nil];
-//                                                                       [self.navigationController dismissViewControllerAnimated:NO completion:nil];
-//                                                                   };
-//                                                                   
-//                                                               } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//                                                                   [NSThread sleepForTimeInterval:1.0];
-//                                                                   [MBProgressHUD showError:@"网络连接失败"];
-//                                                                   canLogin = YES;
-//                                                                   [circle removeFromSuperlayer];
-//                                                                   [UIView animateWithDuration:1.f animations:^{
-//                                                                       [self setLoginButton];
-//                                                                   }completion:^(BOOL finished) {
-//                                                                       
-//                                                                   }];
-//                                                               }];
-//                }                
-//            }
+            if (finished) {
+                [[BaseAPI sharedAPI].userService loginWithUserName:_phoneField.text
+                                                          Password:_pwdField.text
+                                                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                               
+                                                               UserModel *userModel = [UserModel yc_objectWithKeyValues:responseObject];
+                                                               if (userModel) {
+                                                                   [userModel saveUserInfo];
+                                                                   [circle removeFromSuperlayer];
+                                                                   POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+                                                                   anim.toValue = [NSValue valueWithCGSize:CGSizeMake(50, 50)];
+                                                                   anim.completionBlock = ^(POPAnimation *animation,BOOL finish) {
+                                                                       [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+                                                                   };
+                                                               }
+                                                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                               [MBProgressHUD showError:@"网络连接失败,请稍后重试"];
+                                                               [circle removeFromSuperlayer];
+                                                               [UIView animateWithDuration:1.f animations:^{
+                                                                   [self setLoginButton];
+                                                               }completion:^(BOOL finished) {
+                                                                   
+                                                               }];
+                                                           }];
+            }
         };
         [circle pop_addAnimation:anim forKey:@"YCButtonScaleXY"];
         

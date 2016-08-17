@@ -192,16 +192,7 @@
     
     self.getPhotosFromCamera(imageNew);
     
-    
-    
-    
-    
-    
-    
-    
-    
-   NSLog(@"网络状态：：：：：%ld",(long)[NetWorking getNetWorkStatuCode]);
-    
+//   NSLog(@"网络状态：：：：：%ld",(long)[NetWorking getNetWorkStatuCode]);
     
 #warning 根据网络决定是否压缩图片
     NSLog(@"原图片大小：%lu m",(unsigned long)UIImageJPEGRepresentation(imageNew,1).length/1024/1024);

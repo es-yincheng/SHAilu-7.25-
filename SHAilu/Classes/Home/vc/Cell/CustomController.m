@@ -15,6 +15,7 @@
 #import "UIImageView+SelectPhoto.h"
 #import <objc/runtime.h>
 #import "CustomizeItemView.h"
+#import "SpecsController.h"
 
 #define CustomizeViewHeight ScreenWith*320/300
 #define CustomizeCenterY (ScreenHeight - customizeViewHeight/2)
@@ -101,16 +102,19 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 
 #pragma mark - action
 - (IBAction)selectSpecificationsAction:(id)sender {
+
+    SpecsController *vc = [[SpecsController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
     
-    POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-    opacityAnimation.toValue = @(0.5);
-    [self.backView.layer pop_addAnimation:opacityAnimation forKey:@"opacityAnimation"];
-    
-    POPSpringAnimation *spring = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    spring.toValue = @(ScreenHeight - CustomizeViewHeight/2);
-    spring.beginTime = CACurrentMediaTime();
-    spring.springBounciness = 0.0f;
-    [self.customizeView pop_addAnimation:spring forKey:@"aposition"];
+//    POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+//    opacityAnimation.toValue = @(0.5);
+//    [self.backView.layer pop_addAnimation:opacityAnimation forKey:@"opacityAnimation"];
+//    
+//    POPSpringAnimation *spring = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+//    spring.toValue = @(ScreenHeight - CustomizeViewHeight/2);
+//    spring.beginTime = CACurrentMediaTime();
+//    spring.springBounciness = 0.0f;
+//    [self.customizeView pop_addAnimation:spring forKey:@"aposition"];
 }
 
 - (IBAction)submitAction:(id)sender {

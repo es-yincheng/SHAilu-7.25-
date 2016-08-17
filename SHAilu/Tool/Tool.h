@@ -79,6 +79,7 @@
 //#import "Function.h"
 #import "NetWorking.h"
 #import "BaseAPI.h"
+#import "UserModel.h"
 
 //otherLib
 #import "MBProgressHUD+MJ.h"

@@ -13,18 +13,14 @@
 #import "MJDiyFooter.h"
 #import "UIImage+GIF.h"
 
-//NSString *CellIdentifier = @"OrderCell";
-
 @interface OrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView    *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic ,strong) NSMutableArray *showedIndexPaths;
-@property (nonatomic, strong) UIImageView    *busyView;
+//@property (nonatomic, strong) UIImageView    *busyView;
 @property (nonatomic, weak) IBOutlet UIView *buyView;
 @property (nonatomic, weak) IBOutlet UITextField *buyCount;
-//@property (nonatomic, weak) IBOutlet UIButton *buyButton;
-//@property (nonatomic, weak) IBOutlet UIButton *cancelBuuton;
 
 @end
 
@@ -39,9 +35,9 @@
     [self.dataSource addObjectsFromArray:@[@"",@"",@""]];
     self.title = @"订单";
     
-    _busyView= [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWith/2-35, ScreenHeight/2-100, 70, 70)];
-    _busyView.image = [UIImage sd_animatedGIFNamed:@"loading"];
-    [self.view addSubview:_busyView];
+//    _busyView= [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWith/2-35, ScreenHeight/2-100, 70, 70)];
+//    _busyView.image = [UIImage sd_animatedGIFNamed:@"loading"];
+//    [self.view addSubview:_busyView];
     
     [[NSBundle mainBundle] loadNibNamed:@"BuyView" owner:self options:nil];
     _buyView.frame = self.view.bounds;
@@ -55,7 +51,6 @@
 - (void)viewWillAppear:(BOOL)animated{
     YCTabBarController *tabBarController = (YCTabBarController*)self.tabBarController;
     tabBarController.customView.hidden = NO;
-    [_busyView startAnimating];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -69,8 +64,6 @@
 
 #pragma mark - custom
 - (void)loadData{
-    [_busyView stopAnimating];
-    [_busyView removeFromSuperview];
     [self.tableView reloadData];
 }
 
@@ -138,7 +131,6 @@
     cell.alpha = 0;
     cell.layer.transform = rotation;
     cell.layer.anchorPoint = CGPointMake(0, 0.5);
-    
     
     [UIView beginAnimations:@"rotation" context:NULL];
     [UIView setAnimationDuration:0.5];

@@ -164,6 +164,22 @@
 		58A1930D1D3CDF480094EFC9 /* ILService.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A1930C1D3CDF480094EFC9 /* ILService.m */; };
 		58A4E2351D41B119008EDE26 /* MJDiyFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A4E2341D41B119008EDE26 /* MJDiyFooter.m */; };
 		58AFFFBA1D4A253F0084DFB0 /* test.gif in Resources */ = {isa = PBXBuildFile; fileRef = 58AFFFB91D4A253F0084DFB0 /* test.gif */; };
+		58B27E481D618B710065322F /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B27E471D618B710065322F /* UserModel.m */; };
+		58B27E4B1D618C8F0065322F /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B27E4A1D618C8F0065322F /* BaseModel.m */; };
+		58B27E4F1D61B32C0065322F /* SpecsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B27E4E1D61B32C0065322F /* SpecsController.m */; };
+		58B27E541D61B46B0065322F /* SizeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B27E521D61B46B0065322F /* SizeCell.m */; };
+		58B27E551D61B46B0065322F /* SizeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B27E531D61B46B0065322F /* SizeCell.xib */; };
+		58B27E591D61B8B30065322F /* PliesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B27E571D61B8B30065322F /* PliesCell.m */; };
+		58B27E5A1D61B8B30065322F /* PliesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B27E581D61B8B30065322F /* PliesCell.xib */; };
+		58B27E5D1D61BF7A0065322F /* SpecsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B27E5C1D61BF7A0065322F /* SpecsCell.m */; };
+		58B27E5F1D62A1D30065322F /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B27E5E1D62A1D30065322F /* View.xib */; };
+		58B27E631D62A69B0065322F /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B27E611D62A69A0065322F /* SelectCell.m */; };
+		58B27E641D62A69B0065322F /* SelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B27E621D62A69A0065322F /* SelectCell.xib */; };
+		58B27E681D62E0920065322F /* SpecCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B27E661D62E0920065322F /* SpecCell.m */; };
+		58B27E691D62E0920065322F /* SpecCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B27E671D62E0920065322F /* SpecCell.xib */; };
+		58B27E6D1D62EAC10065322F /* SpecChildCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B27E6B1D62EAC10065322F /* SpecChildCell.m */; };
+		58B27E6E1D62EAC10065322F /* SpecChildCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B27E6C1D62EAC10065322F /* SpecChildCell.xib */; };
+		58B27E701D62FBD60065322F /* SpecsToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B27E6F1D62FBD60065322F /* SpecsToolBar.xib */; };
 		58B968251D3DC032000051A9 /* MJChiBaoZiHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B968241D3DC032000051A9 /* MJChiBaoZiHeader.m */; };
 		58B968271D3DC4FF000051A9 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 58B968261D3DC4FF000051A9 /* loading.gif */; };
 		58B9682B1D3DD8F3000051A9 /* RGCardViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B9682A1D3DD8F3000051A9 /* RGCardViewLayout.m */; };
@@ -504,6 +520,31 @@
 		58A4E2331D41B119008EDE26 /* MJDiyFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDiyFooter.h; sourceTree = "<group>"; };
 		58A4E2341D41B119008EDE26 /* MJDiyFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDiyFooter.m; sourceTree = "<group>"; };
 		58AFFFB91D4A253F0084DFB0 /* test.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = test.gif; sourceTree = "<group>"; };
+		58B27E461D618B710065322F /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		58B27E471D618B710065322F /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		58B27E491D618C8F0065322F /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		58B27E4A1D618C8F0065322F /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		58B27E4D1D61B32C0065322F /* SpecsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecsController.h; sourceTree = "<group>"; };
+		58B27E4E1D61B32C0065322F /* SpecsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecsController.m; sourceTree = "<group>"; };
+		58B27E511D61B46B0065322F /* SizeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SizeCell.h; path = SHAilu/Classes/Home/vc/specs/SizeCell.h; sourceTree = SOURCE_ROOT; };
+		58B27E521D61B46B0065322F /* SizeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SizeCell.m; path = SHAilu/Classes/Home/vc/specs/SizeCell.m; sourceTree = SOURCE_ROOT; };
+		58B27E531D61B46B0065322F /* SizeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SizeCell.xib; path = SHAilu/Classes/Home/vc/specs/SizeCell.xib; sourceTree = SOURCE_ROOT; };
+		58B27E561D61B8B30065322F /* PliesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PliesCell.h; sourceTree = "<group>"; };
+		58B27E571D61B8B30065322F /* PliesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PliesCell.m; sourceTree = "<group>"; };
+		58B27E581D61B8B30065322F /* PliesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PliesCell.xib; sourceTree = "<group>"; };
+		58B27E5B1D61BF7A0065322F /* SpecsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecsCell.h; sourceTree = "<group>"; };
+		58B27E5C1D61BF7A0065322F /* SpecsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecsCell.m; sourceTree = "<group>"; };
+		58B27E5E1D62A1D30065322F /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
+		58B27E601D62A69A0065322F /* SelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCell.h; sourceTree = "<group>"; };
+		58B27E611D62A69A0065322F /* SelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCell.m; sourceTree = "<group>"; };
+		58B27E621D62A69A0065322F /* SelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectCell.xib; sourceTree = "<group>"; };
+		58B27E651D62E0920065322F /* SpecCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecCell.h; sourceTree = "<group>"; };
+		58B27E661D62E0920065322F /* SpecCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecCell.m; sourceTree = "<group>"; };
+		58B27E671D62E0920065322F /* SpecCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecCell.xib; sourceTree = "<group>"; };
+		58B27E6A1D62EAC10065322F /* SpecChildCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecChildCell.h; sourceTree = "<group>"; };
+		58B27E6B1D62EAC10065322F /* SpecChildCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecChildCell.m; sourceTree = "<group>"; };
+		58B27E6C1D62EAC10065322F /* SpecChildCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecChildCell.xib; sourceTree = "<group>"; };
+		58B27E6F1D62FBD60065322F /* SpecsToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecsToolBar.xib; sourceTree = "<group>"; };
 		58B968231D3DC032000051A9 /* MJChiBaoZiHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJChiBaoZiHeader.h; sourceTree = "<group>"; };
 		58B968241D3DC032000051A9 /* MJChiBaoZiHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJChiBaoZiHeader.m; sourceTree = "<group>"; };
 		58B968261D3DC4FF000051A9 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
@@ -1109,6 +1150,7 @@
 		583E80411D40636B0077EEE1 /* vc */ = {
 			isa = PBXGroup;
 			children = (
+				58B27E4C1D61B0490065322F /* specs */,
 				5884E8E81D41F9960068C438 /* Cell */,
 				583E80421D4065270077EEE1 /* CustomizeController.h */,
 				583E80431D4065270077EEE1 /* CustomizeController.m */,
@@ -1421,6 +1463,10 @@
 		58A192E21D3CCD930094EFC9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				58B27E491D618C8F0065322F /* BaseModel.h */,
+				58B27E4A1D618C8F0065322F /* BaseModel.m */,
+				58B27E461D618B710065322F /* UserModel.h */,
+				58B27E471D618B710065322F /* UserModel.m */,
 				58A192E31D3CCD9D0094EFC9 /* Order */,
 			);
 			path = Model;
@@ -1494,6 +1540,42 @@
 				58A193071D3CDEB80094EFC9 /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		58B27E4C1D61B0490065322F /* specs */ = {
+			isa = PBXGroup;
+			children = (
+				58B27E501D61B3C60065322F /* cell */,
+				58B27E4D1D61B32C0065322F /* SpecsController.h */,
+				58B27E4E1D61B32C0065322F /* SpecsController.m */,
+			);
+			path = specs;
+			sourceTree = "<group>";
+		};
+		58B27E501D61B3C60065322F /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				58B27E511D61B46B0065322F /* SizeCell.h */,
+				58B27E521D61B46B0065322F /* SizeCell.m */,
+				58B27E531D61B46B0065322F /* SizeCell.xib */,
+				58B27E561D61B8B30065322F /* PliesCell.h */,
+				58B27E571D61B8B30065322F /* PliesCell.m */,
+				58B27E581D61B8B30065322F /* PliesCell.xib */,
+				58B27E5B1D61BF7A0065322F /* SpecsCell.h */,
+				58B27E5C1D61BF7A0065322F /* SpecsCell.m */,
+				58B27E5E1D62A1D30065322F /* View.xib */,
+				58B27E601D62A69A0065322F /* SelectCell.h */,
+				58B27E611D62A69A0065322F /* SelectCell.m */,
+				58B27E621D62A69A0065322F /* SelectCell.xib */,
+				58B27E651D62E0920065322F /* SpecCell.h */,
+				58B27E661D62E0920065322F /* SpecCell.m */,
+				58B27E671D62E0920065322F /* SpecCell.xib */,
+				58B27E6A1D62EAC10065322F /* SpecChildCell.h */,
+				58B27E6B1D62EAC10065322F /* SpecChildCell.m */,
+				58B27E6C1D62EAC10065322F /* SpecChildCell.xib */,
+				58B27E6F1D62FBD60065322F /* SpecsToolBar.xib */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		58B968221D3DC032000051A9 /* MJRefreshDiy */ = {
@@ -1843,9 +1925,11 @@
 				58A17FB41D45FD8800E812F8 /* bz_1.png in Resources */,
 				58A17FB11D45FD8800E812F8 /* bz_3.png in Resources */,
 				582703E41D34DA6B00C8209A /* nav_search_white@2x.png in Resources */,
+				58B27E5A1D61B8B30065322F /* PliesCell.xib in Resources */,
 				5884E8D71D41F95A0068C438 /* YCPhotoBrowserCell.xib in Resources */,
 				58BBBFF61D5B20710081E23D /* bubbleMine@2x.png in Resources */,
 				583E805B1D4097E70077EEE1 /* nav_back_white@3x.png in Resources */,
+				58B27E691D62E0920065322F /* SpecCell.xib in Resources */,
 				58BBBFF71D5B20710081E23D /* bubbleSomeone@2x.png in Resources */,
 				5884E8D11D41F95A0068C438 /* YCBigImageCell.xib in Resources */,
 				5884E8DF1D41F95A0068C438 /* btn_selected@2x.png in Resources */,
@@ -1859,10 +1943,12 @@
 				58BBC1151D5B273C0081E23D /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				5827036F1D34D6B600C8209A /* LaunchScreen.storyboard in Resources */,
 				584B8F0D1D470A84000FA571 /* HeaderReusableView.xib in Resources */,
+				58B27E701D62FBD60065322F /* SpecsToolBar.xib in Resources */,
 				5884E8E01D41F95A0068C438 /* btn_selected@3x.png in Resources */,
 				583E80561D4097D70077EEE1 /* nav_close@2x.png in Resources */,
 				58BBBFF31D5B20440081E23D /* UIBubbleTableViewCell.xib in Resources */,
 				589D1EA41D58305200D713A7 /* MessageController.xib in Resources */,
+				58B27E551D61B46B0065322F /* SizeCell.xib in Resources */,
 				58BBBFDE1D5AD2D20081E23D /* MessageLeftCell.xib in Resources */,
 				58A192EB1D3CD56F0094EFC9 /* OrderFooter.xib in Resources */,
 				58A192D31D3CA2430094EFC9 /* OrderCell.xib in Resources */,
@@ -1896,6 +1982,7 @@
 				58A17FA51D45A9E300E812F8 /* CardCell.xib in Resources */,
 				583E80601D40A9080077EEE1 /* OrderDetailController.xib in Resources */,
 				589D1E9E1D581FAE00D713A7 /* CustomController.xib in Resources */,
+				58B27E6E1D62EAC10065322F /* SpecChildCell.xib in Resources */,
 				5884E8DD1D41F95A0068C438 /* btn_circle@3x.png in Resources */,
 				5884E8F01D41F9960068C438 /* AddCell.xib in Resources */,
 				582703E51D34DA6B00C8209A /* nav_search_white@3x.png in Resources */,
@@ -1907,10 +1994,12 @@
 				583E80461D4065270077EEE1 /* CustomizeController.xib in Resources */,
 				582703E21D34DA6B00C8209A /* nav_search_gray@2x.png in Resources */,
 				5884E8E21D41F95A0068C438 /* btn_unselected@2x.png in Resources */,
+				58B27E5F1D62A1D30065322F /* View.xib in Resources */,
 				583E80721D40DE470077EEE1 /* stepTwo.gif in Resources */,
 				583E80741D40DE570077EEE1 /* stepThree.gif in Resources */,
 				58AFFFBA1D4A253F0084DFB0 /* test.gif in Resources */,
 				58BBBFE31D5AD2EC0081E23D /* MessageRightCell.xib in Resources */,
+				58B27E641D62A69B0065322F /* SelectCell.xib in Resources */,
 				58BBC1181D5B273C0081E23D /* JSQMessagesToolbarContentView.xib in Resources */,
 				5884E8E61D41F95A0068C438 /* navBackBtn@2x.png in Resources */,
 				58BBC0F71D5B273C0081E23D /* JSQMessagesViewController.xib in Resources */,
@@ -1988,7 +2077,9 @@
 			files = (
 				5884E8CD1D41F95A0068C438 /* SelectPhotoTool.m in Sources */,
 				5884E8D61D41F95A0068C438 /* YCPhotoBrowserCell.m in Sources */,
+				58B27E631D62A69B0065322F /* SelectCell.m in Sources */,
 				583E80451D4065270077EEE1 /* CustomizeController.m in Sources */,
+				58B27E6D1D62EAC10065322F /* SpecChildCell.m in Sources */,
 				583155E51D37356800F612F9 /* LoginViewController.m in Sources */,
 				582703E61D34DA6B00C8209A /* UIFactory.m in Sources */,
 				58BBC1241D5B29CE0081E23D /* NSUserDefaults+DemoSettings.m in Sources */,
@@ -2013,12 +2104,14 @@
 				58A192EA1D3CD56F0094EFC9 /* OrderFooter.m in Sources */,
 				5884E8D01D41F95A0068C438 /* YCBigImageCell.m in Sources */,
 				583155F11D3774AD00F612F9 /* YCNavigationController.m in Sources */,
+				58B27E591D61B8B30065322F /* PliesCell.m in Sources */,
 				583E804F1D408F890077EEE1 /* SuccessController.m in Sources */,
 				5884E8D51D41F95A0068C438 /* YCPhotoBrowser.m in Sources */,
 				58F35E2B1D41E4CD00BEC3BE /* YGGravityImageView.m in Sources */,
 				58BBC0FD1D5B273C0081E23D /* JSQAudioMediaViewAttributes.m in Sources */,
 				5884E8D91D41F95A0068C438 /* YCShowBigImgViewController.m in Sources */,
 				589D1EA31D58305200D713A7 /* MessageController.m in Sources */,
+				58B27E4F1D61B32C0065322F /* SpecsController.m in Sources */,
 				583155C21D35DC9700F612F9 /* CustomButton.m in Sources */,
 				58BBC1191D5B273C0081E23D /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				582704261D34DC2300C8209A /* UIPickerView+Custom.m in Sources */,
@@ -2033,6 +2126,7 @@
 				58A17FAA1D45E27500E812F8 /* YCNibManager.m in Sources */,
 				58A17FCF1D46221A00E812F8 /* AnimationFactory.m in Sources */,
 				58BBC1051D5B273C0081E23D /* JSQMessage.m in Sources */,
+				58B27E541D61B46B0065322F /* SizeCell.m in Sources */,
 				5884E8D41D41F95A0068C438 /* YCPhotoAblumList.m in Sources */,
 				58BBBFDD1D5AD2D20081E23D /* MessageLeftCell.m in Sources */,
 				58BBC10C1D5B273C0081E23D /* JSQMessagesCollectionViewCell.m in Sources */,
@@ -2064,8 +2158,10 @@
 				5827036A1D34D6B600C8209A /* SHAilu.xcdatamodeld in Sources */,
 				58A17FC61D460B6700E812F8 /* ChangePWDController.m in Sources */,
 				58BBC0F61D5B273C0081E23D /* JSQMessagesViewController.m in Sources */,
+				58B27E4B1D618C8F0065322F /* BaseModel.m in Sources */,
 				5827042D1D34DF8000C8209A /* YCScrolPageView.m in Sources */,
 				58BBC0F21D5B273C0081E23D /* NSString+JSQMessages.m in Sources */,
+				58B27E5D1D61BF7A0065322F /* SpecsCell.m in Sources */,
 				583155DE1D361DF400F612F9 /* MaskView.m in Sources */,
 				58BBC1141D5B273C0081E23D /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				5827043C1D350C5900C8209A /* TestLoginViewController.m in Sources */,
@@ -2084,6 +2180,7 @@
 				582704351D34F16400C8209A /* TestViewController.m in Sources */,
 				582704281D34DC2300C8209A /* UIView+Custom.m in Sources */,
 				58BBC1041D5B273C0081E23D /* JSQMediaItem.m in Sources */,
+				58B27E481D618B710065322F /* UserModel.m in Sources */,
 				5827035E1D34D6B600C8209A /* main.m in Sources */,
 				58E97D5F1D3F5BC4004528B1 /* MyScrollView.m in Sources */,
 				582703E81D34DA6B00C8209A /* CustomMenuItem.m in Sources */,
@@ -2111,6 +2208,7 @@
 				5827041C1D34DC2300C8209A /* NSDictionary+Custom.m in Sources */,
 				58B968391D3E1424000051A9 /* RegisterViewController.m in Sources */,
 				58BBC0F41D5B273C0081E23D /* UIImage+JSQMessages.m in Sources */,
+				58B27E681D62E0920065322F /* SpecCell.m in Sources */,
 				58A17FCB1D4612DF00E812F8 /* ChnagePwdController.m in Sources */,
 				582703E71D34DA6B00C8209A /* CustomMenu.m in Sources */,
 				582704311D34EF5C00C8209A /* YCScrolPageCell.m in Sources */,

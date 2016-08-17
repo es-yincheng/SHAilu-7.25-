@@ -88,8 +88,16 @@
     if (![self.phoneField.text isPhoneNumber]) {
         return;
     }
-    
-    [sender countDown:10.0f];
+    [[BaseAPI sharedAPI].userService getRegisterCheckCodeWithPhone:_phoneField.text
+                                                               Pwd:nil
+                                                         CheckCode:nil
+                                                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                               [UserModel yc_objectWithKeyValues:responseObject];
+                                                               if (0 == [[responseObject yc_objectForKey:@"ErrorCode"] integerValue]) {
+                                                                   [sender countDown:60.0f];
+                                                               }
+
+                                                           } failure:nil];
 }
 
 - (IBAction)showPWDAction:(UIButton *)sender {
@@ -102,9 +110,19 @@
     if (![self checkRegister]) {
         return;
     }
-    [[Factory sharedMethod] saveUserInfo:nil];
-    [MBProgressHUD showMessageAuto:@"修改成功,请重新登录"];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    [[BaseAPI sharedAPI].userService registerWithPhone:_phoneField.text
+                                                   Pwd:_pwdField.text
+                                             CheckCode:_yzmField.text
+                                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                   
+                                                   UserModel *userModel = [UserModel yc_objectWithKeyValues:responseObject];
+                                                   if (userModel) {
+                                                       [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                                                   }
+                                               } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                   [MBProgressHUD showError:@"网络连接失败,请稍后重试"];
+                                               }];
 }
 
 @end

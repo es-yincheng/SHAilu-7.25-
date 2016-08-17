@@ -14,25 +14,13 @@ typedef void(^SuccessBlock)(NSURLSessionDataTask * _Nonnull task, id  _Nullable 
 typedef void(^FailureBlock)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error);
 
 
-typedef NS_ENUM(NSInteger, NetworkStatus) {
-    NetworkStatusUnknown          = -1,
-    NetworkStatusNotReachable     = 0,
-    NetworkStatusReachableViaWWAN = 1,
-    NetworkStatusReachableViaWiFi = 2,
-};
-
 @interface NetWorking : NSObject
-
-@property (nonatomic, assign) NetworkStatus status;
 
 @property (nonatomic, strong) ProgressBlock _Nonnull progress;
 @property (nonatomic, copy) SuccessBlock _Nonnull success;
 @property (nonatomic, copy) FailureBlock _Nonnull failure;
 
 + (NetWorking *_Nonnull)sharedNetWorking;
-+ (NetworkStatus)getNetWorkStatuCode;
-+ (NSString *_Nonnull)getNetWorkStatuString;
-+ (void)startMonitoring;
 
 -(void)post:(NSString *)method
  parameters:(NSDictionary *)parameters
