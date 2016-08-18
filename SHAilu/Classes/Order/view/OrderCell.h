@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *buyButton;
 
-- (void)cellWithModel:(OrderModel *)model;
+//- (void)cellWithModel:(OrderModel *)model;
+- (void)configWithData:(id)data;
 
 @end

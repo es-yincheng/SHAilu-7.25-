@@ -59,26 +59,20 @@
                                     <constraint firstAttribute="width" secondItem="4gP-ir-n85" secondAttribute="height" multiplier="73:73" id="yXf-ne-AHQ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M型纸袋（1000个）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxK-Rx-79p">
-                                <rect key="frame" x="94" y="12" width="128.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.64705882349999999" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="纸材：牛皮纸" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djn-2Q-9K1">
-                                <rect key="frame" x="94" y="53" width="72" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="层数:3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djn-2Q-9K1">
+                                <rect key="frame" x="94" y="53" width="35.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尺寸：100*100*120mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yeb-ds-gg3">
-                                <rect key="frame" x="94" y="37" width="131" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尺寸：100*100mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yeb-ds-gg3">
+                                <rect key="frame" x="94" y="37" width="104.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="克重：100G" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7T-C8-LGm">
-                                <rect key="frame" x="94" y="70" width="66" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数量:1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7T-C8-LGm">
+                                <rect key="frame" x="94" y="70" width="56" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -90,6 +84,12 @@
                                     <action selector="messageAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sJk-er-pbq"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M型纸袋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxK-Rx-79p">
+                                <rect key="frame" x="94" y="12" width="54.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.64705882349999999" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -122,9 +122,12 @@
                                 <rect key="frame" x="233" y="3" width="74" height="28"/>
                                 <color key="backgroundColor" red="0.64705882349999999" green="0.52549019610000003" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="   查看进度   ">
                                     <color key="titleColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <state key="disabled" title="等待报价"/>
+                                <state key="selected" title="确认报价"/>
                                 <connections>
                                     <action selector="orderDetailAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="q6Z-Rh-qyB"/>
                                 </connections>
@@ -173,7 +176,15 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="buyButton" destination="hCB-pn-ZEE" id="1V7-A6-ISU"/>
+                <outlet property="count" destination="K7T-C8-LGm" id="V8q-NE-udB"/>
                 <outlet property="orderButton" destination="H1X-yX-8Ee" id="xgk-GN-YZ3"/>
+                <outlet property="plicsLb" destination="Djn-2Q-9K1" id="FYl-K2-Ki3"/>
+                <outlet property="priceLb" destination="4dD-xO-zkl" id="OOH-ZO-qtN"/>
+                <outlet property="sizeLb" destination="Yeb-ds-gg3" id="FVS-Nn-5f5"/>
+                <outlet property="statuLb" destination="eeB-aM-rid" id="yX4-ee-vEn"/>
+                <outlet property="statuTime" destination="x0q-Jl-Lr3" id="G9j-7V-4ia"/>
+                <outlet property="typeName" destination="yxK-Rx-79p" id="wb2-L9-ndz"/>
+                <outlet property="typePic" destination="4gP-ir-n85" id="bJo-Zq-SX0"/>
             </connections>
             <point key="canvasLocation" x="356" y="370"/>
         </tableViewCell>

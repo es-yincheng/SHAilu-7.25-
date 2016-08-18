@@ -68,35 +68,41 @@
 }
 
 // 加载网络图片
-- (void)loadImagesWithUrl:(NSArray *)array{
-    _picArray = array;
-    int index = 0;
+//- (void)loadImagesWithUrl:(NSArray *)images colors:(NSArray *)colors{
+
+- (void)loadWithData:(NSDictionary *)data{
+    
+    if (!data) {
+        return;
+    }
+    
+    if (![data yc_objectForKey:@"image"]) {
+        return;
+    }
+    
+    NSArray *images = [data yc_objectForKey:@"image"];
+//    NSArray *colors = [data yc_objectForKey:@"color"];
+//    NSArray *titls = [data yc_objectForKey:@"title"];
+//    NSArray *info = [data yc_objectForKey:@"info"];
+//    NSArray *descrip = [data yc_objectForKey:@"descrip"];
+    
+    _picArray = images;
     [scrollview.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    for(NSString * name in array){
+    for(NSInteger index=0; index<[images count]; index++){
         CardCell *iv = [[CardCell alloc] initWithFrame:CGRectMake(CellWidth*index, self.frame.origin.y + 64 + 15, CellWidth, CellHeight)];
         iv.frame = CGRectMake(CellWidth*index, self.frame.origin.y + 64 + 15, CellWidth, CellHeight);
-        iv.typeIcon.layer.cornerRadius = CellWidth*3/5/2;
+//        iv.typeIcon.layer.cornerRadius = CellWidth*3/5/2;
         
-        switch (index) {
-            case 0:
-                iv.backgroundColor = [UIColor colorWithRed:0.957 green:0.843 blue:0.576 alpha:1.000];
-                break;
-            case 1:
-                iv.backgroundColor = [UIColor colorWithRed:0.961 green:0.773 blue:0.576 alpha:1.000];
-                break;
-            case 2:
-                iv.backgroundColor = [UIColor colorWithRed:0.953 green:0.804 blue:0.565 alpha:1.000];
-                break;
-            case 3:
-                iv.backgroundColor = [UIColor colorWithRed:0.914 green:0.725 blue:0.588 alpha:1.000];
-                break;
-                
-            default:
-                break;
-        }
-
-        iv.typeIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"bz_%d",index+1]];
+        
+//        iv.backgroundColor = [colors yc_objectAtIndex:index];
+//        iv.typeIcon.image  = [UIImage imageNamed:[NSString stringWithFormat:@"category_%ld",index+1]];
+//        iv.title.text      = [titls yc_objectAtIndex:index];
+//        iv.info.text       = [info yc_objectAtIndex:index];
+//        iv.descrip.text    = [descrip yc_objectAtIndex:index];
+//        iv.orderBt.tag     = index;
+        
+        [iv configWithData:data index:index];
         
         if (index != 0) {
             CGRect image = iv.bounds;
@@ -108,11 +114,9 @@
         
         [scrollview addSubview:iv];
         [self.imageViewArray addObject:iv];
-        iv.tag = index;
-        
-        index++;
+//        iv.tag = index;
     }
-    scrollview.contentSize = CGSizeMake((scrollview.frame.size.width) * index, 0);
+    scrollview.contentSize = CGSizeMake((scrollview.frame.size.width) * [images count], 0);
 }
 
 // 滚动时改变大小

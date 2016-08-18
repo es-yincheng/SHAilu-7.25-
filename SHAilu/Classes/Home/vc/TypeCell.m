@@ -10,6 +10,8 @@
 
 @interface TypeCell()
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLb;
+@property (weak, nonatomic) IBOutlet UIImageView *childIcon;
 
 
 @end
@@ -19,6 +21,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 //    self.backgroundColor = [UIColor randomColor];
+}
+
+- (void)configWithData:(id)data{
+    _childIcon.image = [UIImage imageNamed:[data yc_objectForKey:@"pic"]];
+    _titleLb.text = [data yc_objectForKey:@"title"];
 }
 
 @end

@@ -36,7 +36,8 @@
             </constraints>
             <size key="customSize" width="197" height="181"/>
             <connections>
-                <outlet property="imageIcon" destination="LYf-aC-gfm" id="xj0-8t-2W3"/>
+                <outlet property="childIcon" destination="LYf-aC-gfm" id="5Ib-zO-6ai"/>
+                <outlet property="titleLb" destination="xoc-Q8-NdN" id="TEr-bw-wyI"/>
             </connections>
             <point key="canvasLocation" x="542.5" y="586.5"/>
         </collectionViewCell>

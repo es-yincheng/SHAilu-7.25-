@@ -43,7 +43,12 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"定制";
-    [self setData];
+    
+    
+    
+    [self.typeArray addObjectsFromArray:_startData];
+    
+//    [self setData];
     [self setCollection];
     _markText.layer.borderWidth = 1;
     _markText.layer.borderColor = YCCellLineColor.CGColor;
@@ -54,10 +59,10 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(showSelectCustomizeItem:)
-                                                 name:@"HiddenCustomizItemView"
-                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(showSelectCustomizeItem:)
+//                                                 name:@"HiddenCustomizItemView"
+//                                               object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -122,22 +127,22 @@ static NSString *placeHolder = @"如有其它需求,请备注";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)showSelectCustomizeItem:(NSNotification *)notifaction{
-    NSMutableArray *items = notifaction.object;
-    
-    NSInteger itemCount = 0;
-    for (NSArray *temp in items) {
-        for (NSString *temStr in temp) {
-            if ([temStr isEqualToString:@"b"]) {
-                itemCount ++;
-            }
-        }
-    }
-    
-    _selectItems.text = [NSString stringWithFormat:@"选中了 %ld 个Item！",(long)itemCount];
-    
-    [self hiddenBackView];
-}
+//- (void)showSelectCustomizeItem:(NSNotification *)notifaction{
+//    NSMutableArray *items = notifaction.object;
+//    
+//    NSInteger itemCount = 0;
+//    for (NSArray *temp in items) {
+//        for (NSString *temStr in temp) {
+//            if ([temStr isEqualToString:@"b"]) {
+//                itemCount ++;
+//            }
+//        }
+//    }
+//    
+//    _selectItems.text = [NSString stringWithFormat:@"选中了 %ld 个Item！",(long)itemCount];
+//    
+//    [self hiddenBackView];
+//}
 
 - (void)hiddenBackView{
     POPSpringAnimation *spring = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
@@ -170,10 +175,7 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 #pragma mark Collection
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (collectionView.tag == 1000) {
-        //        NSInteger count = self.typeArray.count;
-        //        NSLog(@"self.typeArray.count:%lu",count);
-        //        return self.typeArray.count
-        return 6;
+        return [_typeArray count];
     }
     return 4;
 }
@@ -181,8 +183,10 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView.tag == 1000) {
         TypeCell *cell = [_typeCollection dequeueReusableCellWithReuseIdentifier:@"TypeCell" forIndexPath:indexPath];
-        cell.imageIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"bz_%ld",(long)(indexPath.row+1)]];
-        if ([self.selectTypeArray[indexPath.row] isEqualToString:@"b"]) {
+        [cell configWithData:[_typeArray yc_objectAtIndex:indexPath.row]];
+//        cell.imageIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"bz_%ld",(long)(indexPath.row+1)]];
+        if ([self.selectTypeArray[indexPath.row] isKindOfClass:[NSString class]] &&
+            [self.selectTypeArray[indexPath.row] isEqualToString:@"b"]) {
             cell.layer.masksToBounds = YES;
             cell.layer.cornerRadius = 8;
             cell.layer.borderColor = YCNavTitleColor.CGColor;
@@ -262,9 +266,9 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 }
 
 #pragma mark - setData
-- (void)setData{
-    [self.typeArray addObjectsFromArray:@[@"a",@"b",@"d",@"",@"d"]];
-}
+//- (void)setData{
+//    [self.typeArray addObjectsFromArray:@[@"a",@"b",@"d",@"",@"d"]];
+//}
 
 
 #pragma mark - setUI
@@ -287,7 +291,8 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 #pragma mark - lazy
 - (NSMutableArray *)selectTypeArray{
     if (!_selectTypeArray) {
-        _selectTypeArray = [[NSMutableArray alloc] initWithObjects:@"a",@"a",@"a",@"a",@"a",@"a", nil];
+//        _selectTypeArray = [[NSMutableArray alloc] initWithObjects:@"a",@"a",@"a",@"a",@"a",@"a", nil];
+        _selectTypeArray = [[NSMutableArray alloc] initWithArray:_typeArray];
     }
     return _selectTypeArray;
 }

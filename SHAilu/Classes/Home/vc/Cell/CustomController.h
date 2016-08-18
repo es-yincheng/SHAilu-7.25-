@@ -10,4 +10,6 @@
 
 @interface CustomController : UIViewController
 
+@property (nonatomic, strong) NSArray *startData;
+
 @end

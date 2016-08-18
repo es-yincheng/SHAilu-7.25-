@@ -106,6 +106,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     OrderCell *cell = [_tableView dequeueReusableCellWithIdentifier:@"OrderCell"];
     [cell.buyButton addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
+    [cell configWithData:@{@"status":[NSString stringWithFormat:@"%ld",(long)indexPath.row]}];
     return cell;
 }
 

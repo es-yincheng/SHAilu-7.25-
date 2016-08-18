@@ -10,6 +10,8 @@
 
 @interface TypeCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
+//@property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
+
+- (void)configWithData:(id)data;
 
 @end

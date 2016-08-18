@@ -50,7 +50,7 @@
                     <rect key="frame" x="0.0" y="379" width="320" height="148.5"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7Q-Wr-pbl">
-                            <rect key="frame" x="35" y="55" width="250" height="38"/>
+                            <rect key="frame" x="35" y="56" width="250" height="38"/>
                             <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="38" id="65C-vy-rwF"/>
@@ -105,6 +105,10 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
                 <outlet property="backImage" destination="fSx-nm-rVu" id="yZf-rr-uxE"/>
+                <outlet property="descrip" destination="trr-XU-6f5" id="8tg-jW-PXI"/>
+                <outlet property="info" destination="918-ao-ALC" id="Lba-Nb-t3Q"/>
+                <outlet property="orderBt" destination="U7Q-Wr-pbl" id="hHW-KZ-dPl"/>
+                <outlet property="title" destination="Kwd-Sb-34C" id="dI0-4T-SG4"/>
                 <outlet property="typeDetail" destination="trr-XU-6f5" id="s0a-pb-ssC"/>
                 <outlet property="typeIcon" destination="4xk-Bf-c2I" id="hXZ-fx-Vpt"/>
                 <outlet property="typeInfo" destination="918-ao-ALC" id="w3u-e1-cAR"/>

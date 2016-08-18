@@ -10,6 +10,13 @@
 
 @interface CardCell : UIView
 
+@property (weak, nonatomic) IBOutlet UIButton *orderBt;
+
 @property (weak, nonatomic) IBOutlet UIImageView *typeIcon;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *info;
+@property (weak, nonatomic) IBOutlet UILabel *descrip;
+
+- (void)configWithData:(NSDictionary *)data index:(NSInteger)index;
 
 @end

@@ -159,7 +159,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView.tag == 1000) {
         TypeCell *cell = [_typeCollection dequeueReusableCellWithReuseIdentifier:@"TypeCell" forIndexPath:indexPath];
-        cell.imageIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"bz_%ld",(long)(indexPath.row+1)]];
+//        cell.imageIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"bz_%ld",(long)(indexPath.row+1)]];
         if ([self.selectTypeArray[indexPath.row] isEqualToString:@"b"]) {
             cell.layer.masksToBounds = YES;
             cell.layer.cornerRadius = 8;

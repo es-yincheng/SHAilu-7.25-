@@ -21,7 +21,9 @@
 /**
  * 加载网络图片
  **/
-- (void)loadImagesWithUrl:(NSArray *)array;
+//- (void)loadImagesWithUrl:(NSArray *)array;
+//- (void)loadImagesWithUrl:(NSArray *)images colors:(NSArray *)colors;
+- (void)loadWithData:(NSDictionary *)data;
 
 /**
  * 滑动时抽屉效果

@@ -180,6 +180,7 @@
 		58B27E6D1D62EAC10065322F /* SpecChildCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B27E6B1D62EAC10065322F /* SpecChildCell.m */; };
 		58B27E6E1D62EAC10065322F /* SpecChildCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B27E6C1D62EAC10065322F /* SpecChildCell.xib */; };
 		58B27E701D62FBD60065322F /* SpecsToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B27E6F1D62FBD60065322F /* SpecsToolBar.xib */; };
+		58B27E731D6458B00065322F /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B27E721D6458B00065322F /* CategoryModel.m */; };
 		58B968251D3DC032000051A9 /* MJChiBaoZiHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B968241D3DC032000051A9 /* MJChiBaoZiHeader.m */; };
 		58B968271D3DC4FF000051A9 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 58B968261D3DC4FF000051A9 /* loading.gif */; };
 		58B9682B1D3DD8F3000051A9 /* RGCardViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B9682A1D3DD8F3000051A9 /* RGCardViewLayout.m */; };
@@ -545,6 +546,8 @@
 		58B27E6B1D62EAC10065322F /* SpecChildCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecChildCell.m; sourceTree = "<group>"; };
 		58B27E6C1D62EAC10065322F /* SpecChildCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecChildCell.xib; sourceTree = "<group>"; };
 		58B27E6F1D62FBD60065322F /* SpecsToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecsToolBar.xib; sourceTree = "<group>"; };
+		58B27E711D6458B00065322F /* CategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryModel.h; sourceTree = "<group>"; };
+		58B27E721D6458B00065322F /* CategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryModel.m; sourceTree = "<group>"; };
 		58B968231D3DC032000051A9 /* MJChiBaoZiHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJChiBaoZiHeader.h; sourceTree = "<group>"; };
 		58B968241D3DC032000051A9 /* MJChiBaoZiHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJChiBaoZiHeader.m; sourceTree = "<group>"; };
 		58B968261D3DC4FF000051A9 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
@@ -1468,6 +1471,8 @@
 				58B27E461D618B710065322F /* UserModel.h */,
 				58B27E471D618B710065322F /* UserModel.m */,
 				58A192E31D3CCD9D0094EFC9 /* Order */,
+				58B27E711D6458B00065322F /* CategoryModel.h */,
+				58B27E721D6458B00065322F /* CategoryModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2148,6 +2153,7 @@
 				58BBC1121D5B273C0081E23D /* JSQMessagesInputToolbar.m in Sources */,
 				582703641D34D6B600C8209A /* ViewController.m in Sources */,
 				58BBC0FB1D5B273C0081E23D /* JSQMessagesTimestampFormatter.m in Sources */,
+				58B27E731D6458B00065322F /* CategoryModel.m in Sources */,
 				58A17FBA1D46098200E812F8 /* NSString+Custom.m in Sources */,
 				58A1930A1D3CDEB80094EFC9 /* MBProgressHUD.m in Sources */,
 				583E805F1D40A9080077EEE1 /* OrderDetailController.m in Sources */,
