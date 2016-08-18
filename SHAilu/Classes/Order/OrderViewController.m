@@ -12,6 +12,8 @@
 #import "MJChiBaoZiHeader.h"
 #import "MJDiyFooter.h"
 #import "UIImage+GIF.h"
+#import "OrderStatusController.h"
+#import "OrderDetailController.h"
 
 @interface OrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -32,7 +34,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.automaticallyAdjustsScrollViewInsets = false;
 
-    [self.dataSource addObjectsFromArray:@[@"",@"",@""]];
+    [self.dataSource addObjectsFromArray:@[@"",@"",@"",@""]];
     self.title = @"订单";
     
 //    _busyView= [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWith/2-35, ScreenHeight/2-100, 70, 70)];
@@ -54,7 +56,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:2.0f];
+//    [self performSelector:@selector(loadData) withObject:nil afterDelay:2.0f];
+    [self loadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,6 +75,13 @@
     _buyView.alpha = 1;
     _buyView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
     [_buyCount becomeFirstResponder];
+}
+
+- (IBAction)orderDetailAction:(id)sender {
+    OrderStatusController *vc = [[OrderStatusController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+    YCTabBarController *tabBarController = (YCTabBarController*)self.tabBarController;
+    tabBarController.customView.hidden = YES;
 }
 
 - (IBAction)buyOkAction:(id)sender{
@@ -103,16 +113,27 @@
     return self.dataSource.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        return 210;
+    } else {
+        return 210 - 60;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     OrderCell *cell = [_tableView dequeueReusableCellWithIdentifier:@"OrderCell"];
+        
+    [cell.orderButton addTarget:self action:@selector(orderDetailAction:) forControlEvents:UIControlEventTouchUpInside];
     [cell.buyButton addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
     [cell configWithData:@{@"status":[NSString stringWithFormat:@"%ld",(long)indexPath.row]}];
     return cell;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    OrderDetailController *vc = [[OrderDetailController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     //indexpath第一次加载的有动画  否则没有
@@ -144,13 +165,15 @@
 - (void)setTableView{
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.backgroundColor = YCCellLineColor;
 //    _tableView.estimatedRowHeight = 250;
 //    _tableView.rowHeight = UITableViewRowAnimationRight;
-    _tableView.rowHeight = 210;
+//    _tableView.rowHeight = 210;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [_tableView registerNib:[UINib nibWithNibName:@"OrderCell" bundle:nil] forCellReuseIdentifier:@"OrderCell"];
     _tableView.mj_header = [MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
-    _tableView.mj_footer = [MJDiyFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+//    _tableView.mj_footer = [MJDiyFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     
 }
 

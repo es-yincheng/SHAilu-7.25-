@@ -46,8 +46,8 @@
                             <constraint firstItem="lah-2i-P9q" firstAttribute="centerY" secondItem="D8x-BT-Lbm" secondAttribute="centerY" id="mhp-ul-Xcm"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主材质" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjZ-ki-U2Y">
-                        <rect key="frame" x="18" y="54" width="39" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="材料A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjZ-ki-U2Y">
+                        <rect key="frame" x="18" y="54" width="35" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -207,6 +207,7 @@
                 <outlet property="materialLb" destination="PjZ-ki-U2Y" id="fbB-k4-EP8"/>
                 <outlet property="title" destination="lah-2i-P9q" id="DKu-95-3qY"/>
                 <outlet property="titleView" destination="D8x-BT-Lbm" id="w1F-22-Hj6"/>
+                <outlet property="typeTitle" destination="PjZ-ki-U2Y" id="VnE-tD-77b"/>
                 <outlet property="weight" destination="sh5-Cb-XOz" id="jdw-9T-aeZ"/>
                 <outlet property="weightButton" destination="3cI-rG-2ZQ" id="xWu-xZ-hCT"/>
                 <outlet property="weightLb" destination="6ZZ-gL-cFx" id="qy7-fN-ZdV"/>

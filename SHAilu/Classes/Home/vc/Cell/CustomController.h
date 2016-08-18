@@ -11,5 +11,6 @@
 @interface CustomController : UIViewController
 
 @property (nonatomic, strong) NSArray *startData;
+@property (nonatomic, assign) NSInteger startIndex;
 
 @end

@@ -59,8 +59,6 @@
 		583155E51D37356800F612F9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 583155E41D37356800F612F9 /* LoginViewController.m */; };
 		583155E71D37358100F612F9 /* LoginAndRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 583155E61D37358100F612F9 /* LoginAndRegister.storyboard */; };
 		583155F11D3774AD00F612F9 /* YCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 583155F01D3774AD00F612F9 /* YCNavigationController.m */; };
-		583E80451D4065270077EEE1 /* CustomizeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 583E80431D4065270077EEE1 /* CustomizeController.m */; };
-		583E80461D4065270077EEE1 /* CustomizeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 583E80441D4065270077EEE1 /* CustomizeController.xib */; };
 		583E804A1D4072C70077EEE1 /* TypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 583E80481D4072C70077EEE1 /* TypeCell.m */; };
 		583E804B1D4072C70077EEE1 /* TypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 583E80491D4072C70077EEE1 /* TypeCell.xib */; };
 		583E804F1D408F890077EEE1 /* SuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 583E804D1D408F890077EEE1 /* SuccessController.m */; };
@@ -70,8 +68,8 @@
 		583E80571D4097D70077EEE1 /* nav_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 583E80551D4097D70077EEE1 /* nav_close@3x.png */; };
 		583E805A1D4097E70077EEE1 /* nav_back_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 583E80581D4097E70077EEE1 /* nav_back_white@2x.png */; };
 		583E805B1D4097E70077EEE1 /* nav_back_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 583E80591D4097E70077EEE1 /* nav_back_white@3x.png */; };
-		583E805F1D40A9080077EEE1 /* OrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 583E805D1D40A9080077EEE1 /* OrderDetailController.m */; };
-		583E80601D40A9080077EEE1 /* OrderDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 583E805E1D40A9080077EEE1 /* OrderDetailController.xib */; };
+		583E805F1D40A9080077EEE1 /* OrderStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 583E805D1D40A9080077EEE1 /* OrderStatusController.m */; };
+		583E80601D40A9080077EEE1 /* OrderStatusController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 583E805E1D40A9080077EEE1 /* OrderStatusController.xib */; };
 		583E80671D40C9AB0077EEE1 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 583E80651D40C9AB0077EEE1 /* start.png */; };
 		583E80681D40C9AB0077EEE1 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 583E80661D40C9AB0077EEE1 /* home.png */; };
 		583E80701D40D8A60077EEE1 /* stepOne.gif in Resources */ = {isa = PBXBuildFile; fileRef = 583E806F1D40D8A60077EEE1 /* stepOne.gif */; };
@@ -127,6 +125,12 @@
 		589D1EA41D58305200D713A7 /* MessageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589D1EA21D58305200D713A7 /* MessageController.xib */; };
 		589D1EA61D5830D000D713A7 /* BuyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589D1EA51D5830D000D713A7 /* BuyView.xib */; };
 		589D1EA91D585D9500D713A7 /* BuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589D1EA81D585D9500D713A7 /* BuyView.m */; };
+		589EE81A1D6557EE00DFB247 /* OrderStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 589EE8181D6557EE00DFB247 /* OrderStatusCell.m */; };
+		589EE81B1D6557EE00DFB247 /* OrderStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589EE8191D6557EE00DFB247 /* OrderStatusCell.xib */; };
+		589EE81F1D659DE900DFB247 /* OrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 589EE81D1D659DE900DFB247 /* OrderDetailController.m */; };
+		589EE8201D659DE900DFB247 /* OrderDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589EE81E1D659DE900DFB247 /* OrderDetailController.xib */; };
+		589EE8241D65B3E600DFB247 /* SpecsTController.m in Sources */ = {isa = PBXBuildFile; fileRef = 589EE8221D65B3E600DFB247 /* SpecsTController.m */; };
+		589EE8251D65B3E600DFB247 /* SpecsTController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589EE8231D65B3E600DFB247 /* SpecsTController.xib */; };
 		58A17FA01D45A40200E812F8 /* YCUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A17F9F1D45A40200E812F8 /* YCUserDefaults.m */; };
 		58A17FA31D45A9D000E812F8 /* CardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A17FA21D45A9D000E812F8 /* CardCell.m */; };
 		58A17FA51D45A9E300E812F8 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A17FA41D45A9E300E812F8 /* CardCell.xib */; };
@@ -366,9 +370,6 @@
 		583155E61D37358100F612F9 /* LoginAndRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginAndRegister.storyboard; sourceTree = "<group>"; };
 		583155EF1D3774AD00F612F9 /* YCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCNavigationController.h; sourceTree = "<group>"; };
 		583155F01D3774AD00F612F9 /* YCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCNavigationController.m; sourceTree = "<group>"; };
-		583E80421D4065270077EEE1 /* CustomizeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizeController.h; sourceTree = "<group>"; };
-		583E80431D4065270077EEE1 /* CustomizeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizeController.m; sourceTree = "<group>"; };
-		583E80441D4065270077EEE1 /* CustomizeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizeController.xib; sourceTree = "<group>"; };
 		583E80471D4072C70077EEE1 /* TypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeCell.h; sourceTree = "<group>"; };
 		583E80481D4072C70077EEE1 /* TypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeCell.m; sourceTree = "<group>"; };
 		583E80491D4072C70077EEE1 /* TypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeCell.xib; sourceTree = "<group>"; };
@@ -380,9 +381,9 @@
 		583E80551D4097D70077EEE1 /* nav_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_close@3x.png"; sourceTree = "<group>"; };
 		583E80581D4097E70077EEE1 /* nav_back_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_back_white@2x.png"; sourceTree = "<group>"; };
 		583E80591D4097E70077EEE1 /* nav_back_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_back_white@3x.png"; sourceTree = "<group>"; };
-		583E805C1D40A9080077EEE1 /* OrderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailController.h; sourceTree = "<group>"; };
-		583E805D1D40A9080077EEE1 /* OrderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailController.m; sourceTree = "<group>"; };
-		583E805E1D40A9080077EEE1 /* OrderDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailController.xib; sourceTree = "<group>"; };
+		583E805C1D40A9080077EEE1 /* OrderStatusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatusController.h; sourceTree = "<group>"; };
+		583E805D1D40A9080077EEE1 /* OrderStatusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatusController.m; sourceTree = "<group>"; };
+		583E805E1D40A9080077EEE1 /* OrderStatusController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatusController.xib; sourceTree = "<group>"; };
 		583E80651D40C9AB0077EEE1 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
 		583E80661D40C9AB0077EEE1 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		583E806F1D40D8A60077EEE1 /* stepOne.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = stepOne.gif; sourceTree = "<group>"; };
@@ -459,6 +460,15 @@
 		589D1EA51D5830D000D713A7 /* BuyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyView.xib; sourceTree = "<group>"; };
 		589D1EA71D585D9500D713A7 /* BuyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyView.h; sourceTree = "<group>"; };
 		589D1EA81D585D9500D713A7 /* BuyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyView.m; sourceTree = "<group>"; };
+		589EE8171D6557EE00DFB247 /* OrderStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatusCell.h; sourceTree = "<group>"; };
+		589EE8181D6557EE00DFB247 /* OrderStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatusCell.m; sourceTree = "<group>"; };
+		589EE8191D6557EE00DFB247 /* OrderStatusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatusCell.xib; sourceTree = "<group>"; };
+		589EE81C1D659DE900DFB247 /* OrderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailController.h; sourceTree = "<group>"; };
+		589EE81D1D659DE900DFB247 /* OrderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailController.m; sourceTree = "<group>"; };
+		589EE81E1D659DE900DFB247 /* OrderDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailController.xib; sourceTree = "<group>"; };
+		589EE8211D65B3E600DFB247 /* SpecsTController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecsTController.h; sourceTree = "<group>"; };
+		589EE8221D65B3E600DFB247 /* SpecsTController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecsTController.m; sourceTree = "<group>"; };
+		589EE8231D65B3E600DFB247 /* SpecsTController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecsTController.xib; sourceTree = "<group>"; };
 		58A17F9E1D45A40200E812F8 /* YCUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCUserDefaults.h; sourceTree = "<group>"; };
 		58A17F9F1D45A40200E812F8 /* YCUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCUserDefaults.m; sourceTree = "<group>"; };
 		58A17FA11D45A9D000E812F8 /* CardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCell.h; sourceTree = "<group>"; };
@@ -1100,8 +1110,9 @@
 		583155CA1D35F59E00F612F9 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				589EE8161D6552E500DFB247 /* detail */,
 				589D1E9F1D58303E00D713A7 /* message */,
-				58A192D41D3CAA670094EFC9 /* OrderDetail */,
+				58A192D41D3CAA670094EFC9 /* orderstatus */,
 				58A192C31D3C725C0094EFC9 /* view */,
 				583155D21D360BBC00F612F9 /* OrderViewController.h */,
 				583155D31D360BBC00F612F9 /* OrderViewController.m */,
@@ -1155,9 +1166,6 @@
 			children = (
 				58B27E4C1D61B0490065322F /* specs */,
 				5884E8E81D41F9960068C438 /* Cell */,
-				583E80421D4065270077EEE1 /* CustomizeController.h */,
-				583E80431D4065270077EEE1 /* CustomizeController.m */,
-				583E80441D4065270077EEE1 /* CustomizeController.xib */,
 				583E80471D4072C70077EEE1 /* TypeCell.h */,
 				583E80481D4072C70077EEE1 /* TypeCell.m */,
 				583E80491D4072C70077EEE1 /* TypeCell.xib */,
@@ -1335,6 +1343,16 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		589EE8161D6552E500DFB247 /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				589EE81C1D659DE900DFB247 /* OrderDetailController.h */,
+				589EE81D1D659DE900DFB247 /* OrderDetailController.m */,
+				589EE81E1D659DE900DFB247 /* OrderDetailController.xib */,
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
 		58A17F9D1D45A3DE00E812F8 /* NSUserDefaults */ = {
 			isa = PBXGroup;
 			children = (
@@ -1428,16 +1446,17 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		58A192D41D3CAA670094EFC9 /* OrderDetail */ = {
+		58A192D41D3CAA670094EFC9 /* orderstatus */ = {
 			isa = PBXGroup;
 			children = (
 				58A192D81D3CAD8C0094EFC9 /* view */,
 				58A192D51D3CAA7D0094EFC9 /* OrderDetail.h */,
 				58A192D61D3CAA7D0094EFC9 /* OrderDetail.m */,
-				583E805C1D40A9080077EEE1 /* OrderDetailController.h */,
-				583E805D1D40A9080077EEE1 /* OrderDetailController.m */,
-				583E805E1D40A9080077EEE1 /* OrderDetailController.xib */,
+				583E805C1D40A9080077EEE1 /* OrderStatusController.h */,
+				583E805D1D40A9080077EEE1 /* OrderStatusController.m */,
+				583E805E1D40A9080077EEE1 /* OrderStatusController.xib */,
 			);
+			name = orderstatus;
 			path = OrderDetail;
 			sourceTree = "<group>";
 		};
@@ -1450,6 +1469,9 @@
 				58A192E71D3CD56F0094EFC9 /* OrderFooter.h */,
 				58A192E81D3CD56F0094EFC9 /* OrderFooter.m */,
 				58A192E91D3CD56F0094EFC9 /* OrderFooter.xib */,
+				589EE8171D6557EE00DFB247 /* OrderStatusCell.h */,
+				589EE8181D6557EE00DFB247 /* OrderStatusCell.m */,
+				589EE8191D6557EE00DFB247 /* OrderStatusCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1553,6 +1575,9 @@
 				58B27E501D61B3C60065322F /* cell */,
 				58B27E4D1D61B32C0065322F /* SpecsController.h */,
 				58B27E4E1D61B32C0065322F /* SpecsController.m */,
+				589EE8211D65B3E600DFB247 /* SpecsTController.h */,
+				589EE8221D65B3E600DFB247 /* SpecsTController.m */,
+				589EE8231D65B3E600DFB247 /* SpecsTController.xib */,
 			);
 			path = specs;
 			sourceTree = "<group>";
@@ -1978,6 +2003,7 @@
 				583E80501D408F890077EEE1 /* SuccessController.xib in Resources */,
 				583E80571D4097D70077EEE1 /* nav_close@3x.png in Resources */,
 				58A17FB01D45FD8800E812F8 /* bz_2.png in Resources */,
+				589EE81B1D6557EE00DFB247 /* OrderStatusCell.xib in Resources */,
 				58BBC10E1D5B273C0081E23D /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				58B968271D3DC4FF000051A9 /* loading.gif in Resources */,
 				583E80531D4091620077EEE1 /* success.gif in Resources */,
@@ -1985,7 +2011,7 @@
 				5884E8E41D41F95A0068C438 /* defaultphoto.png in Resources */,
 				58F35E2D1D41E4FB00BEC3BE /* backImage.png in Resources */,
 				58A17FA51D45A9E300E812F8 /* CardCell.xib in Resources */,
-				583E80601D40A9080077EEE1 /* OrderDetailController.xib in Resources */,
+				583E80601D40A9080077EEE1 /* OrderStatusController.xib in Resources */,
 				589D1E9E1D581FAE00D713A7 /* CustomController.xib in Resources */,
 				58B27E6E1D62EAC10065322F /* SpecChildCell.xib in Resources */,
 				5884E8DD1D41F95A0068C438 /* btn_circle@3x.png in Resources */,
@@ -1996,16 +2022,17 @@
 				582703DE1D34DA6B00C8209A /* nav_back_white@2x.png in Resources */,
 				5884E8E31D41F95A0068C438 /* btn_unselected@3x.png in Resources */,
 				58BBC0F01D5B273C0081E23D /* JSQMessagesAssets.bundle in Resources */,
-				583E80461D4065270077EEE1 /* CustomizeController.xib in Resources */,
 				582703E21D34DA6B00C8209A /* nav_search_gray@2x.png in Resources */,
 				5884E8E21D41F95A0068C438 /* btn_unselected@2x.png in Resources */,
 				58B27E5F1D62A1D30065322F /* View.xib in Resources */,
 				583E80721D40DE470077EEE1 /* stepTwo.gif in Resources */,
+				589EE8251D65B3E600DFB247 /* SpecsTController.xib in Resources */,
 				583E80741D40DE570077EEE1 /* stepThree.gif in Resources */,
 				58AFFFBA1D4A253F0084DFB0 /* test.gif in Resources */,
 				58BBBFE31D5AD2EC0081E23D /* MessageRightCell.xib in Resources */,
 				58B27E641D62A69B0065322F /* SelectCell.xib in Resources */,
 				58BBC1181D5B273C0081E23D /* JSQMessagesToolbarContentView.xib in Resources */,
+				589EE8201D659DE900DFB247 /* OrderDetailController.xib in Resources */,
 				5884E8E61D41F95A0068C438 /* navBackBtn@2x.png in Resources */,
 				58BBC0F71D5B273C0081E23D /* JSQMessagesViewController.xib in Resources */,
 			);
@@ -2083,7 +2110,6 @@
 				5884E8CD1D41F95A0068C438 /* SelectPhotoTool.m in Sources */,
 				5884E8D61D41F95A0068C438 /* YCPhotoBrowserCell.m in Sources */,
 				58B27E631D62A69B0065322F /* SelectCell.m in Sources */,
-				583E80451D4065270077EEE1 /* CustomizeController.m in Sources */,
 				58B27E6D1D62EAC10065322F /* SpecChildCell.m in Sources */,
 				583155E51D37356800F612F9 /* LoginViewController.m in Sources */,
 				582703E61D34DA6B00C8209A /* UIFactory.m in Sources */,
@@ -2109,6 +2135,7 @@
 				58A192EA1D3CD56F0094EFC9 /* OrderFooter.m in Sources */,
 				5884E8D01D41F95A0068C438 /* YCBigImageCell.m in Sources */,
 				583155F11D3774AD00F612F9 /* YCNavigationController.m in Sources */,
+				589EE81F1D659DE900DFB247 /* OrderDetailController.m in Sources */,
 				58B27E591D61B8B30065322F /* PliesCell.m in Sources */,
 				583E804F1D408F890077EEE1 /* SuccessController.m in Sources */,
 				5884E8D51D41F95A0068C438 /* YCPhotoBrowser.m in Sources */,
@@ -2131,6 +2158,7 @@
 				58A17FAA1D45E27500E812F8 /* YCNibManager.m in Sources */,
 				58A17FCF1D46221A00E812F8 /* AnimationFactory.m in Sources */,
 				58BBC1051D5B273C0081E23D /* JSQMessage.m in Sources */,
+				589EE8241D65B3E600DFB247 /* SpecsTController.m in Sources */,
 				58B27E541D61B46B0065322F /* SizeCell.m in Sources */,
 				5884E8D41D41F95A0068C438 /* YCPhotoAblumList.m in Sources */,
 				58BBBFDD1D5AD2D20081E23D /* MessageLeftCell.m in Sources */,
@@ -2156,7 +2184,7 @@
 				58B27E731D6458B00065322F /* CategoryModel.m in Sources */,
 				58A17FBA1D46098200E812F8 /* NSString+Custom.m in Sources */,
 				58A1930A1D3CDEB80094EFC9 /* MBProgressHUD.m in Sources */,
-				583E805F1D40A9080077EEE1 /* OrderDetailController.m in Sources */,
+				583E805F1D40A9080077EEE1 /* OrderStatusController.m in Sources */,
 				58BBC1071D5B273C0081E23D /* JSQMessagesBubbleImage.m in Sources */,
 				58BBC1111D5B273C0081E23D /* JSQMessagesComposerTextView.m in Sources */,
 				584B8F011D47019C000FA571 /* CustomizeItemView.m in Sources */,
@@ -2209,6 +2237,7 @@
 				58BBC1171D5B273C0081E23D /* JSQMessagesToolbarContentView.m in Sources */,
 				58A193081D3CDEB80094EFC9 /* MBProgressHUD+MJ.m in Sources */,
 				5884E8D21D41F95A0068C438 /* YCNoAuthorityViewController.m in Sources */,
+				589EE81A1D6557EE00DFB247 /* OrderStatusCell.m in Sources */,
 				58A192FC1D3CDE250094EFC9 /* BaseService.m in Sources */,
 				58BBC1031D5B273C0081E23D /* JSQLocationMediaItem.m in Sources */,
 				5827041C1D34DC2300C8209A /* NSDictionary+Custom.m in Sources */,

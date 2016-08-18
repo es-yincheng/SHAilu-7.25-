@@ -8,7 +8,7 @@
 
 #import "OrderCell.h"
 //#import "OrderDetail.h"
-#import "OrderDetailController.h"
+#import "OrderStatusController.h"
 #import "MessageController.h"
 #import "DemoMessagesViewController.h"
 
@@ -23,6 +23,8 @@ typedef NS_ENUM(NSInteger, OrderStatus) {
     OrderStatus orderStatus;
 }
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *statuViewHeight;
+@property (weak, nonatomic) IBOutlet UIView *statusView;
 @property (weak, nonatomic) IBOutlet UILabel *statuLb;
 @property (weak, nonatomic) IBOutlet UILabel *statuTime;
 @property (weak, nonatomic) IBOutlet UIImageView *typePic;
@@ -32,7 +34,6 @@ typedef NS_ENUM(NSInteger, OrderStatus) {
 @property (weak, nonatomic) IBOutlet UILabel *count;
 @property (weak, nonatomic) IBOutlet UILabel *priceLb;
 
-@property (weak, nonatomic) IBOutlet UIButton *orderButton;
 @property (weak, nonatomic) IBOutlet UIView *buyView;
 
 @end
@@ -45,7 +46,8 @@ typedef NS_ENUM(NSInteger, OrderStatus) {
     _orderButton.layer.cornerRadius = 4;
     _buyButton.layer.masksToBounds = YES;
     _buyButton.layer.cornerRadius = 4;
-    
+    _statusView.clipsToBounds = YES;
+    self.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -60,15 +62,12 @@ typedef NS_ENUM(NSInteger, OrderStatus) {
     [self.viewController.view addSubview:self.buyView];
 }
 
-- (IBAction)orderDetailAction:(id)sender {
-
-    
-    
-    OrderDetailController *vc = [[OrderDetailController alloc] init];
-    [self.viewController.navigationController pushViewController:vc animated:YES];
-    YCTabBarController *tabBarController = (YCTabBarController*)self.viewController.tabBarController;
-    tabBarController.customView.hidden = YES;
-}
+//- (IBAction)orderDetailAction:(id)sender {
+//    OrderDetailController *vc = [[OrderDetailController alloc] init];
+//    [self.viewController.navigationController pushViewController:vc animated:YES];
+//    YCTabBarController *tabBarController = (YCTabBarController*)self.viewController.tabBarController;
+//    tabBarController.customView.hidden = YES;
+//}
 
 - (IBAction)messageAction:(id)sender {
     DemoMessagesViewController *vc = [[DemoMessagesViewController alloc] init];
@@ -94,34 +93,40 @@ typedef NS_ENUM(NSInteger, OrderStatus) {
             _buyButton.hidden = YES;
             _orderButton.enabled = NO;
             _orderButton.backgroundColor = [UIColor lightGrayColor];
+            _priceLb.text = @"等待报价";
             
             break;
         case OrderStatusWaitStart:
             NSLog(@"OrderStatusWaitStart");
             
+            _statuViewHeight.constant = 0.1f;
             _buyButton.hidden = YES;
             _orderButton.enabled = YES;
             _orderButton.selected = YES;
             _orderButton.backgroundColor = YCNavTitleColor;
+            _priceLb.text = @"等待确认报价";
             
             break;
         case OrderStatusStart:
             NSLog(@"OrderStatusStart");
             
+            _statuViewHeight.constant = 0.1f;
             _buyButton.hidden = NO;
             _orderButton.enabled = YES;
             _orderButton.selected = NO;
             _orderButton.backgroundColor = YCNavTitleColor;
+            _priceLb.text = @"定制中";
             
             break;
         case OrderStatusFinish:
             NSLog(@"OrderStatusFinish");
             
+            _statuViewHeight.constant = 0.1f;
             _buyButton.hidden = NO;
             _orderButton.enabled = YES;
             _orderButton.selected = NO;
             _orderButton.backgroundColor = YCNavTitleColor;
-            
+            _priceLb.text = @"已交货";
             break;
             
         default:

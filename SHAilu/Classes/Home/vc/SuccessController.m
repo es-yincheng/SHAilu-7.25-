@@ -11,7 +11,7 @@
 
 @interface SuccessController ()
 
-@property (weak, nonatomic) IBOutlet FLAnimatedImageView *successIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *successIcon;
 
 @end
 
@@ -20,11 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"成功";
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"success" ofType:@"gif"];
-    //将图片转为NSData
-    NSData *gifData = [NSData dataWithContentsOfFile:path];
-    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:gifData];
-    _successIcon.animatedImage = image;
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"success" ofType:@"gif"];
+//    //将图片转为NSData
+//    NSData *gifData = [NSData dataWithContentsOfFile:path];
+//    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:gifData];
+//    _successIcon.animatedImage = image;
+
+    _successIcon.image = [UIImage imageNamed:@"success"];
     
     UIImage *backImage = [UIImage imageNamed:@"nav_back_white"];
     [backImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -36,15 +38,15 @@
     
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [_successIcon startAnimating];
-    [self performSelector:@selector(stopSuccess) withObject:nil afterDelay:3.0];
-}
+//- (void)viewDidAppear:(BOOL)animated{
+//    [super viewDidAppear:animated];
+////    [_successIcon startAnimating];
+////    [self performSelector:@selector(stopSuccess) withObject:nil afterDelay:3.0];
+//}
 
-- (void)stopSuccess{
-    [_successIcon stopAnimating];
-}
+//- (void)stopSuccess{
+//    [_successIcon stopAnimating];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

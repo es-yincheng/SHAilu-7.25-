@@ -10,4 +10,6 @@
 
 @interface SpecsController : UIViewController
 
+@property (nonatomic, assign) NSInteger startPlics;
+
 @end

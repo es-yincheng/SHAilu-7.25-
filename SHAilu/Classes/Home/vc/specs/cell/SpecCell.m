@@ -39,6 +39,7 @@ NSString *SelectIdentifier = @"SelectWeight";
 @property (weak, nonatomic) IBOutlet UIButton *weightButton;
 @property (weak, nonatomic) IBOutlet UILabel *weightLb;
 @property (nonatomic, strong) UITableView *weightTableView;
+@property (weak, nonatomic) IBOutlet UILabel *typeTitle;
 
 @end
 
@@ -136,11 +137,6 @@ NSString *SelectIdentifier = @"SelectWeight";
     [self hiddenBackView];
 }
 
-
-
-
-
-
 #pragma mark - ovrride
 - (void)configWithModel:(id)model{
     items = [model yc_objectForKey:@"material"];
@@ -153,11 +149,13 @@ NSString *SelectIdentifier = @"SelectWeight";
         self.fuView.hidden = YES;
         self.weight.text = @"克重";
         self.title.text = [NSString stringWithFormat:@"第 %@ 层",titleStr];
+        _typeTitle.text = @"材料A";
     } else {
         self.mainView.hidden = YES;
         self.fuView.hidden = NO;
         self.weight.text = @"厚度";
-        self.title.text = [NSString stringWithFormat:@"%@层",titleStr];
+        self.title.text = [NSString stringWithFormat:@"%@",titleStr];
+        _typeTitle.text = @"材料B";
     }
 }
 

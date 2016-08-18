@@ -128,9 +128,6 @@
                                 </state>
                                 <state key="disabled" title="等待报价"/>
                                 <state key="selected" title="确认报价"/>
-                                <connections>
-                                    <action selector="orderDetailAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="q6Z-Rh-qyB"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="等待报价" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dD-xO-zkl">
                                 <rect key="frame" x="12" y="9" width="52" height="16"/>
@@ -183,6 +180,8 @@
                 <outlet property="sizeLb" destination="Yeb-ds-gg3" id="FVS-Nn-5f5"/>
                 <outlet property="statuLb" destination="eeB-aM-rid" id="yX4-ee-vEn"/>
                 <outlet property="statuTime" destination="x0q-Jl-Lr3" id="G9j-7V-4ia"/>
+                <outlet property="statuViewHeight" destination="pY3-Gb-pbg" id="4qv-Ls-Opi"/>
+                <outlet property="statusView" destination="KKW-AR-kKq" id="mW6-i5-bCL"/>
                 <outlet property="typeName" destination="yxK-Rx-79p" id="wb2-L9-ndz"/>
                 <outlet property="typePic" destination="4gP-ir-n85" id="bJo-Zq-SX0"/>
             </connections>

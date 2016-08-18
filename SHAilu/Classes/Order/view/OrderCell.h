@@ -12,6 +12,7 @@
 @interface OrderCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIButton *buyButton;
+@property (weak, nonatomic) IBOutlet UIButton *orderButton;
 
 //- (void)cellWithModel:(OrderModel *)model;
 - (void)configWithData:(id)data;

@@ -1,5 +1,5 @@
 //
-//  CustomizeController.h
+//  OrderDetailController.h
 //  SHAilu
 //
 //  Created by 尹成 on 16/7/21.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomizeController : UIViewController
+@interface OrderStatusController : UIViewController
 
 @end

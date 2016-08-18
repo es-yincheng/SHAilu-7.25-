@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,7 +15,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="197" height="181"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LYf-aC-gfm">
-                        <rect key="frame" x="8" y="8" width="181" height="143.5"/>
+                        <rect key="frame" x="8" y="8" width="181" height="181"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="LYf-aC-gfm" secondAttribute="height" multiplier="1:1" id="yOZ-1m-aOu"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.5~0.6/个" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoc-Q8-NdN">
                         <rect key="frame" x="8" y="158.5" width="181" height="14.5"/>
@@ -35,6 +39,11 @@
                 <constraint firstItem="xoc-Q8-NdN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="uvR-uy-jce"/>
             </constraints>
             <size key="customSize" width="197" height="181"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="7hg-ab-nIt"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="childIcon" destination="LYf-aC-gfm" id="5Ib-zO-6ai"/>
                 <outlet property="titleLb" destination="xoc-Q8-NdN" id="TEr-bw-wyI"/>

@@ -8,7 +8,6 @@
 
 #import "MyScrollView.h"
 #import "UIImageView+WebCache.h"
-#import "CustomizeController.h"
 #import "YCTabBarController.h"
 #import "CardCell.h"
 #import "YCNibManager.h"
@@ -59,16 +58,6 @@
     }
     return self;
 }
-
-- (IBAction)customAction:(id)sender{
-    CustomizeController *vc = [[CustomizeController alloc] init];
-    [self.viewController.navigationController pushViewController:vc animated:YES];
-    YCTabBarController *tabBarController = (YCTabBarController*)self.viewController.tabBarController;
-    tabBarController.customView.hidden = YES;
-}
-
-// 加载网络图片
-//- (void)loadImagesWithUrl:(NSArray *)images colors:(NSArray *)colors{
 
 - (void)loadWithData:(NSDictionary *)data{
     

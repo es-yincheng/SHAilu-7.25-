@@ -16,6 +16,7 @@
 #import <objc/runtime.h>
 #import "CustomizeItemView.h"
 #import "SpecsController.h"
+#import "SpecsTController.h"
 
 #define CustomizeViewHeight ScreenWith*320/300
 #define CustomizeCenterY (ScreenHeight - customizeViewHeight/2)
@@ -44,7 +45,8 @@ static NSString *placeHolder = @"如有其它需求,请备注";
     [super viewDidLoad];
     self.title = @"定制";
     
-    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backItem;
     
     [self.typeArray addObjectsFromArray:_startData];
     
@@ -108,8 +110,13 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 #pragma mark - action
 - (IBAction)selectSpecificationsAction:(id)sender {
 
-    SpecsController *vc = [[SpecsController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (_startIndex == 4) {
+        SpecsTController *vc = [[SpecsTController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        SpecsController *vc = [[SpecsController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
 //    POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
 //    opacityAnimation.toValue = @(0.5);
@@ -200,6 +207,10 @@ static NSString *placeHolder = @"如有其它需求,请备注";
             //            cell.layer.cornerRadius = 8;
             cell.layer.borderColor = [UIColor clearColor].CGColor;
             cell.layer.borderWidth = 1;
+            POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+            scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1, 1)];
+            scaleAnimation.springBounciness = 25.f;
+            [cell.layer pop_addAnimation:scaleAnimation forKey:@"scaleAnim"];
         }
         return cell;
     }

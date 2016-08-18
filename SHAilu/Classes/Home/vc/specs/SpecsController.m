@@ -39,6 +39,8 @@ NSString *SelectCellIdentifier = @"SelectCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"规格";
+    
     lastPlies = 2;
     [self.view addSubview:self.tableView];
     
@@ -124,8 +126,8 @@ NSString *SelectCellIdentifier = @"SelectCell";
                     //辅料层
                     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
                                           @"auxliary",@"type",
-                                          @[@"LDPE",@"HDPE",@"7层共挤高阻隔膜"],@"material",
-                                          @"辅料",@"title",
+                                          @[@"无",@"LDPE",@"HDPE",@"7层共挤高阻隔膜"],@"material",
+                                          @"材料B",@"title",
                                           nil];
                     [cell configWithModel:dict];
                 } else {
@@ -210,7 +212,8 @@ NSString *SelectCellIdentifier = @"SelectCell";
             default:
             {
                 if (lastClick == indexPath.row) {
-                    
+                    lastClick = 100;
+                    [_tableView reloadData];
                 } else {
                     lastClick = indexPath.row;
                     [_tableView reloadData];

@@ -15,7 +15,7 @@
 {
     [super prepare];
     
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = YCCellLineColor;
     // 设置普通状态的动画图片
     NSMutableArray *idleImages = [NSMutableArray array];
     for (NSUInteger i = 0; i<=24; i++) {
