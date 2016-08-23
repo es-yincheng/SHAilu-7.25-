@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSArray *startData;
 @property (nonatomic, assign) NSInteger startIndex;
+@property (nonatomic, strong) NSDictionary *specsDict;
 
 @end

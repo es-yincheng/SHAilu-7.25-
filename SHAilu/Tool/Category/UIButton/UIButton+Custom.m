@@ -30,7 +30,7 @@
                     self.userInteractionEnabled = YES;
                 });
             }else{
-                int seconds = timeout % 59;
+                int seconds = timeout % 60;
                 NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     //设置界面的按钮显示 根据自己需求设置

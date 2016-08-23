@@ -14,4 +14,5 @@ typedef NS_ENUM(NSInteger, CellStatu) {
 @interface SpecCell : UITableViewCell
 - (void)configWithModel:(id)model;
 - (void)changeStatu:(CellStatu)statu;
+- (NSDictionary *)getDataDict;
 @end

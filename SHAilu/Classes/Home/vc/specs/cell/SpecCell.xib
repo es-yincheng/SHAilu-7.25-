@@ -205,6 +205,7 @@
                 <outlet property="layOut" destination="jb0-Xn-H97" id="Svz-bG-pus"/>
                 <outlet property="mainView" destination="rta-mH-fua" id="c0c-fT-Gpf"/>
                 <outlet property="materialLb" destination="PjZ-ki-U2Y" id="fbB-k4-EP8"/>
+                <outlet property="thickness" destination="rJh-bu-eie" id="9DV-2Y-ajM"/>
                 <outlet property="title" destination="lah-2i-P9q" id="DKu-95-3qY"/>
                 <outlet property="titleView" destination="D8x-BT-Lbm" id="w1F-22-Hj6"/>
                 <outlet property="typeTitle" destination="PjZ-ki-U2Y" id="VnE-tD-77b"/>

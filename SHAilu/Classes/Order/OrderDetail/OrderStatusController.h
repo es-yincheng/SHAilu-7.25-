@@ -10,4 +10,6 @@
 
 @interface OrderStatusController : UIViewController
 
+@property (nonatomic, strong) NSString *orderID;
+
 @end

@@ -49,8 +49,18 @@
         [MBProgressHUD showMessageAuto:@"两次新密码不一致"];
         return;
     }
-    [MBProgressHUD showMessageAuto:@"修改密码成功"];
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    [[BaseAPI sharedAPI].userService updatePwdWithOldPwd:_nowPWD.text
+                                                     Pwd:_confirmPwd.text
+                                                success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                    
+                                                    [UserModel yc_objectWithKeyValues:responseObject];
+                                                    
+                                                    if (1 == [[responseObject yc_objectForKey:@"Success"] integerValue]) {
+                                                        [MBProgressHUD showMessageAuto:@"密码修改成功"];
+                                                        [self.navigationController popViewControllerAnimated:YES];
+                                                    }
+                                                } failure:nil];
 }
 
 

@@ -14,12 +14,9 @@
 #import "YCSelectPhotoModel.h"
 #import "UIImageView+SelectPhoto.h"
 #import <objc/runtime.h>
-#import "CustomizeItemView.h"
 #import "SpecsController.h"
 #import "SpecsTController.h"
 
-#define CustomizeViewHeight ScreenWith*320/300
-#define CustomizeCenterY (ScreenHeight - customizeViewHeight/2)
 static NSString *placeHolder = @"如有其它需求,请备注";
 
 @interface CustomController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UITextViewDelegate>
@@ -30,12 +27,11 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 @property (weak, nonatomic  ) IBOutlet UICollectionView           *imageCollection;
 @property (weak, nonatomic  ) IBOutlet UITextField                *countField;
 @property (weak, nonatomic  ) IBOutlet UILabel                    *selectItems;
-@property (weak, nonatomic) IBOutlet UITextView *markText;
-@property (nonatomic, strong) NSMutableArray    *typeArray;
-@property (nonatomic, strong) NSMutableArray    *imageArray;
-@property (nonatomic, strong) NSMutableArray    *selectTypeArray;
-@property (nonatomic, strong) UIView            *backView;
-@property (nonatomic, strong) CustomizeItemView *customizeView;
+@property (weak, nonatomic  ) IBOutlet UITextView                 *markText;
+@property (nonatomic, strong) NSMutableArray *typeArray;
+@property (nonatomic, strong) NSMutableArray *imageArray;
+@property (nonatomic, strong) NSMutableArray *selectTypeArray;
+@property (nonatomic, strong) MBProgressHUD  *hud;
 
 @end
 
@@ -50,7 +46,6 @@ static NSString *placeHolder = @"如有其它需求,请备注";
     
     [self.typeArray addObjectsFromArray:_startData];
     
-//    [self setData];
     [self setCollection];
     _markText.layer.borderWidth = 1;
     _markText.layer.borderColor = YCCellLineColor.CGColor;
@@ -61,10 +56,14 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(showSelectCustomizeItem:)
-//                                                 name:@"HiddenCustomizItemView"
-//                                               object:nil];
+    
+    if (_specsDict) {
+        if ([_specsDict yc_objectForKey:@"material"]) {
+            _selectItems.text = [NSString stringWithFormat:@"长宽:%@*%@*%@ mm ,层数:%lu 层",[_specsDict yc_objectForKey:@"length"],[_specsDict yc_objectForKey:@"width"],[_specsDict yc_objectForKey:@"height"],(unsigned long)[[_specsDict yc_objectForKey:@"material"] count]];
+        }
+    }
+    
+    NSLog(@"选中规格是:%@",_specsDict);
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -112,56 +111,149 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 
     if (_startIndex == 4) {
         SpecsTController *vc = [[SpecsTController alloc] init];
+        if (_specsDict) {
+            vc.specsDict = _specsDict;
+        }
         [self.navigationController pushViewController:vc animated:YES];
     } else {
         SpecsController *vc = [[SpecsController alloc] init];
+        if (_specsDict) {
+            vc.specsDict = _specsDict;
+        }
         [self.navigationController pushViewController:vc animated:YES];
     }
-    
-//    POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-//    opacityAnimation.toValue = @(0.5);
-//    [self.backView.layer pop_addAnimation:opacityAnimation forKey:@"opacityAnimation"];
-//    
-//    POPSpringAnimation *spring = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-//    spring.toValue = @(ScreenHeight - CustomizeViewHeight/2);
-//    spring.beginTime = CACurrentMediaTime();
-//    spring.springBounciness = 0.0f;
-//    [self.customizeView pop_addAnimation:spring forKey:@"aposition"];
 }
 
 - (IBAction)submitAction:(id)sender {
-    SuccessController *vc = [[SuccessController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
+    
+    if (![_specsDict yc_objectForKey:@"material"]) {
+        [MBProgressHUD showMessageAuto:@"请选择规格"];
+        return;
+    }
+    
+    if (_countField.text.length < 1) {
+        [MBProgressHUD showMessageAuto:@"请输入定制数量"];
+        return;
+    }
+    
+    NSString *categoryName;
+    for (NSInteger x = 0; x < _selectTypeArray.count; x ++) {
+        if ([self.selectTypeArray[x] isKindOfClass:[NSString class]] &&
+            [self.selectTypeArray[x] isEqualToString:@"b"]) {
+            categoryName = [[_typeArray yc_objectAtIndex:x] yc_objectForKey:@"title"];
+        }
+    }
+    
+    NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
+    [resultDict setValue:categoryName forKey:@"categoryName"];
+    [resultDict setValue:_countField.text forKey:@"Count"];
+    [resultDict setValue:_markText.text forKey:@"Remark"];
+    [resultDict setValue:[_specsDict yc_objectForKey:@"height"] forKey:@"Height"];
+    [resultDict setValue:[_specsDict yc_objectForKey:@"width"] forKey:@"Width"];
+    [resultDict setValue:[_specsDict yc_objectForKey:@"length"] forKey:@"Length"];
+    [resultDict setValue:[NSString stringWithFormat:@"%lu",(unsigned long)[[_specsDict yc_objectForKey:@"material"] count]] forKey:@"Plies"];
 
-//- (void)showSelectCustomizeItem:(NSNotification *)notifaction{
-//    NSMutableArray *items = notifaction.object;
-//    
-//    NSInteger itemCount = 0;
-//    for (NSArray *temp in items) {
-//        for (NSString *temStr in temp) {
-//            if ([temStr isEqualToString:@"b"]) {
-//                itemCount ++;
+    NSError* error = nil;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:[[NSDictionary alloc] initWithObjectsAndKeys:[_specsDict yc_objectForKey:@"material"],@"Standard", nil] options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    [resultDict setValue:json forKey:@"Spec"];
+    NSLog(@"定制:%@",resultDict);
+    
+    
+    [self askDataWithDict:resultDict];
+    
+    
+    
+    
+    //如果有图片需要上传
+//    self.hud.labelText = @"正在上传";
+    
+    
+//    NSMutableArray *images = [[NSMutableArray alloc] init];
+//    NSInteger imageCount = self.imageArray.count;
+//    for (NSInteger x = self.imageArray.count-1; x >=0; x--) {
+//        if ([[self.imageArray yc_objectAtIndex:x] isKindOfClass:[NSString class]]) {
+//            imageCount = imageCount - 1;
+//        } else {
+//            UIImage *imageData;
+//            if ([[self.imageArray yc_objectAtIndex:x] isKindOfClass:[YCSelectPhotoModel class]]) {
+//                YCSelectPhotoModel *model = [self.imageArray yc_objectAtIndex:x];
+//                
+//                PHAsset *asset = model.asset;
+//                // 是否要原图
+//                CGSize size = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
+//                PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+//                options.synchronous = YES;
+//                // 从asset中获得图片
+//                [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+//                    
+//                    [images addObject:result];
+//                    
+//                    if (images.count == imageCount) {
+//                        [self dealImageArrayForUpload:images orther:resultDict];
+//                    }
+//                }];
+//            } else {
+//                imageData = [self.imageArray yc_objectAtIndex:x];
+//                [images addObject:imageData];
+//                if (images.count == imageCount) {
+//                    [self dealImageArrayForUpload:images orther:resultDict];
+//                }
 //            }
 //        }
 //    }
-//    
-//    _selectItems.text = [NSString stringWithFormat:@"选中了 %ld 个Item！",(long)itemCount];
-//    
-//    [self hiddenBackView];
-//}
-
-- (void)hiddenBackView{
-    POPSpringAnimation *spring = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    spring.toValue = @(ScreenHeight + CustomizeViewHeight/2);
-    spring.beginTime = CACurrentMediaTime();
-    spring.springBounciness = 0.0f;
-    [self.customizeView pop_addAnimation:spring forKey:@"aposition"];
-    
-    POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-    opacityAnimation.toValue = @(0);
-    [self.backView.layer pop_addAnimation:opacityAnimation forKey:@"opacityAnimation"];
 }
+
+- (void)dealImageArrayForUpload:(NSArray *)images orther:(NSMutableDictionary *)orhter{
+//    dispatch_queue_t queue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    NSMutableArray *resultImageArray = [[NSMutableArray alloc] init];
+//    for (UIImage *image in images) {
+//        dispatch_async(queue, ^{
+//            [resultImageArray addObject:[image compressWithScale:0]];
+//            NSLog(@"处理图片----%@",[NSThread currentThread]);
+//            
+//            if (resultImageArray.count == images.count) {
+//                dispatch_sync(dispatch_get_main_queue(), ^{
+                    UserModel *userModel = [UserModel getUserInfo];
+//                    [orhter setValue:resultImageArray forKey:@"photo"];
+                    [orhter setValue:userModel.Uid forKey:@"Uid"];
+
+                    [self askDataWithDict:orhter];
+                    
+//                });
+//            }
+//        });
+//    }
+}
+
+- (void)askDataWithDict:(NSDictionary*)orderDict{
+    
+    [[BaseAPI sharedAPI].orderService orderOnlineWithDict:orderDict
+                                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                      [self.hud hide:YES];
+                                                      self.hud = nil;
+                                                      if ([[responseObject yc_objectForKey:@"Success"] integerValue] == 1) {
+                                                          [self clearAllPublishData];
+                                                          [MBProgressHUD showMessageAuto:@"定制成功"];
+                                                          SuccessController *vc = [[SuccessController alloc] init];
+                                                          [self.navigationController pushViewController:vc animated:YES];
+                                                      } else {
+                                                          [MBProgressHUD showMessageAuto:[responseObject yc_objectForKey:@"ErrorMsg"]];
+                                                          [self.hud hide:YES];
+                                                          self.hud = nil;
+                                                      }
+                                                  } failure:nil];
+}
+
+- (void)clearAllPublishData{
+    [self.imageArray removeAllObjects];
+    [self.imageArray addObject:@"add"];
+    [self.imageCollection reloadData];
+    _markText.text = placeHolder;
+    _markText.textColor = [UIColor grayColor];
+    [self dealWithSelectArray];
+}
+
 
 #pragma mark - delegate/dataSource
 #pragma textView
@@ -191,7 +283,6 @@ static NSString *placeHolder = @"如有其它需求,请备注";
     if (collectionView.tag == 1000) {
         TypeCell *cell = [_typeCollection dequeueReusableCellWithReuseIdentifier:@"TypeCell" forIndexPath:indexPath];
         [cell configWithData:[_typeArray yc_objectAtIndex:indexPath.row]];
-//        cell.imageIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"bz_%ld",(long)(indexPath.row+1)]];
         if ([self.selectTypeArray[indexPath.row] isKindOfClass:[NSString class]] &&
             [self.selectTypeArray[indexPath.row] isEqualToString:@"b"]) {
             cell.layer.masksToBounds = YES;
@@ -204,7 +295,6 @@ static NSString *placeHolder = @"如有其它需求,请备注";
             [cell.layer pop_addAnimation:scaleAnimation forKey:@"scaleAnim"];
         } else {
             cell.layer.masksToBounds = NO;
-            //            cell.layer.cornerRadius = 8;
             cell.layer.borderColor = [UIColor clearColor].CGColor;
             cell.layer.borderWidth = 1;
             POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
@@ -251,7 +341,7 @@ static NSString *placeHolder = @"如有其它需求,请备注";
                 YCSelectPhotoModel *model = [self.imageArray yc_objectAtIndex:indexPath.row];
                 cell.imageView.image = model.image;
             } else {
-                NSLog(@"self.imageArray:%@ ,index:%ld",self.imageArray ,indexPath.row);
+                NSLog(@"self.imageArray:%@ ,index:%ld",self.imageArray ,(long)indexPath.row);
                 cell.imageView.image = [self.imageArray yc_objectAtIndex:indexPath.row];
             }
             cell.cancelBt.tag = indexPath.row;
@@ -277,9 +367,6 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 }
 
 #pragma mark - setData
-//- (void)setData{
-//    [self.typeArray addObjectsFromArray:@[@"a",@"b",@"d",@"",@"d"]];
-//}
 
 
 #pragma mark - setUI
@@ -302,8 +389,8 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 #pragma mark - lazy
 - (NSMutableArray *)selectTypeArray{
     if (!_selectTypeArray) {
-//        _selectTypeArray = [[NSMutableArray alloc] initWithObjects:@"a",@"a",@"a",@"a",@"a",@"a", nil];
         _selectTypeArray = [[NSMutableArray alloc] initWithArray:_typeArray];
+        [_selectTypeArray replaceObjectAtIndex:0 withObject:@"b"];
     }
     return _selectTypeArray;
 }
@@ -323,29 +410,13 @@ static NSString *placeHolder = @"如有其它需求,请备注";
     return _imageArray;
 }
 
-//@property (nonatomic, strong) UIView *backView;
-//@property (nonatomic, strong) UIView *customizeView;
-
-- (UIView *)backView{
-    if (!_backView) {
-        _backView = [[UIView alloc] initWithFrame:self.view.bounds];
-        _backView.backgroundColor = [UIColor blackColor];
-        _backView.alpha = 0;
-        [self.view addSubview:_backView];
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenBackView)];
-        [_backView addGestureRecognizer:tap];
+- (MBProgressHUD *)hud{
+    if (!_hud) {
+        _hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].windows lastObject] animated:YES];
+        _hud.labelText = @"";
+        _hud.removeFromSuperViewOnHide = YES;
     }
-    return _backView;
-}
-
-- (CustomizeItemView *)customizeView{
-    if (!_customizeView) {
-        _customizeView = [[CustomizeItemView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWith, ScreenWith*320/300)];
-        //        _customizeView.backgroundColor = [UIColor orangeColor];
-        [self.view addSubview:_customizeView];
-    }
-    return _customizeView;
+    return _hud;
 }
 
 @end

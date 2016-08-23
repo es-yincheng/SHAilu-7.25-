@@ -10,6 +10,46 @@
 
 @interface OrderService : BaseService
 
+- (void)orderOnlineWithDict:(NSDictionary *)dict
+                    success:(SuccessBlock)success
+                    failure:(FailureBlock)failure;
+
+- (void)getOrdersWithPageIndex:(NSInteger)pageIndex
+                       success:(SuccessBlock)success
+                       failure:(FailureBlock)failure;
+
+- (void)getOrderInfoWithOrderID:(NSString *)orderID
+                        success:(SuccessBlock)success
+                        failure:(FailureBlock)failure;
+
+- (void)orderOnlineAgainWithOrderID:(NSString *)orderID
+                              count:(NSString *)count
+                             remark:(NSString *)remark
+                            success:(SuccessBlock)success
+                            failure:(FailureBlock)failure;
+
+- (void)getOrderStatusWithOrderID:(NSString *)orderID
+                          success:(SuccessBlock)success
+                          failure:(FailureBlock)failure;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 - (void)getPagePurchaseOrderItemWithPageIndex:(NSNumber *)pageIndex
                                       success:(SuccessBlock)success
                                       failure:(FailureBlock)failure;

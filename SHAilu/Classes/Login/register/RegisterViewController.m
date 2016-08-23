@@ -77,7 +77,7 @@
     if (![self.yzmField.text isYZM]) {
         return NO;
     }
-    if (![self.phoneField.text isPWD]) {
+    if (![self.pwdField.text isPWD]) {
         return NO;
     }
     return YES;
@@ -93,7 +93,7 @@
                                                          CheckCode:nil
                                                            success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                                                [UserModel yc_objectWithKeyValues:responseObject];
-                                                               if (0 == [[responseObject yc_objectForKey:@"ErrorCode"] integerValue]) {
+                                                               if (1 == [[responseObject yc_objectForKey:@"Success"] integerValue]) {
                                                                    [sender countDown:60.0f];
                                                                }
 
@@ -105,24 +105,26 @@
     self.pwdField.secureTextEntry = !sender.selected;
 }
 
-
 - (IBAction)registerAction:(id)sender {
     if (![self checkRegister]) {
         return;
     }
     
     [[BaseAPI sharedAPI].userService registerWithPhone:_phoneField.text
+                                                  name:_nameField.text
                                                    Pwd:_pwdField.text
+                                           companyName:_companyField.text
                                              CheckCode:_yzmField.text
                                                success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                   
-                                                   UserModel *userModel = [UserModel yc_objectWithKeyValues:responseObject];
-                                                   if (userModel) {
-                                                       [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-                                                   }
-                                               } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                   [MBProgressHUD showError:@"网络连接失败,请稍后重试"];
-                                               }];
+                                                 
+                                                 UserModel *userModel = [UserModel yc_objectWithKeyValues:responseObject];
+                                                 if (userModel) {
+                                                     [userModel saveUserInfo];
+                                                     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                                                 }
+                                             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                 [MBProgressHUD showError:@"网络连接失败,请稍后重试"];
+                                             }];
 }
 
 @end

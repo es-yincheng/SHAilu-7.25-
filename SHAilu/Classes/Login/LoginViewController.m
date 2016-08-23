@@ -142,24 +142,36 @@
                                                                    POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
                                                                    anim.toValue = [NSValue valueWithCGSize:CGSizeMake(50, 50)];
                                                                    anim.completionBlock = ^(POPAnimation *animation,BOOL finish) {
+                                                                       if (finish) {
+                                                                           
+                                                                       }
                                                                        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
                                                                    };
+                                                                   [btn pop_addAnimation:anim forKey:@"btAnimation"];
+                                                               } else {
+//                                                                   [MBProgressHUD showError:@"网络连接失败,请稍后重试"];
+                                                                   [circle removeFromSuperlayer];
+                                                                   [UIView animateWithDuration:1.f animations:^{
+                                                                       [self setLoginButton];
+                                                                   }completion:^(BOOL finished) {
+                                                                       
+                                                                   }];
                                                                }
                                                            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                                                
-                                                               [circle removeFromSuperlayer];
-                                                               POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-                                                               anim.toValue = [NSValue valueWithCGSize:CGSizeMake(50, 50)];
-                                                               anim.completionBlock = ^(POPAnimation *animation,BOOL finish) {
-                                                                   [self.navigationController dismissViewControllerAnimated:NO completion:nil];
-                                                               };
-//                                                               [MBProgressHUD showError:@"网络连接失败,请稍后重试"];
 //                                                               [circle removeFromSuperlayer];
-//                                                               [UIView animateWithDuration:1.f animations:^{
-//                                                                   [self setLoginButton];
-//                                                               }completion:^(BOOL finished) {
-//                                                                   
-//                                                               }];
+//                                                               POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+//                                                               anim.toValue = [NSValue valueWithCGSize:CGSizeMake(50, 50)];
+//                                                               anim.completionBlock = ^(POPAnimation *animation,BOOL finish) {
+//                                                                   [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+//                                                               };
+                                                               [MBProgressHUD showError:@"网络连接失败,请稍后重试"];
+                                                               [circle removeFromSuperlayer];
+                                                               [UIView animateWithDuration:1.f animations:^{
+                                                                   [self setLoginButton];
+                                                                }completion:^(BOOL finished) {
+                                                                   
+                                                               }];
                                                            }];
             }
         };

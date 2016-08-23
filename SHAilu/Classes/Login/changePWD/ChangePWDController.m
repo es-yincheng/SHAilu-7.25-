@@ -38,8 +38,8 @@
                                                          CheckCode:nil
                                                            success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                                                [UserModel yc_objectWithKeyValues:responseObject];
-                                                               if (0 == [[responseObject yc_objectForKey:@"ErrorCode"] integerValue]) {
-                                                                   [sender countDown:60.0f];
+                                                               if (1 == [[responseObject yc_objectForKey:@"Success"] integerValue]) {
+                                                                   [sender countDown:59.0f];
                                                                }
                                                                
                                                            } failure:nil];
@@ -67,13 +67,11 @@
                                                     
                                                     [UserModel yc_objectWithKeyValues:responseObject];
                                                     
-                                                    if (0 == [[responseObject yc_objectForKey:@"ErrorCode"] integerValue]) {
-//                                                        NSLog(@"找回密码：%@",[responseObject yc_objectForKey:@"ErrorMsg"]);
+                                                    if (1 == [[responseObject yc_objectForKey:@"Success"] integerValue]) {
                                                         [MBProgressHUD showMessageAuto:@"重置密码成功,请重新登录"];
                                                         [self.navigationController popViewControllerAnimated:YES];
                                                     }
                                                 } failure:nil];
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

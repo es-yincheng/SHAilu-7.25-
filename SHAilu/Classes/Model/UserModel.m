@@ -55,10 +55,10 @@
 
 + (instancetype)yc_objectWithKeyValues:(id)keyValues{
     
-    if ((0 != [[keyValues yc_objectForKey:@"ErrorCode"] intValue]) ||
-        [keyValues yc_objectForKey:@"Data"] == nil ||
-        ([keyValues yc_objectForKey:@"Data"] == [NSNull null])) {
-        
+    if ((1 != [[keyValues yc_objectForKey:@"Success"] intValue])) {
+//        ||
+//        [keyValues yc_objectForKey:@"Data"] == nil ||
+//        ([keyValues yc_objectForKey:@"Data"] == [NSNull null])
         [MBProgressHUD showMessageAuto:[NSString stringWithFormat:@"%@",[keyValues yc_objectForKey:@"ErrorMsg"]]];
         return nil;
     }
@@ -66,16 +66,16 @@
     return [self mj_objectWithKeyValues:[keyValues yc_objectForKey:@"Data"] context:nil];
 }
 
-- (NSString *)UserName{
-
-    if (self.Mobile) {
-        return _UserName ? _UserName : [[NSString stringWithFormat:@"%@",self.Mobile] stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
-    }
-    return _UserName;
-}
-
-- (NSString *)getTureUserName{
-    return _UserName;
-}
+//- (NSString *)UserName{
+//
+//    if (self.Mobile) {
+//        return _UserName ? _UserName : [[NSString stringWithFormat:@"%@",self.Mobile] stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+//    }
+//    return _UserName;
+//}
+//
+//- (NSString *)getTureUserName{
+//    return _UserName;
+//}
 
 @end

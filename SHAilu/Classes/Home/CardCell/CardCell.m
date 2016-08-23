@@ -41,7 +41,7 @@
 }
 
 - (void)awakeFromNib{
-    NSLog(@"-------");
+//    NSLog(@"-------");
 }
 
 - (void)configWithData:(NSDictionary *)data index:(NSInteger)index{
@@ -58,14 +58,6 @@
     _descrip.text    = [descrip yc_objectAtIndex:index];
     bttag = index;
 }
-
-
-//- (void)setUI{
-//            _typeIcon.layer.masksToBounds = YES;
-//            _typeIcon.layer.cornerRadius = _typeIcon.yc_width/2;
-//            _typeIcon.layer.borderColor = [UIColor whiteColor].CGColor;
-//            _typeIcon.layer.borderWidth = 2;
-//}
 
 - (IBAction)customAction:(UIButton *)sender {
     

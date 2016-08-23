@@ -315,6 +315,10 @@
                     <navigationItem key="navigationItem" title="我的" id="JCO-qa-eVR">
                         <barButtonItem key="backBarButtonItem" title=" " id="TC7-7w-URJ"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="companyName" destination="ZQR-Cb-lEa" id="8gl-eT-aeP"/>
+                        <outlet property="userName" destination="foN-tK-76C" id="9wx-4R-0Wa"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9f-4B-wQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

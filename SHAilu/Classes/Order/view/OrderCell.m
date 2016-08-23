@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, OrderStatus) {
 
 @interface OrderCell(){
     OrderStatus orderStatus;
+    
 }
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *statuViewHeight;
@@ -84,12 +85,16 @@ typedef NS_ENUM(NSInteger, OrderStatus) {
 }
 
 - (void)configWithData:(id)data{
-    orderStatus = [[data yc_objectForKey:@"status"] integerValue];
+    
+    OrderModel *order = data;
+    
+    
+    orderStatus = [order.Status integerValue];
     
     switch (orderStatus) {
         case OrderStatusWaitPrice:
             NSLog(@"OrderStatusWaitPrice");
-            
+            _statuViewHeight.constant = 60.0f;
             _buyButton.hidden = YES;
             _orderButton.enabled = NO;
             _orderButton.backgroundColor = [UIColor lightGrayColor];
@@ -135,9 +140,12 @@ typedef NS_ENUM(NSInteger, OrderStatus) {
     }
     
     
-    
-    
-//    @{@"statuName":@"您的订单已提交,等待"}
+    _statuTime.text = order.CreateTime;
+    _typeName.text = order.CategoryName;
+    _sizeLb.text = [NSString stringWithFormat:@"尺寸:%@*%@*%@mm",order.Length,order.Width,order.Height];
+    _plicsLb.text = [NSString stringWithFormat:@"层数:%@",order.Plies];
+    _count.text = [NSString stringWithFormat:@"数量:%@",order.Count];
+
 }
 
 @end

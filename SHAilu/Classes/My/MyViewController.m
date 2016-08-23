@@ -10,6 +10,9 @@
 
 @interface MyViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UILabel *companyName;
+
 @end
 
 @implementation MyViewController
@@ -30,6 +33,21 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+    [[BaseAPI sharedAPI].userService queryUserInfoWithUid:nil
+                                                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                     
+                                                     [UserModel yc_objectWithKeyValues:responseObject];
+                                                     
+                                                     if (1 == [[responseObject yc_objectForKey:@"Success"] integerValue]) {
+                                                         UserModel *user = [UserModel yc_objectWithKeyValues:responseObject];
+                                                         [user saveUserInfo];
+                                                         _userName.text = user.Name;
+                                                         _companyName.text = user.CompanyName;
+                                                     }
+                                                 } failure:nil];
+    
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -38,7 +56,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 

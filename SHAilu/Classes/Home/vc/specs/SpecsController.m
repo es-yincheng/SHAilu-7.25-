@@ -8,10 +8,10 @@
 
 #import "SpecsController.h"
 #import "SizeCell.h"
-//#import "SpecsCell.h"
 #import "SpecCell.h"
 #import "PliesCell.h"
 #import "SelectCell.h"
+#import "CustomController.h"
 
 NSString *SpecsCellIdentifier = @"SpecCell";
 NSString *SizeCellIdentifier = @"SizeCell";
@@ -32,6 +32,7 @@ NSString *SelectCellIdentifier = @"SelectCell";
 @property (nonatomic, strong) UIView *backView;
 @property (nonatomic, strong) UITableView *selectTable;
 @property (nonatomic, weak) IBOutlet UIView *buttomView;
+@property (nonatomic, strong) NSMutableArray *cellsArray;
 
 @end
 
@@ -98,7 +99,7 @@ NSString *SelectCellIdentifier = @"SelectCell";
             case 0:
             {
                 SizeCell *cell = [_tableView dequeueReusableCellWithIdentifier:SizeCellIdentifier];
-                
+                [self.cellsArray addObject:cell];
                 
                 return cell;
             }
@@ -107,6 +108,7 @@ NSString *SelectCellIdentifier = @"SelectCell";
             case 1:
             {
                 PliesCell *cell = [_tableView dequeueReusableCellWithIdentifier:PliesCellIdentifier];
+//                [self.cellsArray addObject:cell];
                 cell.plicesLb.text = [NSString stringWithFormat:@"%ld",(long)lastPlies];
                 return cell;
             }
@@ -115,6 +117,7 @@ NSString *SelectCellIdentifier = @"SelectCell";
             default:
             {
                 SpecCell *cell = [_tableView dequeueReusableCellWithIdentifier:SpecsCellIdentifier];
+                [self.cellsArray addObject:cell];
 //                cell.backgroundColor = [UIColor orangeColor];
                 
                 if (indexPath.row == lastClick) {
@@ -196,7 +199,7 @@ NSString *SelectCellIdentifier = @"SelectCell";
         } else {
             
         }
-        [self.tableView reloadData];
+        [self reloadTableView];
     } else {
         switch (indexPath.row) {
             case 0:
@@ -213,10 +216,10 @@ NSString *SelectCellIdentifier = @"SelectCell";
             {
                 if (lastClick == indexPath.row) {
                     lastClick = 100;
-                    [_tableView reloadData];
+                    [self reloadTableView];
                 } else {
                     lastClick = indexPath.row;
-                    [_tableView reloadData];
+                    [self reloadTableView];
                 }
             }
                 break;
@@ -225,6 +228,11 @@ NSString *SelectCellIdentifier = @"SelectCell";
 }
 
 #pragma mark - custom
+- (void)reloadTableView{
+    [_tableView reloadData];
+    [self.cellsArray removeAllObjects];
+}
+
 - (void)hiddenBackView{
     _backView.alpha = 0;
     _selectTable.alpha = 0;
@@ -235,6 +243,47 @@ NSString *SelectCellIdentifier = @"SelectCell";
 }
 
 - (IBAction)okSelect:(UIButton *)sender{
+        
+    NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
+    NSMutableArray *resultArray = [[NSMutableArray alloc] init];
+    for (NSInteger x = 0; x < [_cellsArray count]; x ++) {
+        
+        if ([[_cellsArray yc_objectAtIndex:x] isKindOfClass:[SizeCell class]]) {
+            SizeCell *cell = [_cellsArray yc_objectAtIndex:x];
+            NSDictionary *dict = [cell getDataDict];
+            if (!dict) {
+                return;
+            }
+            [resultDict setValue:[dict yc_objectForKey:@"height"] forKey:@"height"];
+            [resultDict setValue:[dict yc_objectForKey:@"width"] forKey:@"width"];
+            [resultDict setValue:[dict yc_objectForKey:@"length"] forKey:@"length"];
+        }
+        
+        else if ([[_cellsArray yc_objectAtIndex:x] isKindOfClass:[SpecCell class]]) {
+            SpecCell *cell = [_cellsArray yc_objectAtIndex:x];
+            NSDictionary *dict = [cell getDataDict];
+            if (!dict) {
+                return;
+            }
+            
+            if ([dict yc_objectForKey:@"Material"]) {
+                [resultArray addObject:dict];
+            }
+            
+        }
+        
+        else {
+            NSLog(@"------------------------此处有错-------------------------");
+            return;
+        }
+    }
+    
+    [resultDict setValue:resultArray forKey:@"material"];
+    
+    CustomController *vc = [self.navigationController.viewControllers yc_objectAtIndex:1];
+    
+    vc.specsDict = resultDict;
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -243,6 +292,13 @@ NSString *SelectCellIdentifier = @"SelectCell";
 
 
 #pragma mark - lazy
+- (NSMutableArray *)cellsArray{
+    if (!_cellsArray) {
+        _cellsArray = [[NSMutableArray alloc] init];
+    }
+    return _cellsArray;
+}
+
 - (UITableView *)selectTable{
     if (!_selectTable) {
         _selectTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWith-200, 40*pliesCount)];

@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, OrderStatus) {
 - (void)configWithData:(id)data index:(NSInteger)index{
     NSDictionary *dict = [data yc_objectAtIndex:index];
     
-    _title.text = [dict yc_objectForKey:@"title"];
+    _title.text = [dict yc_objectForKey:@"Description"];
     _time.text = [dict yc_objectForKey:@"time"];
     
     switch (index) {
@@ -84,25 +84,23 @@ typedef NS_ENUM(NSInteger, OrderStatus) {
         default:
             break;
     }
-//    if (indexPath.row == 0) {
-//        cell.orderText.textColor = YCNavTitleColor;
-//        cell.topLine.backgroundColor = YCNavTitleColor;
-//        cell.centerLine.backgroundColor = YCNavTitleColor;
-//        cell.topLine.backgroundColor = YCNavTitleColor;
-//        
-//    } else {
-//        cell.orderText.textColor = [UIColor blackColor];
-//        cell.topLine.backgroundColor = [UIColor lightGrayColor];
-//        cell.centerLine.backgroundColor = [UIColor lightGrayColor];;
-//        cell.topLine.backgroundColor = [UIColor lightGrayColor];;
-//    }
     
     if (index == 0) {
-        _topLine.hidden = YES;
-        _buttomLine.hidden = NO;
-        _title.textColor = YCNavTitleColor;
-        _time.textColor = YCNavTitleColor;
-        _icon.image = [UIImage imageNamed:[NSString stringWithFormat:@"orderstatus_%ld_1",(long)9-index]];
+        
+        if ([data count] == 1) {
+            _topLine.hidden = YES;
+            _buttomLine.hidden = YES;
+            _title.textColor = YCNavTitleColor;
+            _time.textColor = YCNavTitleColor;
+            _icon.image = [UIImage imageNamed:[NSString stringWithFormat:@"orderstatus_%ld_1",(long)9-index]];
+        } else {
+            _topLine.hidden = YES;
+            _buttomLine.hidden = NO;
+            _title.textColor = YCNavTitleColor;
+            _time.textColor = YCNavTitleColor;
+            _icon.image = [UIImage imageNamed:[NSString stringWithFormat:@"orderstatus_%ld_1",(long)9-index]];
+        }
+        
     } else if (index == [data count] - 1) {
         _topLine.hidden = NO;
         _buttomLine.hidden = YES;

@@ -10,6 +10,7 @@
 
 @interface NSString (Custom)
 
+- (NSString *)md5;
 - (NSString *)getTimeFromNow;
 - (BOOL)isPhoneNumber;
 - (BOOL)isPWD;

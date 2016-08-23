@@ -10,4 +10,6 @@
 
 @interface SpecsTController : UIViewController
 
+@property (nonatomic, strong) NSDictionary *specsDict;
+
 @end

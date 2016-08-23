@@ -21,7 +21,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.5~0.6/个" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoc-Q8-NdN">
-                        <rect key="frame" x="8" y="158.5" width="181" height="14.5"/>
+                        <rect key="frame" x="0.0" y="160.5" width="197" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -31,12 +31,12 @@
             </view>
             <constraints>
                 <constraint firstItem="xoc-Q8-NdN" firstAttribute="top" secondItem="LYf-aC-gfm" secondAttribute="bottom" constant="7" id="7hg-ab-nIt"/>
-                <constraint firstAttribute="trailing" secondItem="xoc-Q8-NdN" secondAttribute="trailing" constant="8" id="Gwg-3G-W0n"/>
+                <constraint firstAttribute="trailing" secondItem="xoc-Q8-NdN" secondAttribute="trailing" id="Gwg-3G-W0n"/>
                 <constraint firstAttribute="trailing" secondItem="LYf-aC-gfm" secondAttribute="trailing" constant="8" id="JYB-Ko-4jJ"/>
                 <constraint firstItem="LYf-aC-gfm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="Xit-Ee-9CE"/>
                 <constraint firstItem="LYf-aC-gfm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="edS-eb-Dax"/>
-                <constraint firstAttribute="bottom" secondItem="xoc-Q8-NdN" secondAttribute="bottom" constant="8" id="ftr-lv-YfA"/>
-                <constraint firstItem="xoc-Q8-NdN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="uvR-uy-jce"/>
+                <constraint firstAttribute="bottom" secondItem="xoc-Q8-NdN" secondAttribute="bottom" constant="6" id="ftr-lv-YfA"/>
+                <constraint firstItem="xoc-Q8-NdN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="uvR-uy-jce"/>
             </constraints>
             <size key="customSize" width="197" height="181"/>
             <variation key="default">

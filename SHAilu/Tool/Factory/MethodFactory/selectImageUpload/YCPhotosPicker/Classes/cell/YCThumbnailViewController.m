@@ -19,6 +19,8 @@
     BOOL _isLayoutOK;
     
     YCPhotoTool *photoTool;
+    
+    MBProgressHUD *hud;
 }
 @end
 
@@ -74,7 +76,7 @@
 - (void)getAssetInAssetCollection
 {
     [_arrayDataSources addObjectsFromArray:[photoTool getAssetsInAssetCollection:self.assetCollection ascending:YES]];
-    self.labCount.text = [NSString stringWithFormat:@"共%ld张照片", _arrayDataSources.count];
+    self.labCount.text = [NSString stringWithFormat:@"共%ld张照片", (unsigned long)_arrayDataSources.count];
 }
 
 - (void)initNavBtn
@@ -113,6 +115,7 @@
         YCSelectPhotoModel *model = [[YCSelectPhotoModel alloc] init];
         model.image = cell.imageView.image;
         model.imageName = [asset valueForKey:@"filename"];
+        model.asset = asset;
         
         [_arraySelectPhotos addObject:model];
         
@@ -209,31 +212,51 @@
     [self.navigationController pushViewController:svc animated:YES];
 }
 
-
-
-
-
-
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)btnDone_Click:(id)sender {
-    if (self.DoneBlock) {
-        
-        YCLog(@"我在 YCThumbnailViewController 中选择了（%@）个image ",self.arraySelectPhotos);
-        
-        
-        self.DoneBlock(self.arraySelectPhotos);
-    }
-//    [self.navigationController.view.layer addAnimation:[ZLAnimationTool animateWithType:kCATransitionMoveIn subType:kCATransitionFromBottom duration:0.3] forKey:nil];
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-//    [self.navigationController popToRootViewControllerAnimated:NO];
+
+//    // 快速显示一个提示信息
+//    hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].windows lastObject] animated:YES];
+//    hud.labelText = @"";
+//    // 隐藏时候从父控件中移除
+//    hud.removeFromSuperViewOnHide = YES;
+//    // YES代表需要蒙版效果
+//    hud.dimBackground = YES;
+    [self performSelector:@selector(dismissView) withObject:nil afterDelay:0.01];
 }
 
-
+- (void)dismissView{
+//    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+//    for (YCSelectPhotoModel *model in [self.arraySelectPhotos mutableCopy]) {
+//        PHAsset *asset = model.asset;
+//        // 是否要原图
+//        CGSize size = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
+//        PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+//        options.synchronous = YES;
+//        // 从asset中获得图片
+//        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+//            
+//            YCSelectPhotoModel *tempModel = [[YCSelectPhotoModel alloc] init];
+//            tempModel.image = result;
+//            [tempArray addObject:tempModel];
+//            if (tempArray.count == self.arraySelectPhotos.count) {
+//                
+//                if (self.DoneBlock) {
+//                    self.DoneBlock(tempArray);
+//                }
+//                [hud removeFromSuperViewOnHide];
+//                [hud hide:YES];
+                    if (self.DoneBlock) {
+                        self.DoneBlock(self.arraySelectPhotos);
+                    }
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+//            }
+//        }];
+//    }
+}
 
 @end

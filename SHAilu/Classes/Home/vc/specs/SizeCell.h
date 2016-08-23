@@ -10,4 +10,6 @@
 
 @interface SizeCell : UITableViewCell
 
+- (NSDictionary *)getDataDict;
+
 @end

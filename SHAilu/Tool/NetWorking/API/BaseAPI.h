@@ -7,7 +7,7 @@
 //
 
 #import "UserService.h"
-//#import "OrderService.h"
+#import "OrderService.h"
 //#import "CompanyService.h"
 #import "ILService.h"
 
@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) ILService *ilService;
 @property (strong, nonatomic) UserService    *userService;
-//@property (strong, nonatomic) OrderService   *orderService;
+@property (strong, nonatomic) OrderService   *orderService;
 //@property (strong, nonatomic) CompanyService *companyService;
 
 + (BaseAPI *)sharedAPI;

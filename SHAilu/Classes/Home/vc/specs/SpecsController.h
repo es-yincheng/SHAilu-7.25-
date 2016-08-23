@@ -11,5 +11,6 @@
 @interface SpecsController : UIViewController
 
 @property (nonatomic, assign) NSInteger startPlics;
+@property (nonatomic, strong) NSDictionary *specsDict;
 
 @end

@@ -23,23 +23,26 @@ NSString *SelectIdentifier = @"SelectWeight";
     NSArray *items;
     NSArray *weights;
     NSInteger lastClickCell;
+    NSInteger lastWeight;
     UIView *backView;
+    NSInteger cellType;
 }
 
-@property (weak, nonatomic) IBOutlet UIView *titleView;
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UIImageView *icon;
-@property (weak, nonatomic) IBOutlet UILabel *materialLb;
-@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layOut;
-@property (weak, nonatomic) IBOutlet UICollectionView *collection;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionHeight;
-@property (weak, nonatomic) IBOutlet UILabel *weight;
-@property (weak, nonatomic) IBOutlet UIView *mainView;
-@property (weak, nonatomic) IBOutlet UIView *fuView;
-@property (weak, nonatomic) IBOutlet UIButton *weightButton;
-@property (weak, nonatomic) IBOutlet UILabel *weightLb;
-@property (nonatomic, strong) UITableView *weightTableView;
-@property (weak, nonatomic) IBOutlet UILabel *typeTitle;
+@property (weak, nonatomic  ) IBOutlet UIView                     *titleView;
+@property (weak, nonatomic  ) IBOutlet UILabel                    *title;
+@property (weak, nonatomic  ) IBOutlet UIImageView                *icon;
+@property (weak, nonatomic  ) IBOutlet UILabel                    *materialLb;
+@property (weak, nonatomic  ) IBOutlet UICollectionViewFlowLayout *layOut;
+@property (weak, nonatomic  ) IBOutlet UICollectionView           *collection;
+@property (weak, nonatomic  ) IBOutlet NSLayoutConstraint         *collectionHeight;
+@property (weak, nonatomic  ) IBOutlet UILabel                    *weight;
+@property (weak, nonatomic  ) IBOutlet UIView                     *mainView;
+@property (weak, nonatomic  ) IBOutlet UIView                     *fuView;
+@property (weak, nonatomic  ) IBOutlet UIButton                   *weightButton;
+@property (weak, nonatomic  ) IBOutlet UILabel                    *weightLb;
+@property (weak, nonatomic  ) IBOutlet UILabel                    *typeTitle;
+@property (weak, nonatomic) IBOutlet UITextField *thickness;
+@property (nonatomic, strong) UITableView                         *weightTableView;
 
 @end
 
@@ -74,7 +77,36 @@ NSString *SelectIdentifier = @"SelectWeight";
     _collection.dataSource = self;
     
     lastClickCell = 0;
+    lastWeight = 0;
 }
+
+
+#pragma mark - custom
+- (NSDictionary *)getDataDict{
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    
+    if (cellType == 1) {
+        if (_thickness.text.length < 1 &&
+            lastClickCell != 0) {
+            //选择空 或者 必须输入 厚度
+            [MBProgressHUD showMessageAuto:@"请输入材料厚度"];
+            return nil;
+        } else if(lastClickCell == 0){
+            
+        } else {
+            [dict setValue:[items yc_objectAtIndex:lastClickCell] forKey:@"Material"];
+            [dict setValue:[weights yc_objectAtIndex:lastWeight] forKey:@"Weight"];
+            [dict setValue:_thickness.text forKey:@"Thickness"];
+        }
+    } else {
+        [dict setValue:[items yc_objectAtIndex:lastClickCell] forKey:@"Material"];
+        [dict setValue:[weights yc_objectAtIndex:lastWeight] forKey:@"Weight"];
+        [dict setValue:_thickness.text forKey:@"Thickness"];
+    }
+    return dict;
+}
+
+
 
 #pragma mark - delegate\dataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -132,7 +164,7 @@ NSString *SelectIdentifier = @"SelectWeight";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    lastWeight = indexPath.row;
     _weightLb.text = [NSString stringWithFormat:@"%@ g",[weights yc_objectAtIndex:indexPath.row]];
     [self hiddenBackView];
 }
@@ -150,12 +182,14 @@ NSString *SelectIdentifier = @"SelectWeight";
         self.weight.text = @"克重";
         self.title.text = [NSString stringWithFormat:@"第 %@ 层",titleStr];
         _typeTitle.text = @"材料A";
+        cellType = 0;
     } else {
         self.mainView.hidden = YES;
         self.fuView.hidden = NO;
         self.weight.text = @"厚度";
         self.title.text = [NSString stringWithFormat:@"%@",titleStr];
         _typeTitle.text = @"材料B";
+        cellType = 1;
     }
 }
 
@@ -214,10 +248,6 @@ NSString *SelectIdentifier = @"SelectWeight";
         [backView addGestureRecognizer:tap];
         backView.userInteractionEnabled = YES;
         [[[UIApplication sharedApplication].windows lastObject] addSubview:backView];
-        
-////        _weightTableView.alpha = 0;
-//        [[[UIApplication sharedApplication].windows lastObject] addSubview:_weightTableView];
-//        [self.viewController.view bringSubviewToFront:_weightTableView];
     }
     return _weightTableView;
 }

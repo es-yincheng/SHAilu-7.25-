@@ -8,18 +8,33 @@
 
 #import "UserService.h"
 #import "NetWorking.h"
+#import "Security.h"
 
-static NSString *LoginVerify            = @"Account/LoginVerify";
-static NSString *GetRegisterCheckCode   = @"Account/GetRegisterCheckCode";
-static NSString *GetForgetPassCheckCode = @"Account/GetForgetPassCheckCode";
-static NSString *Register               = @"Account/Register";
-static NSString *ResetPwd               = @"Account/ResetPwd";
-static NSString *UpdatePwdAction        = @"Account/UpdatePwdAction";
-static NSString *UpdateUserInfo         = @"Account/UpdateUserInfo";
-static NSString *SubmitProposal         = @"Home/SubmitProposal";
-
+static NSString *LoginVerify            = @"Account/login";
+static NSString *GetRegisterCheckCode   = @"Account/getRegisterCode";
+static NSString *GetForgetPassCheckCode = @"Account/getPasswordCode";
+static NSString *Register               = @"Account/register";
+static NSString *ResetPwd               = @"Account/resetPassword";
+static NSString *UpdatePwdAction        = @"Account/updatePassword";
+static NSString *QueryUserInfo          = @"Account/getUserInfo";
 
 @implementation UserService
+
+- (void)queryUserInfoWithUid:(NSString *)Uid
+                     success:(SuccessBlock)success
+                     failure:(FailureBlock)failure{
+
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          [UserModel getUserInfo].Uid,@"userId",
+                          [UserModel getUserInfo].Phone,@"phone",
+                          nil];
+    
+    [[NetWorking sharedNetWorking] post:QueryUserInfo
+                             parameters:dict
+                               progress:nil
+                                success:success
+                                failure:failure];
+}
 
 -(void)loginWithUserName:(NSString *)userName
                 Password:(NSString *)pwd
@@ -27,8 +42,8 @@ static NSString *SubmitProposal         = @"Home/SubmitProposal";
                  failure:(FailureBlock)failure{
     
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          userName,@"UserName",
-                          pwd,@"Password",
+                          userName,@"phone",
+                          [Security AesEncrypt:pwd],@"password",
                           nil];
     
     [[NetWorking sharedNetWorking] post:LoginVerify
@@ -43,12 +58,9 @@ static NSString *SubmitProposal         = @"Home/SubmitProposal";
                             CheckCode:(NSString *)checkCode
                               success:(SuccessBlock)success
                               failure:(FailureBlock)failure{
+    
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                              phone,@"MobilePhone",
-                                pwd,@"Password",
-                                pwd,@"RePassword",
-                          checkCode,@"RegisterCheckCode",
-                                @"",@"Source",
+                          phone,@"phone",
                           nil];
     
     [[NetWorking sharedNetWorking] post:GetRegisterCheckCode
@@ -59,17 +71,19 @@ static NSString *SubmitProposal         = @"Home/SubmitProposal";
 }
 
 - (void)registerWithPhone:(NSString *)phone
+                     name:(NSString *)name
                       Pwd:(NSString *)pwd
+              companyName:(NSString *)companyName
                 CheckCode:(NSString *)checkCode
                   success:(SuccessBlock)success
                   failure:(FailureBlock)failure{
     
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          phone,@"MobilePhone",
-                          pwd,@"Password",
-                          pwd,@"RePassword",
-                          checkCode,@"RegisterCheckCode",
-                          @"",@"Source",
+                          phone,@"phone",
+                          [Security AesEncrypt:pwd],@"password",
+                          name,@"name",
+                          companyName,@"companyName",
+                          checkCode,@"code",
                           nil];
     
     [[NetWorking sharedNetWorking] post:Register
@@ -80,16 +94,13 @@ static NSString *SubmitProposal         = @"Home/SubmitProposal";
 }
 
 - (void)getForgetPwdCheckCodeWithPhone:(NSString *)phone
-                                   Pwd:(NSNumber *)pwd
+                                   Pwd:(NSString *)pwd
                              CheckCode:(NSString *)checkCode
                                success:(SuccessBlock)success
                                failure:(FailureBlock)failure{
     
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          phone,@"MobilePhone",
-                          pwd,@"Password",
-                          pwd,@"RePassword",
-                          checkCode,@"ForgetPassCheckCode",
+                          phone,@"phone",
                           nil];
     
     [[NetWorking sharedNetWorking] post:GetForgetPassCheckCode
@@ -107,10 +118,9 @@ static NSString *SubmitProposal         = @"Home/SubmitProposal";
                    failure:(FailureBlock)failure{
     
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          phone,@"MobilePhone",
-                          pwd,@"Password",
-                          pwd,@"RePassword",
-                          checkCode,@"ForgetPassCheckCode",
+                          phone,@"phone",
+                          [Security AesEncrypt:pwd],@"password",
+                          checkCode,@"code",
                           nil];
     
     [[NetWorking sharedNetWorking] post:ResetPwd
@@ -118,21 +128,18 @@ static NSString *SubmitProposal         = @"Home/SubmitProposal";
                                progress:nil
                                 success:success
                                 failure:failure];
-
-    
 }
 
-- (void)updatePwdWithPhone:(NSString *)phone
-                    OldPwd:(NSString *)oldPwd
+- (void)updatePwdWithOldPwd:(NSString *)oldPwd
                        Pwd:(NSString *)pwd
                    success:(SuccessBlock)success
                    failure:(FailureBlock)failure{
     
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          phone,@"MobilePhone",
-                         oldPwd,@"OldPassword",
-                            pwd,@"Password",
-                            pwd,@"RePassword",
+                          [UserModel getUserInfo].Uid,@"Uid",
+                          [UserModel getUserInfo].Phone,@"phone",
+                         [Security AesEncrypt:oldPwd],@"oldPwd",
+                            [Security AesEncrypt:pwd],@"password",
                           nil];
     
     [[NetWorking sharedNetWorking] post:UpdatePwdAction
@@ -141,47 +148,6 @@ static NSString *SubmitProposal         = @"Home/SubmitProposal";
                                 success:success
                                 failure:failure];
 
-}
-
-
-- (void)updateUserInfoWithUserName:(NSString *)userName
-                            Mobile:(NSString *)userPhone
-                               Sex:(NSNumber *)sex
-                              Name:(NSString *)companyName
-                         Telephone:(NSString *)companyPhone
-                           success:(SuccessBlock)success
-                           failure:(FailureBlock)failure{
-    
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          userName,@"UserName",
-                          userPhone,@"Mobile",
-                          sex,@"Sex",
-                          companyName,@"Name",
-                          companyPhone,@"Telephone",
-                          nil];
-    
-    [[NetWorking sharedNetWorking] post:UpdateUserInfo
-                             parameters:dict
-                               progress:nil
-                                success:success
-                                failure:failure];
-}
-
-- (void)submitProposalWithMobile:(NSString *)userPhone
-                         Content:(NSString *)Content
-                         success:(SuccessBlock)success
-                         failure:(FailureBlock)failure{
-    
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          userPhone,@"Mobile",
-                          Content,@"Content",
-                          nil];
-    
-    [[NetWorking sharedNetWorking] post:SubmitProposal
-                             parameters:dict
-                               progress:nil
-                                success:success
-                                failure:failure];
 }
 
 @end

@@ -10,4 +10,6 @@
 
 @interface OrderDetailController : UIViewController
 
+@property (nonatomic, strong) NSString *orderID;
+
 @end

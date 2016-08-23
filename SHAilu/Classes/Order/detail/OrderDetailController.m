@@ -26,8 +26,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self setUI];
+    self.title = @"订单详情";
+//    [self setUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[BaseAPI sharedAPI].orderService getOrderInfoWithOrderID:_orderID
+                                                     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                         NSLog(@"responseObject:%@",responseObject);
+                                                         
+                                                         if (1 == [[responseObject yc_objectForKey:@"Success"] integerValue]) {
+                                                             NSDictionary *dict = [responseObject yc_objectForKey:@"Data"];
+                                                             if (dict) {
+                                                                 [self setUIWithDict:dict];
+                                                             }
+                                                         } else {
+                                                             [MBProgressHUD showMessageAuto:[responseObject yc_objectForKey:@"ErrorMsg"]];
+                                                         }
+                                                         
+                                                     } failure:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,16 +53,36 @@
     
 }
 
-- (void)setUI{
-    self.title = @"订单详情";
-    _typeName.text = @"热封口袋";
+- (void)setUIWithDict:(NSDictionary *)dict{
+    _typeName.text = [[dict yc_objectForKey:@"Order"] yc_objectForKey:@"CategoryName"];
     _typeIcon.image = [UIImage imageNamed:@"category_4_1"];
-    _specsLb.text = @"尺寸:200*300mm\n层数:3\n第一层:进口白色牛皮纸、70g";
-    _markLb.text = @"备注加点啥好呢";
+    
+    NSString *specsStr = @"";
+    NSInteger x = 0;
+    for (NSDictionary *temp in [dict yc_objectForKey:@"Spec"]) {
+        NSString *str = [NSString stringWithFormat:@"第%ld层:%@、",(long)(x+1),[temp yc_objectForKey:@"Material"]];
+        if ([temp yc_objectForKey:@"Thickness"]) {
+            str = [str stringByAppendingString:[NSString stringWithFormat:@"%@μm",[temp yc_objectForKey:@"Thickness"]]];
+        } else {
+            str = [str stringByAppendingString:[NSString stringWithFormat:@"%@g",[temp yc_objectForKey:@"Weight"]]];
+        }
+        
+        if ([[dict yc_objectForKey:@"Spec"] count] != x + 1) {
+            str = [str stringByAppendingString:@"\n"];
+        }
+        
+        specsStr = [[specsStr mutableCopy] stringByAppendingString:str];
+  
+        x ++ ;
+    }
+    
+    
+    _specsLb.text = [NSString stringWithFormat:@"尺寸:%@*%@*%@mm\n%@",[[dict yc_objectForKey:@"Order"] yc_objectForKey:@"Length"],[[dict yc_objectForKey:@"Order"] yc_objectForKey:@"Width"],[[dict yc_objectForKey:@"Order"] yc_objectForKey:@"Height"],specsStr];
+//    @"尺寸:200*300mm\n层数:3\n第一层:进口白色牛皮纸、70g";
+    _markLb.text = [[dict yc_objectForKey:@"Order"] yc_objectForKey:@"Remark"];
     _upload1.image = [UIImage imageNamed:@"category_3_1"];
     _upload2.image = [UIImage imageNamed:@"category_2_1"];
     _upload3.image = [UIImage imageNamed:@"bz_5"];
-    _upload3.layer.cornerRadius;
 }
 
 @end

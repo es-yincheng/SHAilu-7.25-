@@ -12,11 +12,9 @@
 @interface UserModel : BaseModel
 
 @property (copy, nonatomic  ) NSString     *CompanyName;
-@property (copy, nonatomic  ) NSString     *CompanyUid;
-@property (strong, nonatomic) NSNumber     *Mobile;
-@property (assign, nonatomic) NSNumber     *Sex;
+@property (strong, nonatomic) NSNumber     *Phone;
 @property (copy, nonatomic  ) NSString     *Uid;
-@property (copy, nonatomic  ) NSString     *UserName;
+@property (copy, nonatomic  ) NSString     *Name;
 
 - (void)saveUserInfo;
 

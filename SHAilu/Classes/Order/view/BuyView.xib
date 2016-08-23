@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="buyCount" destination="xGf-d6-gJB" id="C0p-vv-Rw9"/>
                 <outlet property="buyView" destination="iN0-l3-epB" id="t4f-eX-3Ko"/>
+                <outlet property="buyViewOKBt" destination="Umw-fG-UPP" id="OgA-gl-dyE"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

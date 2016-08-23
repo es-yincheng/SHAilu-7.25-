@@ -29,9 +29,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     YCTabBarController *tabBarController = (YCTabBarController*)self.tabBarController;
     tabBarController.customView.hidden = NO;
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *hasUserInfo = [userDefault objectForKey:@"UserInfo"];
-    if (hasUserInfo) {
+    
+    UserModel *user = [UserModel getUserInfo];
+    if (!user) {
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LoginAndRegister" bundle:nil];
         UINavigationController *loginNV = [storyBoard instantiateViewControllerWithIdentifier:@"LoginNV"];
         [self.navigationController presentViewController:loginNV animated:NO completion:nil];

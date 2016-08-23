@@ -27,7 +27,7 @@ static BaseAPI *api;
     {
         _ilService = [[ILService alloc] init];
         _userService = [[UserService alloc] init];
-//        _orderService = [[OrderService alloc] init];
+        _orderService = [[OrderService alloc] init];
 //        _companyService = [[CompanyService alloc] init];
     }
     return (self);

@@ -41,36 +41,82 @@
     stepCount = 1;
     self.title = @"订单追踪";
     [self setTableView];
-//    [self setStepIcon];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    NSArray *array = @[@{@"title":@"您提交了订单,正在等待报价",@"time":@"2016-08-18 10:30:14"},
-                       @{@"title":@"您的订单已报价成功,开始定制",@"time":@"2016-08-18 10:30:14"},
-                       @{@"title":@"您定制的产品正在印刷中",@"time":@"2016-08-18 10:30:14"},
-                       @{@"title":@"您定制的产品正在制筒中",@"time":@"2016-08-18 10:30:14"},
-                       @{@"title":@"您定制的产品正在糊底",@"time":@"2016-08-18 10:30:14"},
-                       @{@"title":@"您定制的产品正在干燥中",@"time":@"2016-08-18 10:30:14"},
-                       @{@"title":@"您定制的产品正在打包",@"time":@"2016-08-18 10:30:14"},
-                       @{@"title":@"您定制的产品正在配送",@"time":@"2016-08-18 10:30:14"},
-                       @{@"title":@"您的定制已完成",@"time":@"2016-08-18 10:30:14"}];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    NSArray *insertIndexPath = [NSArray arrayWithObjects:indexPath, nil];
-    NSInteger x = 0;
-    for (NSDictionary *dict in array) {
-        
-//        NSString *string = [dict yc_objectForKey:@"title"];
-        
-        [UIView animateWithDuration:0.5 animations:^{
-            [self.tableView beginUpdates];
-            [self.dataSource insertObject:dict atIndex:0];
-            [self.tableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationBottom];
-            [self.tableView endUpdates];
-        }];
-        x ++;
-    }
     
-    [_tableView reloadData];
+    [[BaseAPI sharedAPI].orderService getOrderStatusWithOrderID:_orderID
+                                                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                            
+                                                            NSLog(@"------:%@",responseObject);
+                                                            
+                                                            [self.tableView.mj_header endRefreshing];
+                                                            [self.tableView.mj_footer endRefreshing];
+                                                            
+                                                            if (1 == [[responseObject yc_objectForKey:@"Success"] integerValue]) {
+                                                                if ([[responseObject yc_objectForKey:@"Data"] count] > 0) {
+                                                                    [self.dataSource removeAllObjects];
+                                                                    NSArray *tempArray = [responseObject yc_objectForKey:@"Data"];
+
+                                                                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+                                                                        NSArray *insertIndexPath = [NSArray arrayWithObjects:indexPath, nil];
+                                                                        NSInteger x = 0;
+                                                                        for (NSDictionary *dict in tempArray) {
+                                                                            [UIView animateWithDuration:0.5 animations:^{
+                                                                                [self.tableView beginUpdates];
+                                                                                [self.dataSource insertObject:dict atIndex:0];
+                                                                                [self.tableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationBottom];
+                                                                                [self.tableView endUpdates];
+                                                                            }];
+                                                                            x ++;
+                                                                        }
+                                                                    [_tableView reloadData];
+                                                                }
+                                                            } else {
+                                                                [MBProgressHUD showMessageAuto:[responseObject yc_objectForKey:@"ErrorMsg"]];
+                                                            }
+                                                            
+                                                            
+                                                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                            [self.tableView.mj_header endRefreshing];
+                                                            [self.tableView.mj_footer endRefreshing];
+                                                            [MBProgressHUD showMessageAuto:@"网络连接失败,请稍后重试"];
+                                                        }];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    NSArray *array = @[@{@"title":@"您提交了订单,正在等待报价",@"time":@"2016-08-18 10:30:14"},
+//                       @{@"title":@"您的订单已报价成功,开始定制",@"time":@"2016-08-18 10:30:14"},
+//                       @{@"title":@"您定制的产品正在印刷中",@"time":@"2016-08-18 10:30:14"},
+//                       @{@"title":@"您定制的产品正在制筒中",@"time":@"2016-08-18 10:30:14"},
+//                       @{@"title":@"您定制的产品正在糊底",@"time":@"2016-08-18 10:30:14"},
+//                       @{@"title":@"您定制的产品正在干燥中",@"time":@"2016-08-18 10:30:14"},
+//                       @{@"title":@"您定制的产品正在打包",@"time":@"2016-08-18 10:30:14"},
+//                       @{@"title":@"您定制的产品正在配送",@"time":@"2016-08-18 10:30:14"},
+//                       @{@"title":@"您的定制已完成",@"time":@"2016-08-18 10:30:14"}];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//    NSArray *insertIndexPath = [NSArray arrayWithObjects:indexPath, nil];
+//    NSInteger x = 0;
+//    for (NSDictionary *dict in array) {
+//        
+////        NSString *string = [dict yc_objectForKey:@"title"];
+//        
+//        [UIView animateWithDuration:0.5 animations:^{
+//            [self.tableView beginUpdates];
+//            [self.dataSource insertObject:dict atIndex:0];
+//            [self.tableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:UITableViewRowAnimationBottom];
+//            [self.tableView endUpdates];
+//        }];
+//        x ++;
+//    }
+//    
+//    [_tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
