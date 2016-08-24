@@ -10,7 +10,9 @@
 
 @interface OrderModel : NSObject
 
+@property (copy, nonatomic  ) NSString     *ParentCategoryName;
 @property (copy, nonatomic  ) NSString     *CategoryName;
+@property (copy, nonatomic  ) NSString     *CategoryImg;
 @property (strong, nonatomic) NSNumber     *Count;
 @property (copy, nonatomic  ) NSString     *CreateTime;
 @property (copy, nonatomic  ) NSString     *Height;

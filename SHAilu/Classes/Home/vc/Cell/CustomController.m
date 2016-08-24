@@ -17,6 +17,7 @@
 #import "SpecsController.h"
 #import "SpecsTController.h"
 
+#define MAX_LIMIT_NUMS     200
 static NSString *placeHolder = @"如有其它需求,请备注";
 
 @interface CustomController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UITextViewDelegate>
@@ -32,6 +33,7 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 @property (nonatomic, strong) NSMutableArray *imageArray;
 @property (nonatomic, strong) NSMutableArray *selectTypeArray;
 @property (nonatomic, strong) MBProgressHUD  *hud;
+@property (weak, nonatomic) IBOutlet UILabel *numberLb;
 
 @end
 
@@ -40,6 +42,7 @@ static NSString *placeHolder = @"如有其它需求,请备注";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"定制";
+    _numberLb.text = @"200/200";
     
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
     self.navigationItem.backBarButtonItem = backItem;
@@ -137,15 +140,19 @@ static NSString *placeHolder = @"如有其它需求,请备注";
     }
     
     NSString *categoryName;
+    NSString *categoryImg;
     for (NSInteger x = 0; x < _selectTypeArray.count; x ++) {
         if ([self.selectTypeArray[x] isKindOfClass:[NSString class]] &&
             [self.selectTypeArray[x] isEqualToString:@"b"]) {
             categoryName = [[_typeArray yc_objectAtIndex:x] yc_objectForKey:@"title"];
+            categoryImg = [[_typeArray yc_objectAtIndex:x] yc_objectForKey:@"pic"];
         }
     }
     
     NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
+    [resultDict setValue:_parentCategoryName forKey:@"parentCategoryName"];
     [resultDict setValue:categoryName forKey:@"categoryName"];
+    [resultDict setValue:categoryImg forKey:@"categoryImg"];
     [resultDict setValue:_countField.text forKey:@"Count"];
     [resultDict setValue:_markText.text forKey:@"Remark"];
     [resultDict setValue:[_specsDict yc_objectForKey:@"height"] forKey:@"Height"];
@@ -159,71 +166,72 @@ static NSString *placeHolder = @"如有其它需求,请备注";
     [resultDict setValue:json forKey:@"Spec"];
     NSLog(@"定制:%@",resultDict);
     
+//    [self askDataWithDict:resultDict];
     
-    [self askDataWithDict:resultDict];
+//    如果有图片需要上传
+    self.hud.labelText = @"正在上传";
     
+    NSMutableArray *images = [[NSMutableArray alloc] init];
+    NSInteger imageCount = self.imageArray.count;
     
-    
-    
-    //如果有图片需要上传
-//    self.hud.labelText = @"正在上传";
-    
-    
-//    NSMutableArray *images = [[NSMutableArray alloc] init];
-//    NSInteger imageCount = self.imageArray.count;
-//    for (NSInteger x = self.imageArray.count-1; x >=0; x--) {
-//        if ([[self.imageArray yc_objectAtIndex:x] isKindOfClass:[NSString class]]) {
-//            imageCount = imageCount - 1;
-//        } else {
-//            UIImage *imageData;
-//            if ([[self.imageArray yc_objectAtIndex:x] isKindOfClass:[YCSelectPhotoModel class]]) {
-//                YCSelectPhotoModel *model = [self.imageArray yc_objectAtIndex:x];
-//                
-//                PHAsset *asset = model.asset;
-//                // 是否要原图
-//                CGSize size = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
-//                PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-//                options.synchronous = YES;
-//                // 从asset中获得图片
-//                [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-//                    
-//                    [images addObject:result];
-//                    
-//                    if (images.count == imageCount) {
-//                        [self dealImageArrayForUpload:images orther:resultDict];
-//                    }
-//                }];
-//            } else {
-//                imageData = [self.imageArray yc_objectAtIndex:x];
-//                [images addObject:imageData];
-//                if (images.count == imageCount) {
-//                    [self dealImageArrayForUpload:images orther:resultDict];
-//                }
-//            }
-//        }
-//    }
+    for (NSInteger x = self.imageArray.count-1; x >=0; x--) {
+        if ([[self.imageArray yc_objectAtIndex:x] isKindOfClass:[NSString class]]) {
+            imageCount = imageCount - 1;
+            
+            if (imageCount == 0) {
+                [self askDataWithDict:resultDict];
+            }
+            
+        } else {
+            UIImage *imageData;
+            if ([[self.imageArray yc_objectAtIndex:x] isKindOfClass:[YCSelectPhotoModel class]]) {
+                YCSelectPhotoModel *model = [self.imageArray yc_objectAtIndex:x];
+                
+                PHAsset *asset = model.asset;
+                // 是否要原图
+                CGSize size = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
+                PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+                options.synchronous = YES;
+                // 从asset中获得图片
+                [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                    
+                    [images addObject:result];
+                    
+                    if (images.count == imageCount) {
+                        [self dealImageArrayForUpload:images orther:resultDict];
+                    }
+                }];
+            } else {
+                imageData = [self.imageArray yc_objectAtIndex:x];
+                [images addObject:imageData];
+                if (images.count == imageCount) {
+                    [self dealImageArrayForUpload:images orther:resultDict];
+                }
+            }
+        }
+    }
 }
 
 - (void)dealImageArrayForUpload:(NSArray *)images orther:(NSMutableDictionary *)orhter{
-//    dispatch_queue_t queue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//    NSMutableArray *resultImageArray = [[NSMutableArray alloc] init];
-//    for (UIImage *image in images) {
-//        dispatch_async(queue, ^{
-//            [resultImageArray addObject:[image compressWithScale:0]];
-//            NSLog(@"处理图片----%@",[NSThread currentThread]);
-//            
-//            if (resultImageArray.count == images.count) {
-//                dispatch_sync(dispatch_get_main_queue(), ^{
+    dispatch_queue_t queue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    NSMutableArray *resultImageArray = [[NSMutableArray alloc] init];
+    for (UIImage *image in images) {
+        dispatch_async(queue, ^{
+            [resultImageArray addObject:[image compressWithScale:0]];
+            NSLog(@"处理图片----%@",[NSThread currentThread]);
+            
+            if (resultImageArray.count == images.count) {
+                dispatch_sync(dispatch_get_main_queue(), ^{
                     UserModel *userModel = [UserModel getUserInfo];
-//                    [orhter setValue:resultImageArray forKey:@"photo"];
+                    [orhter setValue:resultImageArray forKey:@"photo"];
                     [orhter setValue:userModel.Uid forKey:@"Uid"];
 
                     [self askDataWithDict:orhter];
                     
-//                });
-//            }
-//        });
-//    }
+                });
+            }
+        });
+    }
 }
 
 - (void)askDataWithDict:(NSDictionary*)orderDict{
@@ -242,7 +250,11 @@ static NSString *placeHolder = @"如有其它需求,请备注";
                                                           [self.hud hide:YES];
                                                           self.hud = nil;
                                                       }
-                                                  } failure:nil];
+                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                      [MBProgressHUD showMessageAuto:@"网络连接失败,稍后重试"];
+                                                      [self.hud hide:YES];
+                                                      self.hud = nil;
+                                                  }];
 }
 
 - (void)clearAllPublishData{
@@ -269,6 +281,106 @@ static NSString *placeHolder = @"如有其它需求,请备注";
         textView.text = placeHolder;
         textView.textColor = [UIColor grayColor];
     }
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    UITextRange *selectedRange = [textView markedTextRange];
+    //获取高亮部分
+    UITextPosition *pos = [textView positionFromPosition:selectedRange.start offset:0];
+    //获取高亮部分内容
+    //NSString * selectedtext = [textView textInRange:selectedRange];
+    
+    //如果有高亮且当前字数开始位置小于最大限制时允许输入
+    if (selectedRange && pos) {
+        NSInteger startOffset = [textView offsetFromPosition:textView.beginningOfDocument toPosition:selectedRange.start];
+        NSInteger endOffset = [textView offsetFromPosition:textView.beginningOfDocument toPosition:selectedRange.end];
+        NSRange offsetRange = NSMakeRange(startOffset, endOffset - startOffset);
+        
+        if (offsetRange.location < MAX_LIMIT_NUMS) {
+            return YES;
+        }
+        else
+        {
+            return NO;
+        }
+    }
+    
+    
+    NSString *comcatstr = [textView.text stringByReplacingCharactersInRange:range withString:text];
+    
+    NSInteger caninputlen = MAX_LIMIT_NUMS - comcatstr.length;
+    
+    if (caninputlen >= 0)
+    {
+        return YES;
+    }
+    else
+    {
+        NSInteger len = text.length + caninputlen;
+        //防止当text.length + caninputlen < 0时，使得rg.length为一个非法最大正数出错
+        NSRange rg = {0,MAX(len,0)};
+        
+        if (rg.length > 0)
+        {
+            NSString *s = @"";
+            //判断是否只普通的字符或asc码(对于中文和表情返回NO)
+            BOOL asc = [text canBeConvertedToEncoding:NSASCIIStringEncoding];
+            if (asc) {
+                s = [text substringWithRange:rg];//因为是ascii码直接取就可以了不会错
+            }
+            else
+            {
+                __block NSInteger idx = 0;
+                __block NSString  *trimString = @"";//截取出的字串
+                //使用字符串遍历，这个方法能准确知道每个emoji是占一个unicode还是两个
+                [text enumerateSubstringsInRange:NSMakeRange(0, [text length])
+                                         options:NSStringEnumerationByComposedCharacterSequences
+                                      usingBlock: ^(NSString* substring, NSRange substringRange, NSRange enclosingRange, BOOL* stop) {
+                                          
+                                          if (idx >= rg.length) {
+                                              *stop = YES; //取出所需要就break，提高效率
+                                              return ;
+                                          }
+                                          
+                                          trimString = [trimString stringByAppendingString:substring];
+                                          
+                                          idx++;
+                                      }];
+                
+                s = trimString;
+            }
+            //rang是指从当前光标处进行替换处理(注意如果执行此句后面返回的是YES会触发didchange事件)
+            [textView setText:[textView.text stringByReplacingCharactersInRange:range withString:s]];
+            //既然是超出部分截取了，哪一定是最大限制了。
+            self.numberLb.text = [NSString stringWithFormat:@"%d/%ld",0,(long)MAX_LIMIT_NUMS];
+        }
+        return NO;
+    }
+}
+
+-(void)textViewDidChange:(UITextView *)textView{
+    UITextRange *selectedRange = [textView markedTextRange];
+    //获取高亮部分
+    UITextPosition *pos = [textView positionFromPosition:selectedRange.start offset:0];
+    
+    //如果在变化中是高亮部分在变，就不要计算字符了
+    if (selectedRange && pos) {
+        return;
+    }
+    
+    NSString  *nsTextContent = textView.text;
+    NSInteger existTextNum = nsTextContent.length;
+    
+    if (existTextNum > MAX_LIMIT_NUMS)
+    {
+        //截取到最大位置的字符(由于超出截部分在should时被处理了所在这里这了提高效率不再判断)
+        NSString *s = [nsTextContent substringToIndex:MAX_LIMIT_NUMS];
+        
+        [textView setText:s];
+    }
+    
+    //不让显示负数 口口日
+    self.numberLb.text = [NSString stringWithFormat:@"%ld/%d",MAX(0,MAX_LIMIT_NUMS - existTextNum),MAX_LIMIT_NUMS];
 }
 
 #pragma mark Collection

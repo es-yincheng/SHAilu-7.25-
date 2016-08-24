@@ -66,8 +66,8 @@
 }
 
 //-----------------------------------------------------------------
-//#define BaseURL    @"http://iost.ibaozhuang.com/"
-#define BaseURL    @"http://192.168.0.156:8200/"
+#define BaseURL    @"http://al.ibaozhuang.net/"
+//#define BaseURL    @"http://192.168.0.156:8200/"
 #define PGY_APP_ID @"9848cb41e160d92e1173b69bd5185efa"
 
 //头文件

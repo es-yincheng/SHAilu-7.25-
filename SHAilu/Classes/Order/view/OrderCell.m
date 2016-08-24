@@ -139,9 +139,9 @@ typedef NS_ENUM(NSInteger, OrderStatus) {
             break;
     }
     
-    
-    _statuTime.text = order.CreateTime;
-    _typeName.text = order.CategoryName;
+    _typePic.image = [UIImage imageNamed:order.CategoryImg];
+    _statuTime.text = [order.CreateTime getTimeFromNow];
+    _typeName.text = [NSString stringWithFormat:@"%@ · %@",order.ParentCategoryName,order.CategoryName];
     _sizeLb.text = [NSString stringWithFormat:@"尺寸:%@*%@*%@mm",order.Length,order.Width,order.Height];
     _plicsLb.text = [NSString stringWithFormat:@"层数:%@",order.Plies];
     _count.text = [NSString stringWithFormat:@"数量:%@",order.Count];

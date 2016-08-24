@@ -7,6 +7,7 @@
 //
 
 #import "OrderDetailController.h"
+#import "UIImageView+WebCache.h"
 
 @interface OrderDetailController ()
 
@@ -54,8 +55,9 @@
 }
 
 - (void)setUIWithDict:(NSDictionary *)dict{
+    _countLb.text = [NSString stringWithFormat:@"%@",[[dict yc_objectForKey:@"Order"] yc_objectForKey:@"Count"]];
     _typeName.text = [[dict yc_objectForKey:@"Order"] yc_objectForKey:@"CategoryName"];
-    _typeIcon.image = [UIImage imageNamed:@"category_4_1"];
+    _typeIcon.image = [UIImage imageNamed:[[dict yc_objectForKey:@"Order"] yc_objectForKey:@"CategoryImg"]];
     
     NSString *specsStr = @"";
     NSInteger x = 0;
@@ -78,11 +80,35 @@
     
     
     _specsLb.text = [NSString stringWithFormat:@"尺寸:%@*%@*%@mm\n%@",[[dict yc_objectForKey:@"Order"] yc_objectForKey:@"Length"],[[dict yc_objectForKey:@"Order"] yc_objectForKey:@"Width"],[[dict yc_objectForKey:@"Order"] yc_objectForKey:@"Height"],specsStr];
-//    @"尺寸:200*300mm\n层数:3\n第一层:进口白色牛皮纸、70g";
     _markLb.text = [[dict yc_objectForKey:@"Order"] yc_objectForKey:@"Remark"];
-    _upload1.image = [UIImage imageNamed:@"category_3_1"];
-    _upload2.image = [UIImage imageNamed:@"category_2_1"];
-    _upload3.image = [UIImage imageNamed:@"bz_5"];
+    
+    NSInteger picIndex = 0;
+    for (NSDictionary *imgDict in [dict yc_objectForKey:@"Images"]) {
+        
+        switch (picIndex) {
+            case 0:
+                [_upload1 sd_setImageWithURL:[NSURL URLWithString:[imgDict yc_objectForKey:@"ImgUrl"]]];
+                break;
+                
+            case 1:
+                [_upload2 sd_setImageWithURL:[NSURL URLWithString:[imgDict yc_objectForKey:@"ImgUrl"]]];
+                break;
+                
+            case 2:
+                [_upload3 sd_setImageWithURL:[NSURL URLWithString:[imgDict yc_objectForKey:@"ImgUrl"]]];
+                break;
+                
+            case 3:
+                [_upload4 sd_setImageWithURL:[NSURL URLWithString:[imgDict yc_objectForKey:@"ImgUrl"]]];
+                break;
+                
+            default:
+                break;
+        }
+        
+        
+        picIndex ++ ;
+    }
 }
 
 @end

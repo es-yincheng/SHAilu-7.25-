@@ -11,6 +11,7 @@
 @interface CategoryModel : BaseModel
 
 + (NSArray *)getChildCategoryById:(NSInteger)parentCategoryId;
++ (NSString *)getParentCategoryById:(NSInteger)parentCategoryId;
 + (NSDictionary *)getSpecs;
 
 @end

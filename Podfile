@@ -26,4 +26,6 @@ pod 'IQKeyboardManager'
 pod 'Pgyer'
 pod 'PgyUpdate'
 
+pod 'DZNEmptyDataSet'
+
 end

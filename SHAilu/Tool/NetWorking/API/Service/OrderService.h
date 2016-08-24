@@ -32,7 +32,9 @@
                           success:(SuccessBlock)success
                           failure:(FailureBlock)failure;
 
-
+- (void)confirmOrderInfoWithOrderID:(NSString *)orderID
+                            success:(SuccessBlock)success
+                            failure:(FailureBlock)failure;
 
 
 

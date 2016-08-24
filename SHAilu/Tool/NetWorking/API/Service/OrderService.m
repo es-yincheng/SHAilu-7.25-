@@ -14,6 +14,7 @@ static NSString *GetOrders = @"Order/getOrders";
 static NSString *GetOrderInfo = @"Order/getOrderInfo";
 static NSString *OrderOnlineAgain = @"Order/orderOnlineAgain";
 static NSString *GetOrderStatus = @"Order/getOrderStatus";
+static NSString *ConfirmOrderInfo = @"Order/confirmOrderInfo";
 
 
 static NSString *GetPagePurchaseOrderItem = @"Order/GetPagePurchaseOrderItem";
@@ -101,7 +102,20 @@ static NSString *GetAreasBySpotGoodsData  = @"Order/GetAreasBySpotGoodsData";
                                 failure:failure];
 }
 
-
+- (void)confirmOrderInfoWithOrderID:(NSString *)orderID
+                            success:(SuccessBlock)success
+                            failure:(FailureBlock)failure{
+    UserModel *userModel = [UserModel getUserInfo];
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    [param setValue:userModel.Uid forKey:@"UserUid"];
+    [param setValue:orderID forKey:@"OrderUid"];
+    
+    [[NetWorking sharedNetWorking] post:ConfirmOrderInfo
+                             parameters:param
+                               progress:nil
+                                success:success
+                                failure:failure];
+}
 
 
 

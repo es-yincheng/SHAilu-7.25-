@@ -10,8 +10,9 @@
 
 @interface CustomController : UIViewController
 
-@property (nonatomic, strong) NSArray *startData;
-@property (nonatomic, assign) NSInteger startIndex;
+@property (nonatomic, strong) NSArray      *startData;
+@property (nonatomic, strong) NSString     *parentCategoryName;
+@property (nonatomic, assign) NSInteger    startIndex;
 @property (nonatomic, strong) NSDictionary *specsDict;
 
 @end

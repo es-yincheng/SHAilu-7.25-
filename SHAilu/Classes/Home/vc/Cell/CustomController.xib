@@ -12,6 +12,7 @@
                 <outlet property="imageCollection" destination="YRW-rW-adt" id="cin-1I-JfT"/>
                 <outlet property="imageLayout" destination="Gp6-Cz-7mz" id="ZUj-Pf-wpd"/>
                 <outlet property="markText" destination="yM8-Rx-tTS" id="CLl-wy-uwN"/>
+                <outlet property="numberLb" destination="gMk-oi-2Vn" id="Uir-o6-Vmw"/>
                 <outlet property="selectItems" destination="wrY-Py-evt" id="xdN-jk-02T"/>
                 <outlet property="typeCollection" destination="LAG-r8-yzj" id="7Bv-hz-hv8"/>
                 <outlet property="typeLayout" destination="0ju-39-tSP" id="gCX-D8-3ku"/>
@@ -179,20 +180,28 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMk-oi-2Vn">
+                                            <rect key="frame" x="275" y="104" width="33" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="yM8-Rx-tTS" secondAttribute="bottom" constant="8" id="2GQ-9d-Pjj"/>
                                         <constraint firstAttribute="width" secondItem="zDn-fs-mDJ" secondAttribute="height" multiplier="5:2" id="Ehe-EA-lGq"/>
+                                        <constraint firstItem="gMk-oi-2Vn" firstAttribute="trailing" secondItem="yM8-Rx-tTS" secondAttribute="trailing" id="MMb-wR-hih"/>
                                         <constraint firstAttribute="trailing" secondItem="yM8-Rx-tTS" secondAttribute="trailing" constant="12" id="Nfr-Wu-P09"/>
                                         <constraint firstItem="LzT-BD-sJ0" firstAttribute="leading" secondItem="zDn-fs-mDJ" secondAttribute="leading" constant="12" id="ZGE-Ps-a5N"/>
                                         <constraint firstItem="yM8-Rx-tTS" firstAttribute="top" secondItem="LzT-BD-sJ0" secondAttribute="bottom" constant="6" id="dnp-Wq-cb4"/>
+                                        <constraint firstItem="gMk-oi-2Vn" firstAttribute="bottom" secondItem="yM8-Rx-tTS" secondAttribute="bottom" id="eHi-8R-kGo"/>
                                         <constraint firstItem="LzT-BD-sJ0" firstAttribute="top" secondItem="zDn-fs-mDJ" secondAttribute="top" constant="12" id="fyM-QG-K5F"/>
                                         <constraint firstItem="yM8-Rx-tTS" firstAttribute="leading" secondItem="zDn-fs-mDJ" secondAttribute="leading" constant="12" id="o5H-al-zId"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrY-Py-evt">
-                                    <rect key="frame" x="49" y="169.5" width="222" height="0.0"/>
+                                    <rect key="frame" x="49" y="170" width="222" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>

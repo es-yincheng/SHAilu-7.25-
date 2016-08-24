@@ -65,6 +65,7 @@
     
     CustomController *vc = [[CustomController alloc] init];
     vc.startData = [CategoryModel getChildCategoryById:bttag];
+    vc.parentCategoryName = [CategoryModel getParentCategoryById:bttag];
     vc.startIndex = bttag;
     [self.viewController.navigationController pushViewController:vc animated:YES];
     YCTabBarController *tabBarController = (YCTabBarController*)self.viewController.tabBarController;
